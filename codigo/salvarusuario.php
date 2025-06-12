@@ -3,6 +3,7 @@
 require_once "conexao.php";
 require_once "funcoes.php";
 
+
 $nome = $_POST['nome'];
 $cpf = $_POST['cpf'];
 $telefone = $_POST['telefone'];
