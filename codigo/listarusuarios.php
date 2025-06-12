@@ -13,9 +13,9 @@
     <?php
     require_once "conexao.php";
 
-    $lista_usuario = listarusuario($conexao);
+    $lista_usuarios = listarusuarios($conexao);
 
-    if (count($lista_usuarios) == 0) {
+    if (count($lista_usuario) == 0) {
         echo "Não existe usuarios";
     } else {
     ?>
@@ -31,7 +31,7 @@
             </tr>
 
         <?php
-        foreach ($lista_usuarios as $usuario)
+        foreach ($lista_usuario as $usuario)
             $idusuario = $usuario['idusuario'];
             $nome = $usuario['nome'];
             $cpf = $usuario['cpf'];

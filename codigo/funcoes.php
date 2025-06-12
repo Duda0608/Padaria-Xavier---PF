@@ -7,7 +7,7 @@ function salvarusuario($conexao, $nome, $cpf, $telefone, $endereco, $emal, $senh
 
 };
 
-function listarusuario($conexao){
+function listarusuarios($conexao){
 
 };
 
