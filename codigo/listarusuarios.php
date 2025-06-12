@@ -41,8 +41,7 @@
             $endereco = $usuario['endereco'];
             $email = $usuario['email'];
 
-            echo "<tr";
-            echo "<td>$idusuario</td>";
+            echo "<tr>";
             echo "<td>$idusuario</td>";
             echo "<td>$nome</td>";
             echo "<td>$cpf</td>";
