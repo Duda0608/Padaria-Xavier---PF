@@ -4,12 +4,12 @@
 //usuario
 
 function salvarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo){
-    $sql = "INSERT INTO tb_usuario (nome, cpf, telefone, endereco, email, senha) VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO tb_usuario (nome, cpf, telefone, endereco, email, senha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
     $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($comando, 'ssssss', $nome, $cpf, $telefone, $endereco, $email, $senha_hash);
+    mysqli_stmt_bind_param($comando, 'ssssssiii', $nome, $cpf, $telefone, $endereco, $email, $senha_hash, $administrador, $controlelogin, $gerenciapromo);
 
     mysqli_stmt_execute($comando);
 
