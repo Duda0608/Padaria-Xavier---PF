@@ -60,11 +60,35 @@ function deletarusuario($conexao, $idusuario) {
 
 };
 
-function pesquisarusuarionome($conexao, $nome){
+function pesquisarusuarionome($conexao, $nome) {
+    $sql = "SELECT * FROM tb_usuario WHERE nome = ?";
+    $comando = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($comando, 's', $nome);
+
+    mysqli_stmt_execute($comando);
+    $resultado = mysqli_stmt_get_result($comando);
+
+    $nome = mysqli_fetch_assoc($resultado);
+
+    mysqli_stmt_close($comando);
+    return $nome;
 
 };
 
-function pesquisarusuarioid($conexao, $nome, $idusuario){
+function pesquisarusuarioid($conexao, $idusuario){
+    $sql = "SELECT * FROM tb_usuario WHERE idusuario = ?";
+    $comando = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($comando, 'i', $idusuario);
+
+    mysqli_stmt_execute($comando);
+    $resultado = mysqli_stmt_get_result($comando);
+
+    $usuario = mysqli_fetch_assoc($resultado);
+
+    mysqli_stmt_close($comando);
+    return $usuario;
 
 };
 
