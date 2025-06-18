@@ -3,13 +3,13 @@
 require_once "../conexao.php";
 require_once "../funcoes.php";
 
-$nome = "juju";
-$cpf = "344566743";
-$telefone = "56070353";
-$endereco = "jgigh";
-$email = "juju@gmail";
-$senha = "000";
-$admnistrador = 0;
+$nome = "bia";
+$cpf = "254786752";
+$telefone = "452587923";
+$endereco = "128616";
+$email = "lua@gmail";
+$senha = "777";
+$administrador = 1;
 $controlelogin = 0;
 $gerenciapromo = 0;
 

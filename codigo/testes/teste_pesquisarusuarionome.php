@@ -2,7 +2,7 @@
 require_once "../conexao.php";
 require_once "../funcoes.php";
 
-$nome = 1;
+$nome = 'juju';
 
 echo "<pre>";
 print_r(pesquisarusuarionome($conexao, $nome));

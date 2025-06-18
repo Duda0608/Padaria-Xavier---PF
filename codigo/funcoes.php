@@ -4,7 +4,7 @@
 //usuario
 
 function salvarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo){
-    $sql = "INSERT INTO tb_usuario (nome, cpf, telefone, endereco, email, senha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO tb_usuario (nome, cpf, telefone, endereco, email, senha, administrador, controlelogin, gerenciapromo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
     $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
@@ -36,7 +36,7 @@ function listarusuario($conexao){
 
 };
 
-function editarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo){
+function editarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo, $idusu){
     $sql = "UPDATE tb_usuario SET nome=?, cpf=?, telefone=?, endereco=?, email=?, senha=?, administrador=?, controlelogin=?, gerenciapromo=? WHERE idusuario=?";
     $comando = mysqli_prepare($conexao, $sql);
 
