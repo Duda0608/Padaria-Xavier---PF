@@ -48,7 +48,15 @@ function editarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $sen
     return $funcionou;
 };
 
-function deletarusuario($conexao, $idusuario){
+function deletarusuario($conexao, $idusuario) {
+    $sql = "DELETE FROM tb_usuario WHERE idusuario = ?";
+    $comando = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($comando, 'i', $idusuario);
+    $funcionou = mysqli_stmt_execute($comando);
+
+    mysqli_stmt_close($comando);
+    return $funcionou;
 
 };
 
