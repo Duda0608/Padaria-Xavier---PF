@@ -95,8 +95,18 @@ function pesquisarusuarioid($conexao, $idusuario){
 
 //pedidos
 
-function salvarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status){
+function salvarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente){
+    $sql = "INSERT INTO tb_pedido (valor, `data`, avaliacao, pagamento, entrega, `status`, tb_cliente_idcliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $comando = mysqli_prepare($conexao, $sql);
 
+    mysqli_stmt_bind_param($comando, 'ssiiiii', $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente);
+
+    mysqli_stmt_execute($comando);
+
+    $idpedido = mysqli_stmt_insert_id($comando);
+
+    mysqli_stmt_close($comando);
+    return $idpedido;
 };
 
 function listarpedido($conexao){
