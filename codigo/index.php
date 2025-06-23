@@ -6,7 +6,7 @@
     <title>Index</title>
 </head>    
 <body>
-    <h1>Acesso</h1>
+    <h1>Acessoo</h1>
 
     <form action="verificarlogin.php" method="post">
         E-mail: <br>
