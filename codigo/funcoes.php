@@ -110,6 +110,18 @@ function salvarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega,
 };
 
 function listarpedido($conexao){
+    $sql = "SELECT * FROM tb_pedido";
+    $comando = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_execute($comando);
+    $resultado = mysqli_stmt_get_result($comando);
+
+    $lista_pedido = [];
+    while($pedido = mysqli_fetch_assoc($resultado))  {
+        $lista_pedidos[] = $pedido;
+    }
+    mysqli_stmt_close($comando);
+    return $lista_pedido;
 
 };
 
