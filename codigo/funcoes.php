@@ -137,10 +137,19 @@ function editarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega,
 };
 
 function deletarpedido($conexao, $idpedido){
+    $sql = "DELETE FROM tb_pedido  WHERE  idpedido = ?";
+    $comando = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($comando, 'i', $idusuario);
+    $funcionou = mysqli_stmt_execute($comando);
+    
+    mysqli_stmt_close($comando);
+    return $funcionou;
 
 };
 
 function pesquisarpedidonome($conexao, $nome){
+    $sql = 
 
 };
 

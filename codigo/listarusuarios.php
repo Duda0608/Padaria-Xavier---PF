@@ -50,7 +50,7 @@
             echo "<td>$email</td>";
 
             echo "<td><a href='formusuario.php?id=$idusuario'>Editar</a></td>";
-            echo "<td><a href='deletarCliente.php?id=$idusuario'>Excluir</a></td>";
+            echo "<td><a href='deletarusuario.php?id=$idusuario'>Excluir</a></td>";
             echo "</tr>";
         }
     }
