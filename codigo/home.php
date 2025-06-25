@@ -22,6 +22,10 @@
         <li>
             <a href="formpedido.php">Cadastrar pedido</a>
         </li>
+                <li>
+            <a href="listarpedido.php">Listar pedidos existentes</a>
+        </li>
+
     </ul>
 </body>    
 </html>

@@ -53,7 +53,7 @@ if(isset($_GET['id'])) {
         <input type="text" name="entrega" value="<?php echo $entrega; ?>"><br><br>
         Status:<br>
         <input type="text" name="status" value="<?php echo $status; ?>"><br><br>
-        
+
         <input type="submit" value="<?php echo $botao; ?>">
     </form>
 </body>

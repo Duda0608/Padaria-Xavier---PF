@@ -96,10 +96,10 @@ function pesquisarusuarioid($conexao, $idusuario){
 //pedidos
 
 function salvarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente){
-    $sql = "INSERT INTO tb_pedido (valor, `data`, avaliacao, pagamento, entrega, `status`, tb_cliente_idcliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO tb_pedido (valor, data, avaliacao, pagamento, entrega, status, tb_cliente_idcliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($comando, 'ssiiiii', $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente);
+    mysqli_stmt_bind_param($comando, 'dsiiiii', $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente);
 
     mysqli_stmt_execute($comando);
 
@@ -118,7 +118,7 @@ function listarpedido($conexao){
 
     $lista_pedido = [];
     while($pedido = mysqli_fetch_assoc($resultado))  {
-        $lista_pedidos[] = $pedido;
+        $lista_pedido[] = $pedido;
     }
     mysqli_stmt_close($comando);
     return $lista_pedido;
@@ -126,7 +126,14 @@ function listarpedido($conexao){
 };
 
 function editarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idpedido){
+    $sql = "UPDATE tb_pedido SET valor=?, data=?, avaliacao=?, pagamento=?, entrega=?, status=? WHERE idpedido=?";
+    $comando = mysqli_prepare($conexao, $sql);
 
+    mysqli_stmt_bind_param($comando, 'dsiiiii', $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente);
+     $funcionou = mysqli_stmt_execute($comando);
+
+     mysqli_stmt_close($comando);
+     return $funcionou;
 };
 
 function deletarpedido($conexao, $idpedido){

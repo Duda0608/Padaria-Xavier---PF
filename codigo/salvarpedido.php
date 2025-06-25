@@ -8,7 +8,7 @@ $avaliacao = $_POST['avaliacao'];
 $pagamento = $_POST['pagamento'];
 $entrega = $_POST['entrega'];
 $status = $_POST['status'];
-$tb_cliente_idcliente = 1;
+$tb_cliente_idcliente = 2;
 
 if ($id == 0) {
     $sql = "INSERT INTO tb_pedido (valor, `data`, avaliacao, pagamento, entrega, `status`, tb_cliente_idcliente) VALUES ('$valor', '$data', $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente)";
@@ -17,3 +17,5 @@ if ($id == 0) {
 }
 mysqli_query($conexao, $sql);
 
+header("Location: home.php");
+?>

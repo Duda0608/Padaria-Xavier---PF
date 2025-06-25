@@ -37,7 +37,7 @@
         <?php
         foreach ($lista_pedido as $pedido) {
             $idpedido = $pedido['idpedido'];
-            $valor = $pedido['pedido'];
+            $valor = $pedido['valor'];
             $data = $pedido['data'];
             $avaliacao = $pedido['avaliacao'];
             $pagamento = $pedido['pagamento'];
@@ -52,11 +52,11 @@
             echo "<td>$avaliacao</td>";
             echo "<td>$pagamento</td>";
             echo "<td>$entrega</td>";
-            echo "<td>$pedido</td>";
+            echo "<td>$status</td>";
 
 
-            echo "<td><a href='formpedido.php?id=$idusuario'>Editar</a></td>";
-            echo "<td><a href='deletarpedido.php?id=$idusuario'>Excluir</a></td>";
+            echo "<td><a href='formpedido.php?id=$idpedido'>Editar</a></td>";
+            echo "<td><a href='deletarpedido.php?id=$idpedido'>Excluir</a></td>";
             echo "</tr>";
 
 
