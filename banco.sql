@@ -15,9 +15,9 @@ CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
 USE `mydb` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`tb_usuario`
+-- Table `mydb`.`tb_usuarios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`tb_usuario` (
+CREATE TABLE IF NOT EXISTS `mydb`.`tb_usuarios` (
   `idusuario` INT(11) NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `cpf` VARCHAR(11) NOT NULL,
@@ -35,9 +35,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tb_pedido`
+-- Table `mydb`.`tb_pedidos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`tb_pedido` (
+CREATE TABLE IF NOT EXISTS `mydb`.`tb_pedidos` (
   `idpedido` INT(11) NOT NULL AUTO_INCREMENT,
   `valor` DECIMAL(10,2) NOT NULL,
   `data` DATE NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`tb_pedido` (
   INDEX `fk_tb_pedido_tb_cliente1_idx` (`tb_cliente_idcliente` ASC) VISIBLE,
   CONSTRAINT `fk_tb_pedido_tb_cliente1`
     FOREIGN KEY (`tb_cliente_idcliente`)
-    REFERENCES `mydb`.`tb_usuario` (`idusuario`)
+    REFERENCES `mydb`.`tb_usuarios` (`idusuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -59,9 +59,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tb_promocao`
+-- Table `mydb`.`tb_promocaos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`tb_promocao` (
+CREATE TABLE IF NOT EXISTS `mydb`.`tb_promocaos` (
   `idpromocao` INT(11) NOT NULL AUTO_INCREMENT,
   `produto` VARCHAR(20) NOT NULL,
   `datainicio` DATE NOT NULL,
@@ -73,9 +73,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tbcategoria`
+-- Table `mydb`.`tb_categorias`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`tbcategoria` (
+CREATE TABLE IF NOT EXISTS `mydb`.`tb_categorias` (
   `idcategoria` INT(11) NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `descricao` VARCHAR(45) NOT NULL,
@@ -100,12 +100,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`tb_produtos` (
   INDEX `fk_tb_produtos_tbcategoria1_idx` (`tbcategoria_idcategoria` ASC) VISIBLE,
   CONSTRAINT `fk_tb_produtos_tb_promocao1`
     FOREIGN KEY (`tb_promocao_idpromocao`)
-    REFERENCES `mydb`.`tb_promocao` (`idpromocao`)
+    REFERENCES `mydb`.`tb_promocaos` (`idpromocao`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_tb_produtos_tbcategoria1`
     FOREIGN KEY (`tbcategoria_idcategoria`)
-    REFERENCES `mydb`.`tbcategoria` (`idcategoria`)
+    REFERENCES `mydb`.`tb_categorias` (`idcategoria`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -113,9 +113,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`item_pedido`
+-- Table `mydb`.`tb_item_pedidos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`item_pedido` (
+CREATE TABLE IF NOT EXISTS `mydb`.`tb_item_pedidos` (
   `iditem_pedido` INT(11) NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `tipo` VARCHAR(20) NOT NULL,
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`item_pedido` (
   INDEX `fk_item_pedido_tb_produtos1_idx` (`tb_produtos_idtb_produtos` ASC) VISIBLE,
   CONSTRAINT `fk_item_pedido_tb_pedido`
     FOREIGN KEY (`tb_pedido_idpedido`)
-    REFERENCES `mydb`.`tb_pedido` (`idpedido`)
+    REFERENCES `mydb`.`tb_pedidos` (`idpedido`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_item_pedido_tb_produtos1`
@@ -141,17 +141,17 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tb_comentario`
+-- Table `mydb`.`tb_comentarios`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`tb_comentario` (
+CREATE TABLE IF NOT EXISTS `mydb`.`tb_comentarios` (
   `idcomentario` INT(11) NOT NULL AUTO_INCREMENT,
   `comentario` VARCHAR(45) NOT NULL,
-  `tb_produtos_idprodutos` INT(11) NOT NULL,
+  `tb_usuario_idusuario` INT(11) NOT NULL,
   PRIMARY KEY (`idcomentario`),
-  INDEX `fk_tb_comentario_tb_produtos1_idx` (`tb_produtos_idprodutos` ASC) VISIBLE,
-  CONSTRAINT `fk_tb_comentario_tb_produtos1`
-    FOREIGN KEY (`tb_produtos_idprodutos`)
-    REFERENCES `mydb`.`tb_produtos` (`idprodutos`)
+  INDEX `fk_tb_comentario_tb_usuario1_idx` (`tb_usuario_idusuario` ASC) VISIBLE,
+  CONSTRAINT `fk_tb_comentario_tb_usuario1`
+    FOREIGN KEY (`tb_usuario_idusuario`)
+    REFERENCES `mydb`.`tb_usuarios` (`idusuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -159,9 +159,9 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tb_estoque`
+-- Table `mydb`.`tb_estoques`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`tb_estoque` (
+CREATE TABLE IF NOT EXISTS `mydb`.`tb_estoques` (
   `idestoque` INT(11) NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(45) NOT NULL,
   `tipo` VARCHAR(20) NOT NULL,
