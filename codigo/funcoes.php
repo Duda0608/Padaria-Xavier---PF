@@ -4,7 +4,7 @@
 //usuario
 
 function salvarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo){
-    $sql = "INSERT INTO tb_usuario (nome, cpf, telefone, endereco, email, senha, administrador, controlelogin, gerenciapromo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO tb_usuarios (nome, cpf, telefone, endereco, email, senha, administrador, controlelogin, gerenciapromo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
     $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
@@ -20,7 +20,7 @@ function salvarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $sen
 };
 
 function listarusuario($conexao){
-    $sql = "SELECT * FROM tb_usuario";
+    $sql = "SELECT * FROM tb_usuarios";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_execute($comando);
@@ -37,7 +37,7 @@ function listarusuario($conexao){
 };
 
 function editarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo, $idusu){
-    $sql = "UPDATE tb_usuario SET nome=?, cpf=?, telefone=?, endereco=?, email=?, senha=?, administrador=?, controlelogin=?, gerenciapromo=? WHERE idusuario=?";
+    $sql = "UPDATE tb_usuarios SET nome=?, cpf=?, telefone=?, endereco=?, email=?, senha=?, administrador=?, controlelogin=?, gerenciapromo=? WHERE idusuario=?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'ssssssiiii', $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo, $idusuario);
@@ -49,7 +49,7 @@ function editarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $sen
 };
 
 function deletarusuario($conexao, $idusuario) {
-    $sql = "DELETE FROM tb_usuario WHERE idusuario = ?";
+    $sql = "DELETE FROM tb_usuarios WHERE idusuario = ?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'i', $idusuario);
@@ -61,7 +61,7 @@ function deletarusuario($conexao, $idusuario) {
 };
 
 function pesquisarusuarionome($conexao, $nome) {
-    $sql = "SELECT * FROM tb_usuario WHERE nome = ?";
+    $sql = "SELECT * FROM tb_usuarios WHERE nome = ?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 's', $nome);
@@ -77,7 +77,7 @@ function pesquisarusuarionome($conexao, $nome) {
 };
 
 function pesquisarusuarioid($conexao, $idusuario){
-    $sql = "SELECT * FROM tb_usuario WHERE idusuario = ?";
+    $sql = "SELECT * FROM tb_usuarios WHERE idusuario = ?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'i', $idusuario);
@@ -96,7 +96,7 @@ function pesquisarusuarioid($conexao, $idusuario){
 //pedidos
 
 function salvarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente){
-    $sql = "INSERT INTO tb_pedido (valor, data, avaliacao, pagamento, entrega, status, tb_cliente_idcliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO tb_pedidos (valor, data, avaliacao, pagamento, entrega, status, tb_cliente_idcliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'dsiiiii', $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente);
@@ -110,7 +110,7 @@ function salvarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega,
 };
 
 function listarpedido($conexao){
-    $sql = "SELECT * FROM tb_pedido";
+    $sql = "SELECT * FROM tb_pedidos";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_execute($comando);
@@ -126,7 +126,7 @@ function listarpedido($conexao){
 };
 
 function editarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idpedido){
-    $sql = "UPDATE tb_pedido SET valor=?, data=?, avaliacao=?, pagamento=?, entrega=?, status=? WHERE idpedido=?";
+    $sql = "UPDATE tb_pedidos SET valor=?, data=?, avaliacao=?, pagamento=?, entrega=?, status=? WHERE idpedido=?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'dsiiiii', $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente);
@@ -137,7 +137,7 @@ function editarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega,
 };
 
 function deletarpedido($conexao, $idpedido){
-    $sql = "DELETE FROM tb_pedido  WHERE  idpedido = ?";
+    $sql = "DELETE FROM tb_pedidos  WHERE  idpedido = ?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'i', $idusuario);
@@ -149,12 +149,12 @@ function deletarpedido($conexao, $idpedido){
 };
 
 function pesquisarpedidonome($conexao, $nome){
-    //nao sei fazer;-;
+    //nao sei fazer;-; sorry
 
 };
 
 function pesquisarpedidoid($conexao, $idpedido){
-    $sql = "SELECT * FROM tb_pedido WHERE idpedido = ?";
+    $sql = "SELECT * FROM tb_pedidos WHERE idpedido = ?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'i', $idpedido);

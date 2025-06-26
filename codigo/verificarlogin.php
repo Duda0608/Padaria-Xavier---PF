@@ -4,7 +4,7 @@
     $email = $_POST['email'];
     $senha = $_POST['senha'];
 
-    $sql = "SELECT * FROM tb_usuario WHERE email ='$email'";
+    $sql = "SELECT * FROM tb_usuarios WHERE email ='$email'";
 
     $resultado = mysqli_query($conexao, $sql);
 
