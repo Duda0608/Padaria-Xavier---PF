@@ -193,10 +193,32 @@ function editarprodutos($conexao, $nome, $tipo, $preco_venda, $lucro, $idproduto
 };
 
 function deletarprodutos($conexao, $idprodutos){
+    $sql = "DELETE FROM tb_produtos WHERE idprodutos = ?";
+    $comando = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($comando, 'i', $idprodutos);
+    $funcionou = mysqli_stmt_execute($comando);
+
+    mysqli_stmt_close($comando);
+    return $funcionou;
+
 
 };
 
 function listarprodutos($conexao){
+    $sql = "SELECT * FROM tb_produtos";
+    $comando = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_execute($comando);
+    $resultado = mysqli_stmt_get_result($comando);
+
+    $lista_produto = [];
+    while ($produto = mysqli_fetch_assoc($resultado)){
+        $lista_produto[] = $produto;
+    }
+
+    mysqli_stmt_close($comando);
+    return $lista_produto;
 
 };
 

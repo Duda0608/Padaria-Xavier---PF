@@ -2,9 +2,8 @@
 require_once "../conexao.php";
 require_once "../funcoes.php";
 
-echo "=== TESTE LISTAR LOGIN ===\n";
+echo "=== TESTE LISTAR COMENTARIO ===\n";
 echo "<pre>";
-print_r(listarusuario($conexao));
+print_r(listarcomentarios($conexao));
 echo "</pre>\n";
-
 ?>

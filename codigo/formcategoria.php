@@ -10,11 +10,8 @@ if ($nome != "") {
 
 <h3>Salvar Categoria</h3>
 <form method="POST">
-  Nome: <br>
-  <input type="text" name="nome"><br><br>
-  Descrição:<br>
-  <input type="text" name="descricao"><br><br>
-  
+  Nome: <input type="text" name="nome"><br>
+  Descrição: <input type="text" name="descricao"><br>
   <input type="submit" value="Salvar Categoria">
 </form>
 

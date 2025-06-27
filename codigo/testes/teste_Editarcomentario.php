@@ -5,7 +5,7 @@ require_once "../funcoes.php";
 echo "=== TESTE EDITAR COMENTARIO ===\n";
 $comentario_edit = "Atendimento muito bom, recomendo!";
 
-$resultado_edit = editarcomentario($conexao, $comentario_edit, $idcomentario);
-echo "Comentario editado: " . ($resultado_edit ? "Sucesso" : "Falha") . "\n\n";
+$idcomentario = editarcomentario($conexao, $comentario_edit, $idcomentario);
+echo "Comentario editado: " . ($idcomentario ? "Sucesso" : "Falha") . "\n\n";
 
 ?>
