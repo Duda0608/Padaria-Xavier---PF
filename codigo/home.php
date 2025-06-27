@@ -25,6 +25,14 @@
                 <li>
             <a href="listarpedido.php">Listar pedidos existentes</a>
         </li>
+        
+                <li>
+            <a href="formestoques.php">cadastrar estoque</a>
+        </li>
+
+                <li>
+            <a href="listarestoques.php">Listar pedidos existentes</a>
+        </li>
 
     </ul>
 </body>    
