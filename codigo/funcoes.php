@@ -277,11 +277,11 @@ function editarpagamento ($conexao, $valor, $data, $avaliacao, $pagamento, $entr
 
 //entrega
 
-function salvarentrega($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status) {
-    $sql = "INSERT INTO tb_entrega (valor, data, avaliacao, pagamento, entrega, status) VALUES (?, ?, ?, ?, ?, ?)";
+function salvarentrega($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente) {
+    $sql = "INSERT INTO tb_pedidos (valor, data, avaliacao, pagamento, entrega, status, tb_cliente_idcliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
     
-    mysqli_stmt_bind_param($comando, 'ddsdss', $valor, $data, $avaliacao, $pagamento, $entrega, $status);
+    mysqli_stmt_bind_param($comando, 'dssdssi', $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente);
     
     $funcionou = mysqli_stmt_execute($comando);
     
@@ -299,7 +299,7 @@ function salvarestoque ($conexao, $nome, $tipo, $data, $quantidade, $tb_produtos
 
     $comando = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($comando, 'ssddi', $nome, $tipo, $data, $quantidade, $tb_produtos_idprodutos);
+    mysqli_stmt_bind_param($comando, 'sssii', $nome, $tipo, $data, $quantidade, $tb_produtos_idprodutos);
 
     $funcionou = mysqli_stmt_execute($comando);
 
@@ -312,7 +312,7 @@ function editarestoque($conexao, $nome, $tipo, $data, $quantidade, $idestoque){
 
     $comando = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($comando, 'ssddi', $nome, $tipo, $data, $quantidade, $idestoque);
+    mysqli_stmt_bind_param($comando, 'sssis', $nome, $tipo, $data, $quantidade, $idestoque);
 
     $funcionou = mysqli_stmt_execute($comando);
 

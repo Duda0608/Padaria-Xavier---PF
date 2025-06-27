@@ -9,7 +9,7 @@ $data = "2025-06-25";
 $quantidade = "7";
 $idprodutos = '1';
 
-salvar_estoque($conexao, $nome, $tipo, $data, $quantidade, $idprodutos);
+salvarestoque($conexao, $nome, $tipo, $data, $quantidade, $idprodutos);
 
 
 
