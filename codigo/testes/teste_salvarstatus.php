@@ -10,4 +10,5 @@ $pagamento = "";
 $entrega = "";
 $status = "";
 
-salvar_status($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status);
+salvarstatus($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status);
+echo"oi";

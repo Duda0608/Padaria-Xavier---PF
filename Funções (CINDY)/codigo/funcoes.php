@@ -308,7 +308,7 @@ function salvarestoque ($conexao, $nome, $tipo, $data, $quantidade, $tb_produtos
 };
 
 function editarestoque($conexao, $nome, $tipo, $data, $quantidade, $idestoque){
-        $sql = "UPDATE - SET nome=?, tipo=?, data=?, quantidade=?, idestoque=?";
+        $sql = "UPDATE tb_estoques SET nome=?, tipo=?, data=?, quantidade=?, idestoque=?";
 
     $comando = mysqli_prepare($conexao, $sql);
 
