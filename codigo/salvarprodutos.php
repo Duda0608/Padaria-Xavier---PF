@@ -10,7 +10,7 @@ $lucro = $_POST['lucro'];
 $tb_promocao_idpromocao = 0;
 $tbcategoria_idcategoria = 0;
 
-$sql = "INSERT INTO tb_produtos(nome, tipo, preco_venda, lucro, tb_promocao_idpromocao, tbcategoria_idcategoria) VALUES ('$nome', '$tipo', '$preco_venda', '$lucro', '$tb_promocao_idpromocao', '$tbcategoria_idcategoria')";
+$sql = "INSERT INTO tb_produtos(nome, tipo, preco_venda, lucro, tb_promocao_idpromocao, tbcategoria_idcategoria) VALUES ('$nome', '$tipo', '$preco_venda', '$lucro', $tb_promocao_idpromocao, $tbcategoria_idcategoria)";
 
 mysqli_query($conexao, $sql);
 
