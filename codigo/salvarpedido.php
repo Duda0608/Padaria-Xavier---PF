@@ -11,9 +11,9 @@ $status = $_POST['status'];
 $tb_cliente_idcliente = 2;
 
 if ($id == 0) {
-    $sql = "INSERT INTO tb_pedidos (valor, `data`, avaliacao, pagamento, entrega, `status`, tb_cliente_idcliente) VALUES ('$valor', '$data', $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente)";
+    $sql = "INSERT INTO tb_pedidos (valor, `data`, avaliacao, pagamento, entrega, `status`, tb_cliente_idcliente) VALUES ('$valor', '$data', $avaliacao, '$pagamento', '$entrega', $status, $tb_cliente_idcliente)";
 } else {
-    $sql = "UPDATE tb_pedidos SET valor = '$valor', `data` = '$data', avaliacao = $avaliacao, pagamento = $pagamento, entrega = $entrega, `status` = $status, tb_cliente_idcliente = $tb_cliente_idcliente WHERE idpedido = $id";
+    $sql = "UPDATE tb_pedidos SET valor = $valor, `data` = $data, avaliacao = $avaliacao, pagamento = $pagamento, entrega = $entrega, `status` = $status, tb_cliente_idcliente = $tb_cliente_idcliente WHERE idpedido = $id";
 }
 mysqli_query($conexao, $sql);
 

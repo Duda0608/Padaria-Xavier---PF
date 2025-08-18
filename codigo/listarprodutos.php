@@ -16,7 +16,7 @@
 
     $lista_produtos = listarprodutos($conexao);
 
-    if (count($lista_produto) == 0) {
+    if (count($lista_produtos) == 1) {
         echo "Não ha produtos";
     
     } else {
@@ -33,8 +33,8 @@
             </tr>
 
         <?php
-        foreach ($lista_produto as $produto) {
-            $idproduto = $produto['idproduto'];
+        foreach ($lista_produtos as $produto) {
+            $idprodutos = $produto['idprodutos'];
             $nome = $produto['nome'];
             $tipo = $produto['tipo'];
             $preco_venda = $produto['preco_venda'];
@@ -42,15 +42,15 @@
 
 
             echo "<tr>";
-            echo "<td>$idproduto</td>";
+            echo "<td>$idprodutos</td>";
             echo "<td>$nome</td>";
             echo "<td>$tipo</td>";
             echo "<td>$preco_venda</td>";
             echo "<td>$lucro</td>";
 
 
-            echo "<td><a href='formprodutos.php?id=$idproduto'>Editar</a></td>";
-            echo "<td><a href='deletarprodutos.php?id=$idproduto'>Excluir</a></td>";
+            echo "<td><a href='formprodutos.php?id=$idprodutos'>Editar</a></td>";
+            echo "<td><a href='deletarprodutos.php?id=$idprodutos'>Excluir</a></td>";
             echo "</tr>";
 
 

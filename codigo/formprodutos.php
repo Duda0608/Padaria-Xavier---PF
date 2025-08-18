@@ -16,7 +16,7 @@ if(isset($_GET['id'])) {
     $preco_venda = $linha['preco_venda'];
     $lucro = $linha['lucro'];
     $tb_promocao_idpromocao = $linha['tb_promocao_idpromocao'];
-    $tbcategoria_idcategoria = $linha['tbcategoria_idcategoria'];
+    $tbcategoria_idcategoria =$linha['tbcategoria_idcategoria'];
 
 
     $botao = "atualizar";

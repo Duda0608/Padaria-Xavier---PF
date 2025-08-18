@@ -99,7 +99,7 @@ function salvarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega,
     $sql = "INSERT INTO tb_pedidos (valor, data, avaliacao, pagamento, entrega, status, tb_cliente_idcliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($comando, 'dsiiiii', $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente);
+    mysqli_stmt_bind_param($comando, 'dssssii', $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente);
 
     mysqli_stmt_execute($comando);
 
@@ -294,7 +294,7 @@ function salvarentrega($conexao, $valor, $data, $avaliacao, $pagamento, $entrega
 
 //estoque
 
-function salvarestoque ($conexao, $nome, $tipo, $data, $quantidade, $tb_produtos_idprodutos) {
+function salvarestoques ($conexao, $nome, $tipo, $data, $quantidade, $tb_produtos_idprodutos) {
     $sql = "INSERT INTO tb_estoques (nome, tipo, data, quantidade, tb_produtos_idprodutos) VALUES (?, ?, ?, ?, ?)";
 
     $comando = mysqli_prepare($conexao, $sql);
