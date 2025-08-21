@@ -554,7 +554,7 @@ function editarcategoria($conexao, $nome, $descricao, $idcategoria){
 };
 
 function deletarcategoria($conexao, $idcategoria){
-    $sql = "DELETE FROM tb_categoria WHERE idcategoria=?";
+    $sql = "DELETE FROM tb_categorias WHERE idcategoria=?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'i', $idcategoria);
@@ -627,7 +627,7 @@ function listarhistorico($conexao){
 };
 
 function deletarhistorico($conexao, $idpedido){
-    $sql = "DELETE FROM tb_historico WHERE idpedido=?";
+    $sql = "DELETE FROM tb_historicos WHERE idpedido=?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'i', $idpedido);
@@ -680,7 +680,7 @@ function editarcomentario($conexao){
 };
 
 function deletarcomentario($conexao, $idcomentario){
-    $sql = "DELETE FROM tb_comentario WHERE idcomentario=?";
+    $sql = "DELETE FROM tb_comentarios WHERE idcomentario=?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'i', $idcomentario);
