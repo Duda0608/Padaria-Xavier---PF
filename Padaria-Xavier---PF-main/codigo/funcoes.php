@@ -3,13 +3,13 @@
 
 //usuario
 
-function salvarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo){
-    $sql = "INSERT INTO tb_usuarios (nome, cpf, telefone, endereco, email, senha, administrador, controlelogin, gerenciapromo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+function salvarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $controlelogin, $gerenciapromo){
+    $sql = "INSERT INTO tb_usuarios (nome, cpf, telefone, endereco, email, senha, controlelogin, gerenciapromo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
     $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($comando, 'ssssssiii', $nome, $cpf, $telefone, $endereco, $email, $senha_hash, $administrador, $controlelogin, $gerenciapromo);
+    mysqli_stmt_bind_param($comando, 'ssssssiii', $nome, $cpf, $telefone, $endereco, $email, $senha_hash, $controlelogin, $gerenciapromo);
 
     mysqli_stmt_execute($comando);
 
@@ -36,7 +36,7 @@ function listarusuario($conexao){
 
 };
 
-function editarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo, $idusu){
+function editarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo, $idusuario){
     $sql = "UPDATE tb_usuarios SET nome=?, cpf=?, telefone=?, endereco=?, email=?, senha=?, administrador=?, controlelogin=?, gerenciapromo=? WHERE idusuario=?";
     $comando = mysqli_prepare($conexao, $sql);
 
@@ -99,7 +99,7 @@ function salvarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega,
     $sql = "INSERT INTO tb_pedidos (valor, data, avaliacao, pagamento, entrega, status, tb_cliente_idcliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($comando, 'dssssii', $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente);
+    mysqli_stmt_bind_param($comando, 'dsiiiii', $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente);
 
     mysqli_stmt_execute($comando);
 
@@ -172,11 +172,11 @@ function pesquisarpedidoid($conexao, $idpedido){
 
 //cardapio-produtos
 
-function salvarprodutos($conexao, $nome, $tipo, $preco_venda, $lucro, $tb_promocao_idpromocao, $tbcategoria_idcategoria){
-    $sql = "INSERT INTO tb_produtos (nome, tipo, preco_venda, lucro) VALUES (?,?, ?, ?, ?, ?)";
+function salvarprodutos($conexao, $nome, $tipo, $preco_venda, $lucro, $tb_promocao_idpromocaos, $tbcategorias_idcategoria){
+    $sql = "INSERT INTO tb_produtos (nome, tipo, preco_venda, lucro, $tb_promocaos_idpromocao, $tbcategorias_idcategoria) VALUES (?,?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($comando, 'ssssii', $nome, $tipo, $preco_venda, $lucro, $tb_promocao_idpromocao, $tbcategoria_idcategoria);
+    mysqli_stmt_bind_param($comando, 'ssssii', $nome, $tipo, $preco_venda, $lucro, $tb_promocaos_idpromocao, $tbcategorias_idcategoria);
 
     mysqli_stmt_execute($comando);
 
@@ -294,7 +294,7 @@ function salvarentrega($conexao, $valor, $data, $avaliacao, $pagamento, $entrega
 
 //estoque
 
-function salvarestoques ($conexao, $nome, $tipo, $data, $quantidade, $tb_produtos_idprodutos) {
+function salvarestoque ($conexao, $nome, $tipo, $data, $quantidade, $tb_produtos_idprodutos) {
     $sql = "INSERT INTO tb_estoques (nome, tipo, data, quantidade, tb_produtos_idprodutos) VALUES (?, ?, ?, ?, ?)";
 
     $comando = mysqli_prepare($conexao, $sql);
@@ -335,7 +335,20 @@ function deletarestoque($conexao, $idestoque){
 };
 
 function listarestoque($conexao){
-    
+       $sql = "SELECT * FROM tb_estoques";
+    $comando = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_execute($comando);
+    $resultado = mysqli_stmt_get_result($comando);
+
+    $lista = [];
+    while ($item = mysqli_fetch_assoc($resultado)) {
+        $lista[] = $idestoque;
+    }
+    mysqli_stmt_close($comando);
+
+    return $lista;
+
     
 
 };
@@ -371,7 +384,7 @@ function salvaravaliacao($conexao, $valor, $data, $avaliacao, $pagamento, $entre
 };
 
 function editaravaliacao ($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idpedido){
-
+  
 };
 
 function deletaravaliacao($conexao, $idpedido){
@@ -379,6 +392,20 @@ function deletaravaliacao($conexao, $idpedido){
 };
 
 function listaravaliacao($conexao){
+     $sql = "SELECT * FROM tb_pedidos";
+    $comando = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_execute($comando);
+    $resultado = mysqli_stmt_get_result($comando);
+
+    $lista = [];
+    while ($item = mysqli_fetch_assoc($resultado)) {
+        $lista[] = $avaliacao;
+    }
+    mysqli_stmt_close($comando);
+
+    return $lista;
+
 
 };
 
@@ -446,7 +473,7 @@ function deletarpromocao($conexao, $idpromocao){
 };
 
 function listarpromocao($conexao){
-    $sql = "SELECT * FROM tb_promocao";
+    $sql = "SELECT * FROM tb_promocaos";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_execute($comando);
@@ -512,7 +539,7 @@ function pesquisarlogin($conexao, $gmail, $senha){
 //categoria
 
 function salvarcategoria($conexao, $nome, $descricao){
-    $sql = "INSERT INTO tb_categoria (nome, descricao) VALUES (?, ?)";
+    $sql = "INSERT INTO tb_categorias (nome, descricao) VALUES (?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'ss', $nome, $descricao);
@@ -525,7 +552,7 @@ function salvarcategoria($conexao, $nome, $descricao){
 };
 
 function listarcategoria($conexao){
-    $sql = "SELECT * FROM tb_categoria";
+    $sql = "SELECT * FROM tb_categorias";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_execute($comando);
@@ -542,7 +569,7 @@ function listarcategoria($conexao){
 };
 
 function editarcategoria($conexao, $nome, $descricao, $idcategoria){
-    $sql = "UPDATE tb_categoria SET nome=?, descricao=? WHERE idcategoria=?";
+    $sql = "UPDATE tb_categorias SET nome=?, descricao=? WHERE idcategoria=?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'ssi', $nome, $descricao, $idcategoria);
@@ -554,7 +581,7 @@ function editarcategoria($conexao, $nome, $descricao, $idcategoria){
 };
 
 function deletarcategoria($conexao, $idcategoria){
-    $sql = "DELETE FROM tb_categoria WHERE idcategoria=?";
+    $sql = "DELETE FROM tb_categorias WHERE idcategoria=?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'i', $idcategoria);
@@ -566,7 +593,7 @@ function deletarcategoria($conexao, $idcategoria){
 };
 
 function pesquisarcategoriaid($conexao, $nome, $idcategoria){
-    $sql = "SELECT * FROM tb_categoria WHERE nome=? AND idcategoria=?";
+    $sql = "SELECT * FROM tb_categorias WHERE nome=? AND idcategoria=?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'si', $nome, $idcategoria);
@@ -581,7 +608,7 @@ function pesquisarcategoriaid($conexao, $nome, $idcategoria){
 
 
 function pesquisarcategorianome($conexao, $nome){
-    $sql = "SELECT * FROM tb_categoria WHERE nome=?";
+    $sql = "SELECT * FROM tb_categorias WHERE nome=?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 's', $nome);
