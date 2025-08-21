@@ -7,8 +7,8 @@ $nome = $_POST['nome'];
 $tipo = $_POST['tipo'];
 $preco_venda = $_POST['preco_venda'];
 $lucro = $_POST['lucro'];
-$tb_promocao_idpromocao = 1;
-$tbcategoria_idcategoria = 1;
+$tb_promocao_idpromocao = 0;
+$tbcategoria_idcategoria = 0;
 
 $sql = "INSERT INTO tb_produtos(nome, tipo, preco_venda, lucro, tb_promocao_idpromocao, tbcategoria_idcategoria) VALUES ('$nome', '$tipo', '$preco_venda', '$lucro', $tb_promocao_idpromocao, $tbcategoria_idcategoria)";
 

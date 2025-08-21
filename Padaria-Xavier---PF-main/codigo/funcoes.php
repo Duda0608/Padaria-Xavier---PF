@@ -3,13 +3,13 @@
 
 //usuario
 
-function salvarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo){
-    $sql = "INSERT INTO tb_usuarios (nome, cpf, telefone, endereco, email, senha, administrador, controlelogin, gerenciapromo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+function salvarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $controlelogin, $gerenciapromo){
+    $sql = "INSERT INTO tb_usuarios (nome, cpf, telefone, endereco, email, senha, controlelogin, gerenciapromo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
     $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($comando, 'ssssssiii', $nome, $cpf, $telefone, $endereco, $email, $senha_hash, $administrador, $controlelogin, $gerenciapromo);
+    mysqli_stmt_bind_param($comando, 'ssssssiii', $nome, $cpf, $telefone, $endereco, $email, $senha_hash, $controlelogin, $gerenciapromo);
 
     mysqli_stmt_execute($comando);
 
@@ -36,7 +36,7 @@ function listarusuario($conexao){
 
 };
 
-function editarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo, $idusu){
+function editarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo, $idusuario){
     $sql = "UPDATE tb_usuarios SET nome=?, cpf=?, telefone=?, endereco=?, email=?, senha=?, administrador=?, controlelogin=?, gerenciapromo=? WHERE idusuario=?";
     $comando = mysqli_prepare($conexao, $sql);
 
@@ -99,7 +99,7 @@ function salvarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega,
     $sql = "INSERT INTO tb_pedidos (valor, data, avaliacao, pagamento, entrega, status, tb_cliente_idcliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($comando, 'dssssii', $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente);
+    mysqli_stmt_bind_param($comando, 'dsiiiii', $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente);
 
     mysqli_stmt_execute($comando);
 
@@ -294,7 +294,7 @@ function salvarentrega($conexao, $valor, $data, $avaliacao, $pagamento, $entrega
 
 //estoque
 
-function salvarestoques ($conexao, $nome, $tipo, $data, $quantidade, $tb_produtos_idprodutos) {
+function salvarestoque ($conexao, $nome, $tipo, $data, $quantidade, $tb_produtos_idprodutos) {
     $sql = "INSERT INTO tb_estoques (nome, tipo, data, quantidade, tb_produtos_idprodutos) VALUES (?, ?, ?, ?, ?)";
 
     $comando = mysqli_prepare($conexao, $sql);
@@ -446,7 +446,7 @@ function deletarpromocao($conexao, $idpromocao){
 };
 
 function listarpromocao($conexao){
-    $sql = "SELECT * FROM tb_promocao";
+    $sql = "SELECT * FROM tb_promocaos";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_execute($comando);
