@@ -512,7 +512,7 @@ function pesquisarlogin($conexao, $gmail, $senha){
 //categoria
 
 function salvarcategoria($conexao, $nome, $descricao){
-    $sql = "INSERT INTO tb_categoria (nome, descricao) VALUES (?, ?)";
+    $sql = "INSERT INTO tb_categorias (nome, descricao) VALUES (?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'ss', $nome, $descricao);
@@ -525,7 +525,7 @@ function salvarcategoria($conexao, $nome, $descricao){
 };
 
 function listarcategoria($conexao){
-    $sql = "SELECT * FROM tb_categoria";
+    $sql = "SELECT * FROM tb_categorias";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_execute($comando);
@@ -538,8 +538,8 @@ function listarcategoria($conexao){
     mysqli_stmt_close($comando);
 
     return $lista;
+}
 
-};
 
 function editarcategoria($conexao, $nome, $descricao, $idcategoria){
     $sql = "UPDATE tb_categorias SET nome=?, descricao=? WHERE idcategoria=?";

@@ -6,5 +6,5 @@ echo "=== TESTE LISTAR CATEGORIA ===\n";
 echo "<pre>";
 print_r(listarcategoria($conexao));
 echo "</pre>\n";
-
+echo "oii";
 ?>
