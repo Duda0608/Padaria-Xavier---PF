@@ -172,11 +172,11 @@ function pesquisarpedidoid($conexao, $idpedido){
 
 //cardapio-produtos
 
-function salvarprodutos($conexao, $nome, $tipo, $preco_venda, $lucro, $tb_promocao_idpromocao, $tbcategoria_idcategoria){
-    $sql = "INSERT INTO tb_produtos (nome, tipo, preco_venda, lucro, $tb_promocao_idpromocao, $tbcategoria_idcategoria) VALUES (?,?, ?, ?, ?, ?)";
+function salvarprodutos($conexao, $nome, $tipo, $preco_venda, $lucro, $tb_promocao_idpromocaos, $tbcategorias_idcategoria){
+    $sql = "INSERT INTO tb_produtos (nome, tipo, preco_venda, lucro, $tb_promocaos_idpromocao, $tbcategorias_idcategoria) VALUES (?,?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($comando, 'ssssii', $nome, $tipo, $preco_venda, $lucro, $tb_promocao_idpromocao, $tbcategoria_idcategoria);
+    mysqli_stmt_bind_param($comando, 'ssssii', $nome, $tipo, $preco_venda, $lucro, $tb_promocaos_idpromocao, $tbcategorias_idcategoria);
 
     mysqli_stmt_execute($comando);
 
