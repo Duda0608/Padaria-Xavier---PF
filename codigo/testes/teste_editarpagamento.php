@@ -13,3 +13,5 @@ $idpedido = "19";
 
 editarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idpedido);
 echo "oiiii";
+
+?>
