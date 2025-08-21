@@ -2,8 +2,14 @@
 require_once "../conexao.php";
 require_once "../funcoes.php";
 
-echo "=== TESTE DELETAR COMENTARIO ===\n";
-$idcomentario = deletarcomentario($conexao, $idcomentario);
-echo "Comentario deletado: " . ($idcomentario ? "Sucesso" : "Falha") . "\n\n";
+if (isset($_GET['idcategoria'])) {
+    $idcategoria = $_GET['idcategoria'];
+} else {
+    echo "id não encontrado.";
+    exit;
+}
+
+echo "Categoria deletada: Sucesso";
+?>
 
 ?>

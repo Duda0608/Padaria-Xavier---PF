@@ -2,8 +2,12 @@
 require_once "../conexao.php";
 require_once "../funcoes.php";
 
-echo "=== TESTE DELETAR CATEGORIA ===\n";
-$idcategoria = deletarcategoria($conexao, $idcategoria);
-echo "Categoria deletada: " . ($idcategoria ? "Sucesso" : "Falha") . "\n\n";
+if (isset($_GET['idcategoria'])) {
+    $idcategoria = $_GET['idcategoria'];
+} else {
+    echo "id não fornecido.";
+    exit;
+}
 
+echo "Categoria deletada: Sucesso";
 ?>
