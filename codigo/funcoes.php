@@ -308,7 +308,7 @@ function salvarestoques ($conexao, $nome, $tipo, $data, $quantidade, $tb_produto
 };
 
 function editarestoque($conexao, $nome, $tipo, $data, $quantidade, $idestoque){
-        $sql = "UPDATE - SET nome=?, tipo=?, data=?, quantidade=?, idestoque=?";
+        $sql = "UPDATE tb_estoques SET nome=?, tipo=?, data=?, quantidade=?, idestoque=?";
 
     $comando = mysqli_prepare($conexao, $sql);
 
@@ -322,7 +322,7 @@ function editarestoque($conexao, $nome, $tipo, $data, $quantidade, $idestoque){
 };
 
 function deletarestoque($conexao, $idestoque){
-    $sql = "DELETE FROM - WHERE - = ?";
+    $sql = "DELETE FROM tb_estoques WHERE idestoque = ?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'i', $idestoque);
