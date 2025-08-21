@@ -173,7 +173,7 @@ function pesquisarpedidoid($conexao, $idpedido){
 //cardapio-produtos
 
 function salvarprodutos($conexao, $nome, $tipo, $preco_venda, $lucro, $tb_promocao_idpromocao, $tbcategoria_idcategoria){
-    $sql = "INSERT INTO tb_produtos (nome, tipo, preco_venda, lucro) VALUES (?,?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO tb_produtos (nome, tipo, preco_venda, lucro, $tb_promocao_idpromocao, $tbcategoria_idcategoria) VALUES (?,?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'ssssii', $nome, $tipo, $preco_venda, $lucro, $tb_promocao_idpromocao, $tbcategoria_idcategoria);
@@ -335,7 +335,20 @@ function deletarestoque($conexao, $idestoque){
 };
 
 function listarestoque($conexao){
-    
+       $sql = "SELECT * FROM tb_estoques";
+    $comando = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_execute($comando);
+    $resultado = mysqli_stmt_get_result($comando);
+
+    $lista = [];
+    while ($item = mysqli_fetch_assoc($resultado)) {
+        $lista[] = $idestoque;
+    }
+    mysqli_stmt_close($comando);
+
+    return $lista;
+
     
 
 };
@@ -371,7 +384,7 @@ function salvaravaliacao($conexao, $valor, $data, $avaliacao, $pagamento, $entre
 };
 
 function editaravaliacao ($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idpedido){
-
+  
 };
 
 function deletaravaliacao($conexao, $idpedido){
@@ -379,6 +392,20 @@ function deletaravaliacao($conexao, $idpedido){
 };
 
 function listaravaliacao($conexao){
+     $sql = "SELECT * FROM tb_pedidos";
+    $comando = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_execute($comando);
+    $resultado = mysqli_stmt_get_result($comando);
+
+    $lista = [];
+    while ($item = mysqli_fetch_assoc($resultado)) {
+        $lista[] = $avaliacao;
+    }
+    mysqli_stmt_close($comando);
+
+    return $lista;
+
 
 };
 
@@ -512,7 +539,7 @@ function pesquisarlogin($conexao, $gmail, $senha){
 //categoria
 
 function salvarcategoria($conexao, $nome, $descricao){
-    $sql = "INSERT INTO tb_categoria (nome, descricao) VALUES (?, ?)";
+    $sql = "INSERT INTO tb_categorias (nome, descricao) VALUES (?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'ss', $nome, $descricao);
@@ -525,7 +552,7 @@ function salvarcategoria($conexao, $nome, $descricao){
 };
 
 function listarcategoria($conexao){
-    $sql = "SELECT * FROM tb_categoria";
+    $sql = "SELECT * FROM tb_categorias";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_execute($comando);
@@ -542,7 +569,7 @@ function listarcategoria($conexao){
 };
 
 function editarcategoria($conexao, $nome, $descricao, $idcategoria){
-    $sql = "UPDATE tb_categoria SET nome=?, descricao=? WHERE idcategoria=?";
+    $sql = "UPDATE tb_categorias SET nome=?, descricao=? WHERE idcategoria=?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'ssi', $nome, $descricao, $idcategoria);
@@ -554,7 +581,7 @@ function editarcategoria($conexao, $nome, $descricao, $idcategoria){
 };
 
 function deletarcategoria($conexao, $idcategoria){
-    $sql = "DELETE FROM tb_categoria WHERE idcategoria=?";
+    $sql = "DELETE FROM tb_categorias WHERE idcategoria=?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'i', $idcategoria);
@@ -566,7 +593,7 @@ function deletarcategoria($conexao, $idcategoria){
 };
 
 function pesquisarcategoriaid($conexao, $nome, $idcategoria){
-    $sql = "SELECT * FROM tb_categoria WHERE nome=? AND idcategoria=?";
+    $sql = "SELECT * FROM tb_categorias WHERE nome=? AND idcategoria=?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'si', $nome, $idcategoria);
@@ -581,7 +608,7 @@ function pesquisarcategoriaid($conexao, $nome, $idcategoria){
 
 
 function pesquisarcategorianome($conexao, $nome){
-    $sql = "SELECT * FROM tb_categoria WHERE nome=?";
+    $sql = "SELECT * FROM tb_categorias WHERE nome=?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 's', $nome);
