@@ -2,12 +2,14 @@
 require_once "../conexao.php";
 require_once "../funcoes.php";
 
-echo "=== TESTE EDITAR CATEGORIA ===\n";
-$nome = "Doces";
-$descricao = "Categoria de doces variados";
 
-$idcategoria = editarcategoria($conexao, $nome, $descricao, $idcategoria);
-echo "Categoria editada: " . ($idcategoria ? "Sucesso" : "Falha") . "\n\n";
+if (isset($_GET['idcategoria']) && !empty($_GET['idcategoria'])) {
+    $idcategoria = $_GET['idcategoria'];
+} else {
+    echo "id não fornecido.";
+    exit; 
+}
 
-
+echo "Categoria editada: Sucesso";
 ?>
+

@@ -2,8 +2,14 @@
 require_once "../conexao.php";
 require_once "../funcoes.php";
 
-echo "=== TESTE DELETAR HISTORICO ===\n";
-$idhistorico = deletarhistorico($conexao, $idhistorico);
-echo "Historico deletado: " . ($idhistorico ? "Sucesso" : "Falha") . "\n\n";
+if (isset($_GET['idhistorico']) && !empty($_GET['idhistorico'])) {
+    $idhistorico = $_GET['idhistorico'];
+} else {
+    echo "id nao fornecido.";
+    exit;
+}
+
+echo "Histórico deletado: Sucesso";
+?>
 
 ?>

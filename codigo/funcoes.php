@@ -434,7 +434,7 @@ function editarpromocao($conexao, $produto, $datainicio, $datafinal, $valor, $id
 };
 
 function deletarpromocao($conexao, $idpromocao){
-    $sql = "DELETE FROM tb_promocao WHERE idpromocao=?";
+    $sql = "DELETE FROM tb_promocaos WHERE idpromocao=?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'i', $idpromocao);
@@ -542,7 +542,7 @@ function listarcategoria($conexao){
 };
 
 function editarcategoria($conexao, $nome, $descricao, $idcategoria){
-    $sql = "UPDATE tb_categoria SET nome=?, descricao=? WHERE idcategoria=?";
+    $sql = "UPDATE tb_categorias SET nome=?, descricao=? WHERE idcategoria=?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'ssi', $nome, $descricao, $idcategoria);
@@ -668,7 +668,7 @@ function salvarcomentario ($conexao, $nome, $comentario){
 };
 
 function editarcomentario($conexao){
-    $sql = "UPDATE tb_comentario SET comentario=? WHERE idcomentario=?";
+    $sql = "UPDATE tb_comentarios SET comentario=? WHERE idcomentario=?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'si', $comentario, $idcomentario);
