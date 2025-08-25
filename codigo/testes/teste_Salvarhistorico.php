@@ -7,6 +7,13 @@ $nome = "João Silva";
 $historico = "Pedido realizado com sucesso";
 
 $idhistorico = salvarhistorico($conexao, $nome, $historico);
-echo "ID Historico criado: " . $idhistorico . "\n\n";
+
+// Se $idhistorico é array, exibir com print_r ou foreach
+if (is_array($idhistorico)) {
+    echo "Resultado do histórico:\n";
+    print_r($idhistorico);
+} else {
+    echo "ID Historico criado: " . $idhistorico . "\n";
+}
 
 ?>

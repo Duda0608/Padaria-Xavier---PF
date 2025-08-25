@@ -1,8 +1,10 @@
 <?php
-
-require_once "../conexao.php";
+require_once "../conexao.php";  // Ajuste o caminho conforme seu projeto
 require_once "../funcoes.php";
 
-$idadm = ? ;
+$idusuario = 1;  // Id do usuário que quer alterar
+$permissoes = "admin,controlelogin";  // Exemplo: permissões que quer salvar
 
-salvarCliente($conexao, $idadm);
+salvarPermissoes($conexao, $idusuario, $permissoes);
+
+?>

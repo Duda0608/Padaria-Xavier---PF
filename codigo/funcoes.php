@@ -98,15 +98,16 @@ function salvarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega,
     $sql = "INSERT INTO tb_pedidos (valor, data, avaliacao, pagamento, entrega, status, tb_cliente_idcliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($comando, 'dssssii', $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente);
+    mysqli_stmt_bind_param($comando, 'dsissii', $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente);
 
     mysqli_stmt_execute($comando);
 
-    $idpedido = mysqli_stmt_insert_id($comando);
+    $idpedido = mysqli_insert_id($conexao);
 
     mysqli_stmt_close($comando);
     return $idpedido;
-};
+}
+
 
 function listarpedido($conexao){
     $sql = "SELECT * FROM tb_pedidos";
@@ -333,6 +334,47 @@ function deletarestoque($conexao, $idestoque){
 
 };
 
+function garanteProdutoExistente($conexao) {
+    $sql = "SELECT idprodutos FROM tb_produtos WHERE idprodutos = 1";
+    $res = mysqli_query($conexao, $sql);
+    if (mysqli_fetch_assoc($res)) {
+        return 1;
+    }
+
+    // Criar promoção padrão
+    mysqli_query($conexao, 
+        "INSERT INTO tb_promocaos (produto, datainicio, datafinal, valor) 
+         VALUES ('Sem Promoção', '2025-01-01', '2025-12-31', 0)"
+    );
+    $idpromo = mysqli_insert_id($conexao);
+
+    // Criar categoria padrão
+    mysqli_query($conexao, 
+        "INSERT INTO tb_categorias (nome, descricao) 
+         VALUES ('Sem Categoria', 'Categoria padrão')"
+    );
+    $idcat = mysqli_insert_id($conexao);
+
+    // Criar produto básico
+    mysqli_query($conexao, 
+        "INSERT INTO tb_produtos (nome, tipo, preco_venda, lucro, tb_promocao_idpromocao, tbcategoria_idcategoria) 
+         VALUES ('Produto Padrão', 'genérico', '0.00', '0.00', $idpromo, $idcat)"
+    );
+    return mysqli_insert_id($conexao);
+}
+
+
+function salvarestoque($conexao, $nome, $tipo, $data, $quantidade, $idprodutos) {
+    $sql = "INSERT INTO tb_estoques (nome, tipo, data, quantidade, tb_produtos_idprodutos) VALUES (?, ?, ?, ?, ?)";
+    $stmt = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($stmt, "sssdi", $nome, $tipo, $data, $quantidade, $idprodutos);
+    mysqli_stmt_execute($stmt);
+    $idestoque = mysqli_stmt_insert_id($stmt);
+    mysqli_stmt_close($stmt);
+    return $idestoque;
+}
+
+
 function listarestoque($conexao){
     
     
@@ -384,9 +426,25 @@ function listaravaliacao($conexao){
 
 //permissoes(lucas vai ensinar)
 
-function salvarpermissoes($conexao, $idadm){
+function salvarPermissoes($conexao, $idusuario, $permissoesStr) {
+    $permissoes = explode(',', $permissoesStr);
 
-};
+    $administrador = in_array('admin', $permissoes) ? 1 : 0;
+    $controlelogin = in_array('controlelogin', $permissoes) ? 1 : 0;
+    $gerenciapromo = in_array('gerenciapromo', $permissoes) ? 1 : 0;
+
+    $sql = "UPDATE tb_usuarios SET 
+                administrador = $administrador, 
+                controlelogin = $controlelogin, 
+                gerenciapromo = $gerenciapromo
+            WHERE idusuario = $idusuario";
+
+    if (mysqli_query($conexao, $sql)) {
+        echo "Permissões atualizadas com sucesso!";
+    } else {
+        echo "Erro ao atualizar permissões: " . mysqli_error($conexao);
+    }
+}
 
 function editarpermissoes($conexao, $idadm){
 
@@ -603,18 +661,24 @@ function pesquisarcategorianome($conexao, $nome){
 
 //historico
 
-function salvarhistorico($conexao, $nome, $historico){
-    $sql = "INSERT INTO tb_historico (nome, historico) VALUES (?, ?)";
-    $comando = mysqli_prepare($conexao, $sql);
+function salvarhistorico($conexao, $idusuario){
+    $sql = "SELECT idpedido, valor, data, avaliacao, pagamento, entrega, status 
+            FROM tb_pedidos 
+            WHERE tb_cliente_idcliente = ?";
+    $stmt = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $idusuario);
+    mysqli_stmt_execute($stmt);
+    $resultado = mysqli_stmt_get_result($stmt);
 
-    mysqli_stmt_bind_param($comando, 'ss', $nome, $historico);
-    mysqli_stmt_execute($comando);
-    $idhistorico = mysqli_stmt_insert_id($comando);
-    mysqli_stmt_close($comando);
+    $pedidos = [];
+    while ($pedido = mysqli_fetch_assoc($resultado)) {
+        $pedidos[] = $pedido;
+    }
 
-    return $idhistorico;
+    mysqli_stmt_close($stmt);
+    return $pedidos;
+}
 
-};
 
 function listarhistorico($conexao){
     $sql = "SELECT * FROM tb_historico";
