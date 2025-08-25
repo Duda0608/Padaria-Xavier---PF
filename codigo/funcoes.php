@@ -420,18 +420,25 @@ function listarpermissoes($conexao, $idadm){
 
 //promocao
 
-function salvarpromocao ($conexao, $produto, $datainicio, $datafinal, $valor){
-    $sql = "INSERT INTO tb_promocao (produto, datainicio, datafinal, valor) VALUES (?, ?, ?, ?)";
-    $comando = mysqli_prepare($conexao, $sql);
+function salvarpromocao($conexao, $produto, $datainicio, $datafinal, $valor) {
+    $sql = "INSERT INTO tb_promocaos (produto, datainicio, datafinal, valor) VALUES (?, ?, ?, ?)";
+    $stmt = mysqli_prepare($conexao, $sql);
+    if (!$stmt) {
+        die("Erro na preparação da query: " . mysqli_error($conexao));
+    }
+    mysqli_stmt_bind_param($stmt, "sssd", $produto, $datainicio, $datafinal, $valor);
 
-    mysqli_stmt_bind_param($comando, 'sssd', $produto, $datainicio, $datafinal, $valor);
-    mysqli_stmt_execute($comando);
-    $idpromocao = mysqli_stmt_insert_id($comando);
-    mysqli_stmt_close($comando);
+    if (mysqli_stmt_execute($stmt)) {
+        $idpromocao = mysqli_insert_id($conexao);
+        mysqli_stmt_close($stmt);
+        return $idpromocao;
+    } else {
+        echo "Erro ao executar query: " . mysqli_stmt_error($stmt);
+        mysqli_stmt_close($stmt);
+        return false;
+    }
+}
 
-    return $idpromocao;
-
-};
 
 function editarpromocao($conexao, $produto, $datainicio, $datafinal, $valor, $idpromocao){
     $sql = "UPDATE tb_promocaos SET produto=?, datainicio=?, datafinal=?, valor=? WHERE idpromocao=?";
@@ -678,6 +685,23 @@ function salvarcomentario ($conexao, $nome, $comentario){
     return $idcomentario;
 
 };
+
+function listarcomentarios($conexao) {
+    $sql = "SELECT * FROM tb_comentarios";
+    $comando = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_execute($comando);
+    $resultado = mysqli_stmt_get_result($comando);
+
+    $lista = [];
+    while ($comentario = mysqli_fetch_assoc($resultado)) {
+        $lista[] = $comentario;
+    }
+
+    mysqli_stmt_close($comando);
+    return $lista;
+}
+
 
 function editarcomentario($conexao){
     $sql = "UPDATE tb_comentarios SET comentario=? WHERE idcomentario=?";
