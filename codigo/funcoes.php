@@ -376,6 +376,19 @@ function salvarestoque($conexao, $nome, $tipo, $data, $quantidade, $idprodutos) 
 
 
 function listarestoque($conexao){
+    $sql = "SELECT * FROM tb_estoques";
+    $comando = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_execute($comando);
+    $resultado = mysqli_stmt_get_result($comando);
+
+    $lista_estoques = [];
+    while ($estoque = mysqli_fetch_assoc($resultado)){
+        $lista_estoques[] = $estoque;
+    }
+
+    mysqli_stmt_close($comando);
+    return $lista_estoques;
     
     
 
@@ -737,6 +750,7 @@ function pesquisarhistoriconome($conexao, $nome){
 
 //comentario
 
+<<<<<<< HEAD
 function salvarcomentario($conexao, $nome, $comentario) {
     // Primeiro, precisamos encontrar o ID do usuário com esse nome
     $sqlUsuario = "SELECT idusuario FROM tb_usuarios WHERE nome = ?";
@@ -746,6 +760,11 @@ function salvarcomentario($conexao, $nome, $comentario) {
     $resultado = mysqli_stmt_get_result($stmtUsuario);
     $usuario = mysqli_fetch_assoc($resultado);
     mysqli_stmt_close($stmtUsuario);
+=======
+function salvarcomentario ($conexao, $nome, $comentario){
+    $sql = "INSERT INTO tb_comentarios (nome, comentario) VALUES (?, ?)";
+    $comando = mysqli_prepare($conexao, $sql);
+>>>>>>> eaf18cba7210cd257e0ea06cb771272f7d792cfa
 
     if (!$usuario) {
         die("Usuário '$nome' não encontrado.");

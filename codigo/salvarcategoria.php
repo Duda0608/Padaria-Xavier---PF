@@ -5,11 +5,10 @@ require_once "funcoes.php";
 $nome = $_POST['nome'];
 $descricao = $_POST['descricao'];
 
-$idcategoria = salvarcategoria($conexao, $nome, $descricao);
 
-if ($idcategoria) {
-    echo "Categoria salva com sucesso. ID: " . $idcategoria;
-} else {
-    echo "Erro ao salvar categoria.";
-}
+$sql = "INSERT INTO tb_categorias (nome, descricao) VALUES ('$nome', '$descricao')";
+
+mysqli_query($conexao, $sql);
+
+header("Location: index.php");
 ?>

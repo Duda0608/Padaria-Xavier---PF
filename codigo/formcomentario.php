@@ -1,10 +1,10 @@
 <?php
-$nomeCliente = @$_POST["nomeCliente"];
+$usuario = @$_POST["usuario"];
 $comentario = @$_POST["comentario"];
 
-if ($nomeCliente != "") {
+if ($usuario != "") {
   if ($comentario != "") {
-    salvarcomentario($conexao, $nomeCliente, $comentario);
+    salvarcomentario($conexao, $usuario, $comentario);
     echo "Comentário salvo.<br><br>";
   }
 }
@@ -12,7 +12,7 @@ if ($nomeCliente != "") {
 
 <h3>Salvar Comentário</h3>
 <form method="POST">
-  Nome: <input type="text" name="nomeCliente"><br>
+  Nome: <input type="text" name="usuario"><br>
   Comentário: <input type="text" name="comentario"><br>
   <input type="submit" value="Salvar Comentário">
 </form>

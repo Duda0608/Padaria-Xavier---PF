@@ -14,7 +14,7 @@
     require_once "conexao.php";
     require_once "funcoes.php";
 
-    $lista_estoque = listarestoque($conexao);
+    $lista_estoques = listarestoque($conexao);
 
     if (count($lista_estoques) == 0) {
         echo "Não ha nada";

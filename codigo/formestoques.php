@@ -14,7 +14,7 @@ if(isset($_GET['id'])) {
     $nome = $linha['nome'];
     $tipo = $linha['tipo'];
     $data = $linha['data'];
-    $quantidade = $linha['qunatidade'];
+    $quantidade = $linha['quantidade'];
 
     $botao = "atualizar";
 } else {
@@ -43,7 +43,7 @@ if(isset($_GET['id'])) {
         tipo:<br>
         <input type="text" name="tipo"><br>
         data:<br>
-        <input type="text" name="data"><br>
+        <input type="date" name="data"><br>
         quantidade:<br>
         <input type="text" name="quantidade"><br>
 

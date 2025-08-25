@@ -1,17 +1,22 @@
-<?php
-$nome = @$_POST["nome"];
-$descricao = @$_POST["descricao"];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>categoria</h1>
 
-if ($nome != "") {
-  salvarcategoria($conexao, $nome, $descricao);
-  echo "Categoria salva.<br><br>";
-}
-?>
+    <form action="salvarcategoria.php" method="post">
+        Nome:<br>
+        <input type="text" name="nome"><br>
+        descriçao:<br>
+        <input type="text" name="descricao"><br>
 
-<h3>Salvar Categoria</h3>
-<form method="POST">
-  Nome: <input type="text" name="nome"><br>
-  Descrição: <input type="text" name="descricao"><br>
-  <input type="submit" value="Salvar Categoria">
-</form>
+        <input type="submit" value="Cadastrar">
+        
+    </form>
+</body>
+</html>
 
