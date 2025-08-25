@@ -3,7 +3,8 @@ require_once "../conexao.php";
 require_once "../funcoes.php";
 
 echo "<pre>";
-print_r(listar_estoque($conexao));
+print_r(listarestoque($conexao));
+echo "oi";
 echo "</pre>";
 
 ?>

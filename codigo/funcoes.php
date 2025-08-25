@@ -378,6 +378,19 @@ function deletaravaliacao($conexao, $idpedido){
 };
 
 function listaravaliacao($conexao){
+    $sql = "SELECT * FROM tb_pedidos";
+    $comando = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_execute($comando);
+    $resultado = mysqli_stmt_get_result($comando);
+
+    $lista_avaliacao = [];
+    while ($avaliacao = mysqli_fetch_assoc($resultado)){
+        $lista_avaliacao[] = $avaliacao;
+    }
+
+    mysqli_stmt_close($comando);
+    return $lista_avaliacao;
 
 };
 
@@ -445,7 +458,7 @@ function deletarpromocao($conexao, $idpromocao){
 };
 
 function listarpromocao($conexao){
-    $sql = "SELECT * FROM tb_promocao";
+    $sql = "SELECT * FROM tb_promocaos";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_execute($comando);
@@ -478,7 +491,7 @@ function salvarlogin ($conexao, $email, $senha){
 };
 
 function listarlogin($conexao){
-    $sql = "SELECT * FROM tb_login";
+    $sql = "SELECT * FROM tb_pedidos";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_execute($comando);
@@ -565,7 +578,7 @@ function deletarcategoria($conexao, $idcategoria){
 };
 
 function pesquisarcategoriaid($conexao, $nome, $idcategoria){
-    $sql = "SELECT * FROM tb_categoria WHERE nome=? AND idcategoria=?";
+    $sql = "SELECT * FROM tb_categorias WHERE nome=? AND idcategoria=?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'si', $nome, $idcategoria);
@@ -610,7 +623,7 @@ function salvarhistorico($conexao, $nome, $historico){
 };
 
 function listarhistorico($conexao){
-    $sql = "SELECT * FROM tb_historico";
+    $sql = "SELECT * FROM tb_pedidos";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_execute($comando);
