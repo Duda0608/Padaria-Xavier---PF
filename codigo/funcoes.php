@@ -334,6 +334,19 @@ function deletarestoque($conexao, $idestoque){
 };
 
 function listarestoque($conexao){
+    $sql = "SELECT * FROM tb_estoques";
+    $comando = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_execute($comando);
+    $resultado = mysqli_stmt_get_result($comando);
+
+    $lista_estoques = [];
+    while ($estoque = mysqli_fetch_assoc($resultado)){
+        $lista_estoques[] = $estoque;
+    }
+
+    mysqli_stmt_close($comando);
+    return $lista_estoques;
     
     
 
@@ -674,7 +687,7 @@ function pesquisarhistoriconome($conexao, $nome){
 //comentario
 
 function salvarcomentario ($conexao, $nome, $comentario){
-    $sql = "INSERT INTO tb_comentario (nome, comentario) VALUES (?, ?)";
+    $sql = "INSERT INTO tb_comentarios (nome, comentario) VALUES (?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'ss', $nome, $comentario);

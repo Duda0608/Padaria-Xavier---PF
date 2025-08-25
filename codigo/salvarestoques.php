@@ -8,7 +8,7 @@ $nome = $_POST['nome'];
 $tipo = $_POST['tipo'];
 $data = $_POST['data'];
 $quantidade = $_POST['quantidade'];
-$tb_produtos_idprodutos = 1;
+$tb_produtos_idprodutos = $_POST['tb_produtos_idprodutos'];
 
 $sql = "INSERT INTO tb_estoques (nome, tipo, data, quantidade, tb_produtos_idprodutos) VALUES ('$nome', '$tipo', '$data', '$quantidade', '$tb_produtos_idprodutos')";
 

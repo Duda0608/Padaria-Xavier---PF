@@ -37,6 +37,12 @@
             <a href="formcategoria.php">cadastra categoria</a>
         </li>
 
+        <li>
+            <a href="formcomentario.php">cadastra comentario</a>
+        </li>
+        <li>
+            <a href="formpromocao.php">cadastra promocao</a>
+        </li>
     </ul>
 </body>    
 </html>
