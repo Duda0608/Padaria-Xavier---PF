@@ -14,7 +14,7 @@
         Senha:<br>
         <input type="text" name="senha"><br>
         <a href="formusuario.php">Cadastro</a><br><br>
-
+todos deletar e editar tao funcionando
         <input type="submit" value="Entrar">
     </form>
 </body>

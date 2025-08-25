@@ -29,8 +29,12 @@
             <a href="formestoques.php">cadastrar estoque</a>
         </li>
 
-                <li>
+        <li>
             <a href="listarestoques.php">Listar estoque existentes</a>
+        </li>
+
+        <li>
+            <a href="formcategoria.php">cadastra categoria</a>
         </li>
 
     </ul>
