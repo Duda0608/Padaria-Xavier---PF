@@ -43,6 +43,10 @@
         <li>
             <a href="formpromocao.php">cadastra promocao</a>
         </li>
+
+        <li>
+            <a href="deslogar.php">Sair</a>
+        </li>
     </ul>
 </body>    
 </html>
