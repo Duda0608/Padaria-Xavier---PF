@@ -40,9 +40,9 @@ if(isset($_GET['id'])) {
     <title>Document</title>
 </head>
 <body>
-    <h1>Acesso ao sistema</h1>
+    <h1>Acesso ao sistemaaaaaaa</h1>
 
-    <form action="salvarusuario.php id=<?php echo $id; ?>" method="post">
+    <form action="salvarusuario.php?id=<?php echo $id; ?>" method="post">
         Nome:<br>
         <input type="text" name="nome" value="<?php echo $nome; ?>"><br>
         Cpf:<br>
