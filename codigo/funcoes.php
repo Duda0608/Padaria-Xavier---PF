@@ -751,7 +751,7 @@ function pesquisarhistoriconome($conexao, $nome){
 //comentario
 
 function salvarcomentario($conexao, $nome, $comentario) {
-    // Primeiro, precisamos encontrar o ID do usuário com esse nome
+    // encontrar o ID do usuário com esse nome
     $sqlUsuario = "SELECT idusuario FROM tb_usuarios WHERE nome = ?";
     $stmtUsuario = mysqli_prepare($conexao, $sqlUsuario);
     mysqli_stmt_bind_param($stmtUsuario, "s", $nome);
@@ -759,9 +759,6 @@ function salvarcomentario($conexao, $nome, $comentario) {
     $resultado = mysqli_stmt_get_result($stmtUsuario);
     $usuario = mysqli_fetch_assoc($resultado);
     mysqli_stmt_close($stmtUsuario);
-function salvarcomentario ($conexao, $nome, $comentario){
-    $sql = "INSERT INTO tb_comentarios (nome, comentario) VALUES (?, ?)";
-    $comando = mysqli_prepare($conexao, $sql);
 
     if (!$usuario) {
         die("Usuário '$nome' não encontrado.");
@@ -769,7 +766,6 @@ function salvarcomentario ($conexao, $nome, $comentario){
 
     $idusuario = $usuario['idusuario'];
 
-    // Agora inserimos o comentário
     $sql = "INSERT INTO tb_comentarios (comentario, tb_usuario_idusuario) VALUES (?, ?)";
     $stmt = mysqli_prepare($conexao, $sql);
     mysqli_stmt_bind_param($stmt, "si", $comentario, $idusuario);
