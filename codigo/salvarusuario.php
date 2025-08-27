@@ -15,7 +15,14 @@ $gerenciapromo = 0;
 
 $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
 
-$sql = "INSERT INTO tb_usuarios (nome, cpf, telefone, endereco, email, senha, controlelogin, gerenciapromo) VALUES ('$nome', '$cpf', '$telefone', '$endereco', '$email', '$senha_hash', '$controlelogin', '$gerenciapromo')";
+if ($id == 0) {
+
+    salvarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo);
+
+} else {
+    $sql = "INSERT INTO tb_usuarios (nome, cpf, telefone, endereco, email, senha, controlelogin, gerenciapromo) VALUES ('$nome', '$cpf', '$telefone', '$endereco', '$email', '$senha_hash', '$controlelogin', '$gerenciapromo')";
+
+}
 
 mysqli_query($conexao, $sql);
 
