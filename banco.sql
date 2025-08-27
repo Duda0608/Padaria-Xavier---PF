@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`tb_pedidos` (
   `idpedido` INT(11) NOT NULL AUTO_INCREMENT,
   `valor` DECIMAL(10,2) NOT NULL,
   `data` DATE NOT NULL,
-  `avaliacao` INT(11) NOT NULL,
+  `avaliacao` INT(11) NULL,
   `pagamento` VARCHAR(22) NOT NULL,
   `entrega` VARCHAR(20) NOT NULL,
   `status` TINYINT(4) NOT NULL DEFAULT 0,
