@@ -148,10 +148,25 @@ function deletarpedido($conexao, $idpedido){
 
 };
 
-function pesquisarpedidonome($conexao, $nome){
-    //nao sei fazer;-; sorry
 
+function pesquisarpedidonome($conexao, $idpedido) {
+    $sql = "SELECT * FROM tb_pedidos WHERE idpedido = ?";
+    $comando = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($comando, 's', $idpedido);
+
+    mysqli_stmt_execute($comando);
+    $resultado = mysqli_stmt_get_result($comando);
+
+    $pedidos = [];
+    while ($pedido = mysqli_fetch_assoc($resultado)) {
+        $pedidos[] = $pedido;
+    }
+
+    mysqli_stmt_close($comando);
+    return $pedidos;
 };
+
 
 function pesquisarpedidoid($conexao, $idpedido){
     $sql = "SELECT * FROM tb_pedidos WHERE idpedido = ?";
