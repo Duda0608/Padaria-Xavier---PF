@@ -203,9 +203,11 @@ function salvarprodutos($conexao, $nome, $tipo, $preco_venda, $lucro, $tb_promoc
 };
 
 
-function editarprodutos($conexao, $nome, $tipo, $preco_venda, $lucro, $idprodutos) {
-
+function editarprodutos($conexao, $nome, $tipo, $preco_venda, $idprodutos) {
+    $sql = "UPDATE tb_produtos SET nome = '$nome', tipo = '$tipo', preco_venda = $preco_venda WHERE idprodutos = $idprodutos";
+    mysqli_query($conexao, $sql);
 };
+
 
 function deletarprodutos($conexao, $idprodutos){
     $sql = "DELETE FROM tb_produtos WHERE idprodutos = ?";
