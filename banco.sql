@@ -19,10 +19,10 @@ USE `mydb` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`tb_usuarios` (
   `idusuario` INT(11) NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NOT NULL,
+  `nome` VARCHAR(200) NOT NULL,
   `cpf` VARCHAR(11) NOT NULL,
   `telefone` VARCHAR(11) NOT NULL,
-  `endereco` VARCHAR(45) NOT NULL,
+  `endereco` VARCHAR(100) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(255) NOT NULL,
   `administrador` TINYINT(4) NOT NULL DEFAULT 0,
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`tb_pedidos` (
   `entrega` VARCHAR(20) NOT NULL,
   `status` TINYINT(4) NOT NULL DEFAULT 0,
   `tb_cliente_idcliente` INT(11) NOT NULL,
-  PRIMARY KEY (`idpedido`, `entrega`),
+  PRIMARY KEY (`idpedido`),
   INDEX `fk_tb_pedido_tb_cliente1_idx` (`tb_cliente_idcliente` ASC) VISIBLE,
   CONSTRAINT `fk_tb_pedido_tb_cliente1`
     FOREIGN KEY (`tb_cliente_idcliente`)
@@ -77,8 +77,8 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`tb_categorias` (
   `idcategoria` INT(11) NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NOT NULL,
-  `descricao` VARCHAR(45) NOT NULL,
+  `nome` VARCHAR(50) NOT NULL,
+  `descricao` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`idcategoria`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -89,10 +89,9 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`tb_produtos` (
   `idprodutos` INT(11) NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NOT NULL,
-  `tipo` VARCHAR(20) NOT NULL,
-  `preco_venda` VARCHAR(45) NOT NULL,
-  `lucro` VARCHAR(45) NOT NULL,
+  `nome` VARCHAR(200) NOT NULL,
+  `tipo` VARCHAR(200) NOT NULL,
+  `preco_venda` DECIMAL(10,2) NOT NULL,
   `tb_promocao_idpromocao` INT(11) NOT NULL,
   `tbcategoria_idcategoria` INT(11) NOT NULL,
   PRIMARY KEY (`idprodutos`),
@@ -117,13 +116,11 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`tb_item_pedidos` (
   `iditem_pedido` INT(11) NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NOT NULL,
-  `tipo` VARCHAR(20) NOT NULL,
   `quantidade` DECIMAL(10,2) NOT NULL,
   `preco` DECIMAL(10,2) NOT NULL,
   `tb_pedido_idpedido` INT(11) NOT NULL,
   `tb_produtos_idtb_produtos` INT(11) NOT NULL,
-  PRIMARY KEY (`iditem_pedido`, `quantidade`, `preco`),
+  PRIMARY KEY (`iditem_pedido`),
   INDEX `fk_item_pedido_tb_pedido_idx` (`tb_pedido_idpedido` ASC) VISIBLE,
   INDEX `fk_item_pedido_tb_produtos1_idx` (`tb_produtos_idtb_produtos` ASC) VISIBLE,
   CONSTRAINT `fk_item_pedido_tb_pedido`
@@ -145,34 +142,13 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`tb_comentarios` (
   `idcomentario` INT(11) NOT NULL AUTO_INCREMENT,
-  `comentario` VARCHAR(45) NOT NULL,
+  `comentario` VARCHAR(500) NOT NULL,
   `tb_usuario_idusuario` INT(11) NOT NULL,
   PRIMARY KEY (`idcomentario`),
   INDEX `fk_tb_comentario_tb_usuario1_idx` (`tb_usuario_idusuario` ASC) VISIBLE,
   CONSTRAINT `fk_tb_comentario_tb_usuario1`
     FOREIGN KEY (`tb_usuario_idusuario`)
     REFERENCES `mydb`.`tb_usuarios` (`idusuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`tb_estoques`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`tb_estoques` (
-  `idestoque` INT(11) NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45) NOT NULL,
-  `tipo` VARCHAR(20) NOT NULL,
-  `data` DATE NOT NULL,
-  `quantidade` DECIMAL(10,2) NOT NULL,
-  `tb_produtos_idprodutos` INT(11) NOT NULL,
-  PRIMARY KEY (`idestoque`),
-  INDEX `fk_tb_estoque_tb_produtos1_idx` (`tb_produtos_idprodutos` ASC) VISIBLE,
-  CONSTRAINT `fk_tb_estoque_tb_produtos1`
-    FOREIGN KEY (`tb_produtos_idprodutos`)
-    REFERENCES `mydb`.`tb_produtos` (`idprodutos`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
