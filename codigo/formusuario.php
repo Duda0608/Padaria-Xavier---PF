@@ -21,14 +21,14 @@ if(isset($_GET['id'])) {
     $botao = "atualizar";
 } else {
     $id = 0;
-    $valor = "";
-    $data = "";
-    $avaliacao = "";
-    $pagamento = "";
-    $entrega = "";
-    $status = "";
+    $nome = "";
+    $cpf = "";
+    $telefone = "";
+    $endereco = "";
+    $email = "";
+    $senha = "";
 
-    $botao = "cadastrar";
+    $botao = "Cadastrar";
 }
 ?>
 
@@ -42,7 +42,7 @@ if(isset($_GET['id'])) {
 <body>
     <h1>Acesso ao sistema</h1>
 
-    <form action="salvarusuario.php id=?php echo $id; ?>" method="post">
+    <form action="salvarusuario.php id=<?php echo $id; ?>" method="post">
         Nome:<br>
         <input type="text" name="nome" value="<?php echo $nome; ?>"><br>
         Cpf:<br>
@@ -54,9 +54,9 @@ if(isset($_GET['id'])) {
         Email:<br>
         <input type="text" name="email" value="<?php echo $email; ?>"><br>
         Senha:<br>
-        <input type="password" name="senha" value="<?php echo $senha; ?>"><br>
+        <input type="password" name="senha" value="<?php echo $senha; ?>"><br><br>
 
-        <input type="submit" name="Cadastrar" value="<?php echo $botao; ?>">
+        <input type="submit" value="<?php echo $botao; ?>">
         
     </form>
 </body>
