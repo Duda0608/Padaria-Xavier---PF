@@ -269,15 +269,26 @@ function pesquisarprodutosid($conexao, $idprodutos) {
     return $produto;
 };
 
-
-//carrinhos(lucas ainda vai ensinar)
-
-function listarcarrinho($produtos, $valor, $data, $quantidade){
-
+function listarcarrinho($carrinho) {
+    foreach ($carrinho as $item) {
+        echo "Produto: " . $item['nome'] . "<br>";
+        echo "Valor: " . $item['valor'] . "<br>";
+        echo "Data: " . $item['data'] . "<br>";
+        echo "Quantidade: " . $item['quantidade'] . "<br>";
+        echo "<hr>";
+    }
 };
 
-function deletarcarrinho( $idprodutos){
+function deletarcarrinho($carrinho, $idproduto) {
+    $novocarrinho = array();
 
+    for ($i = 0; $i < count($carrinho); $i++) {
+        if ($carrinho[$i]['idprodutos'] != $idproduto) {
+            $novocarrinho[] = $carrinho[$i];
+        }
+    }
+
+    return $novocarrinho;
 };
 
 function enviarcarrinho($produto, $valor, $data, $quantidade){
