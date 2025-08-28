@@ -3,64 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina Inicial</title>
+    <title>Página Inicial</title>
 </head>
 <body>
-    <ul>
+    <ul><br>
         <li>
-        <a href="formusuario.php">Cadastrar novo usuario</a>
-        </li>
-        <li>
-            <a href="listarusuarios.php">Lista de usuario existentes</a>
+        <a href="formusuario.php">Cadastrar Usuário</a>
         </li><br>
         <li>
-            <a href="formpedido.php">Cadastrar pedido</a>
-        </li>
+            <a href="listarusuarios.php">Lista de Usuário</a>
+        </li><br>
+        <li>
+            <a href="formpedido.php">Cadastrar Pedido</a>
+        </li><br>
         <li>
             <a href="listarpedido.php">Listar pedidos existentes</a>
         </li><br>
         <li>
-            <a href="formprodutos.php">Cadastrar produtos</a>
-        </li>
+            <a href="formprodutos.php">Cadastrar Produtos</a>
+        </li><br>
         <li>
-            <a href="listarprodutos.php">Lista produtos existentes</a>
-        </li><br>echo "nao tem carrinho";
-        <li>
-            <a href="formestoques.php">cadastrar estoque</a>
-        </li>
+            <a href="listarprodutos.php">Listar Produtos</a>
+        </li><br>
 
         <li>
-            <a href="listarestoques.php">Listar estoque existentes</a>
-        </li>
+            <a href="formcategoria.php">Cadastrar categoria</a>
+        </li><br>
 
         <li>
-            <a href="formcategoria.php">cadastra categoria</a>
-        </li>
+            <a href="formcomentario.php">Cadastrar Comentário</a>
+        </li><br>
+        <li>
+            <a href="formpromocao.php">Cadastrar Promoção</a>
+        </li><br>
 
         <li>
-            <a href="formcomentario.php">cadastra comentario</a>
-        </li>
-        <li>
-            <a href="formpromocao.php">cadastra promocao</a>
-        </li>
+            <a href="listarprodutos.php">Lista Produtos</a>
+        </li><br>
+        
+        
+                <li>
+            <a href="formestoques.php">Cadastrar Estoque</a>
+        </li><br>
 
+                <li>
+            <a href="listarestoques.php">Listar Pedidos</a>
+        </li><br>
         <li>
             <a href="deslogar.php">Sair</a>
-        </li>
+        </li><br><br>
     </ul>
 </body>    
 </html>
-
-
-        <li>
-            <a href="listarprodutos.php">Lista produtos existentes</a>
-        </li>
-        
-        
-                <li>
-            <a href="formestoques.php">cadastrar estoque</a>
-        </li>
-
-                <li>
-            <a href="listarestoques.php">Listar pedidos existentes</a>
-        </li>
