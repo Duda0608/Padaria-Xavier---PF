@@ -440,48 +440,92 @@ function listarestoque($conexao){
 
     mysqli_stmt_close($comando);
     return $lista_estoques;
-    
-    
-
-};
-
-function pesquisarestoquenome($conexao, $nome){
-
-};
-
-function pesquisarestoqueid($conexao,$nome, $idestoque){
-
-};
-
+}
 
 //status
 
-function salvarstatus($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status){
+function salvarstatus($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idcliente) {
+    $sql = "INSERT INTO tb_pedidos (valor, data, avaliacao, pagamento, entrega, status, tb_cliente_idcliente)
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmt = mysqli_prepare($conexao, $sql);
+    if (!$stmt) {
+        die("Erro na preparação da query: " . mysqli_error($conexao));
+    }
 
-};
+   mysqli_stmt_bind_param($stmt, "dssssii", $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idcliente);
 
-function editarstatus($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idpedido){
+    if (mysqli_stmt_execute($stmt)) {
+        $id = mysqli_insert_id($conexao);
+        mysqli_stmt_close($stmt);
+        return $id;
+    } else {
+        echo "Erro ao executar query: " . mysqli_stmt_error($stmt);
+        mysqli_stmt_close($stmt);
+        return false;
+    }
+}
 
-};
+function editarstatus($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idpedido) {
+    $sql = "UPDATE tb_pedidos 
+            SET valor = ?, data = ?, avaliacao = ?, pagamento = ?, entrega = ?, status = ?
+            WHERE idpedido = ?";
+    $stmt = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($stmt, "disssii", $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idpedido);
 
-function listarstatus($conexao){
+    $success = mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
 
-};
+    return $success;
+}
 
+function listarstatus($conexao) {
+    $sql = "SELECT * FROM tb_pedidos ORDER BY data DESC";
+    $resultado = mysqli_query($conexao, $sql);
+
+    $pedidos = [];
+    while ($linha = mysqli_fetch_assoc($resultado)) {
+        $pedidos[] = $linha;
+    }
+
+    return $pedidos;
+}
 
 //avaliacao
 
-function salvaravaliacao($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status){
+function salvaravaliacao($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idcliente) {
+    $sql = "INSERT INTO tb_pedidos (valor, data, avaliacao, pagamento, entrega, status, tb_cliente_idcliente)
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmt = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($stmt, "dsissii", $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idcliente);
+    if (mysqli_stmt_execute($stmt)) {
+        $id = mysqli_insert_id($conexao);
+        mysqli_stmt_close($stmt);
+        return $id;
+    } else {
+        mysqli_stmt_close($stmt);
+        return false;
+    }
+}
 
-};
+function editaravaliacao($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idpedido) {
+    $sql = "UPDATE tb_pedidos SET valor = ?, data = ?, avaliacao = ?, pagamento = ?, entrega = ?, status = ? WHERE idpedido = ?";
+    $stmt = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($stmt, "dsissii", $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idpedido);
 
-function editaravaliacao ($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idpedido){
+    $result = mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    return $result;
+}
 
-};
+function deletaravaliacao($conexao, $idpedido) {
+    $sql = "DELETE FROM tb_pedidos WHERE idpedido = ?";
+    $stmt = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $idpedido);
 
-function deletaravaliacao($conexao, $idpedido){
-
-};
+    $result = mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    return $result;
+}
 
 function listaravaliacao($conexao){
     $sql = "SELECT * FROM tb_pedidos";
@@ -523,16 +567,37 @@ function salvarPermissoes($conexao, $idusuario, $permissoesStr) {
     }
 }
 
-function editarpermissoes($conexao, $idadm){
-
+function editarpermissoes($conexao, $idadm, $novo_status) {
+    $sql = "UPDATE tb_usuarios SET administrador = ? WHERE idusuario = ?";
+    $stmt = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($stmt, "ii", $novo_status, $idadm);
+    $resultado = mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    return $resultado;
 };
 
-function deletarpermissoes($conexao, $idadm){
-
+function deletarpermissoes($conexao, $idadm) {
+    $sql = "UPDATE tb_usuarios SET administrador = 0 WHERE idusuario = ?";
+    $stmt = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $idadm);
+    $resultado = mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    return $resultado;
 };
 
-function listarpermissoes($conexao, $idadm){
-
+function listarpermissoes($conexao, $idadm) {
+    $sql = "SELECT administrador FROM tb_usuarios WHERE idusuario = ?";
+    $stmt = mysqli_prepare($conexao, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $idadm);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt, $administrador);
+    if (mysqli_stmt_fetch($stmt)) {
+        mysqli_stmt_close($stmt);
+        return $administrador;
+    } else {
+        mysqli_stmt_close($stmt);
+        return null;
+    }
 };
 
 //*Permissoes de editar o site apenas para funcionarios 
