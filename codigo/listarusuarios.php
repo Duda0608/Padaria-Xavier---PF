@@ -15,6 +15,7 @@
     require_once "funcoes.php";
 
     $lista_usuario = listarusuario($conexao);
+ 
 
     if (count($lista_usuario) == 0) {
         echo "Não existe usuarios";
@@ -53,6 +54,7 @@
             echo "<td><a href='deletarusuario.php?id=$idusuario'>Excluir</a></td>";
             echo "</tr>";
         }
+     
     }
         ?>
         </table>

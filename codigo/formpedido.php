@@ -1,3 +1,8 @@
+
+////o usuario não fixa na hora de cadastrar o que dificulta no pedido//
+
+
+
 <?php
 
 if(isset($_GET['id'])) {

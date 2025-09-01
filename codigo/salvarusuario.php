@@ -16,7 +16,9 @@ $gerenciapromo = 0;
 
 $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
 
-$id = isset($_POST['idusuario']) ? $_POST['idusuario'] : 0;
+$id = $_GET['id'];
+
+
 
 if ($id == 0) {
 
@@ -24,9 +26,9 @@ if ($id == 0) {
     header("Location: index.php");
 
 } else {
-    editarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo, $idusu);
+    editarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo, $id);
 }
 
 
-header("Location: home.php");
+header("Location: listarusuarios.php");
 ?>

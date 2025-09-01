@@ -35,7 +35,7 @@ function listarusuario($conexao){
 
 };
 
-function editarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo, $idusu){
+function editarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo, $idusuario){
     $sql = "UPDATE tb_usuarios SET nome=?, cpf=?, telefone=?, endereco=?, email=?, senha=?, administrador=?, controlelogin=?, gerenciapromo=? WHERE idusuario=?";
     $comando = mysqli_prepare($conexao, $sql);
 

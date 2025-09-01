@@ -10,8 +10,11 @@ $pagamento = $_POST['pagamento'];
 $entrega = $_POST['entrega'];
 $status = $_POST['status'];
 
+
+
 session_start();
-$tb_cliente_idcliente = $_SESSION['id'];
+$tb_cliente_idcliente = 2;
+
 
 if ($id == 0) {
     // $sql = "INSERT INTO tb_pedidos (valor, `data`, avaliacao, pagamento, entrega, `status`, `tb_cliente_idcliente`) VALUES ($valor, `$data`, $avaliacao, `$pagamento`, $entrega, $status, `$tb_cliente_idcliente`)";
