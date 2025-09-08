@@ -27,8 +27,8 @@ if ($id == 0) {
 
 } else {
     editarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo, $id);
+    header("Location: listarusuarios.php");
 }
 
 
-header("Location: listarusuarios.php");
 ?>
