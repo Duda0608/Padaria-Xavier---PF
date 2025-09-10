@@ -1,5 +1,8 @@
 <?php
 
+require_once "verificarlogado.php";
+
+
 if(isset($_GET['id'])) {
     
     require_once "conexao.php";

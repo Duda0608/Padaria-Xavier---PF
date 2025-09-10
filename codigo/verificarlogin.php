@@ -15,10 +15,12 @@
         $linha = mysqli_fetch_array($resultado);
         $senha_banco = $linha['senha'];
         $id = $linha['idusuario'];
+        $adm = $linha['administrador'];
 
         if (password_verify($senha, $senha_banco)){
 
             session_start();
+            $_SESSION['adm'] = $adm;
             $_SESSION['logado'] = 'sim';
             $_SESSION['id'] = $id;
             header("Location: home.php");

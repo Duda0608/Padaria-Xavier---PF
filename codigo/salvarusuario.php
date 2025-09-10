@@ -10,7 +10,7 @@ $telefone = $_POST['telefone'];
 $endereco = $_POST['endereco'];
 $email = $_POST['email'];
 $senha = $_POST['senha'];
-$administrador = 0;
+$administrador = 1;
 $controlelogin = 0;
 $gerenciapromo = 0;
 
