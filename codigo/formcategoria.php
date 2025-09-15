@@ -1,9 +1,39 @@
 <?php
+<<<<<<< Updated upstream
 
 require_once "verificarlogado.php";
 
 ?>
 
+=======
+if (isset($_GET['id'])) {
+    echo "editar";
+
+    require_once "conexao.php";
+    $id = $_GET['id'];
+
+    $sql = "SELECT * FROM tb_categorias WHERE idcategoria = $id";
+
+    $resultado = mysqli_query($conexao,$sql);
+
+    $linha = mysqli_fetch_array($resultado);
+
+
+    $nome = $linha['nome'];
+    $descricao = $linha['descricao'];
+
+    $botao = "atualizar";
+} else {
+    $id = 0;
+    $nome = "";
+    $descricao = "";
+
+    $botao = "cadastrar";
+
+}
+
+?>
+>>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,17 +42,17 @@ require_once "verificarlogado.php";
     <title>Document</title>
 </head>
 <body>
-    <h1>categoria</h1>
+    <h1>cadastrar categoria</h1>
+    <form action="salvarcategoria.php?id=<?php echo $id; ?>" method="post">
+        Nome: <br>
+        <input type="text" name="nome" value="<?php echo $nome; ?>"> <br><br>
 
-    <form action="salvarcategoria.php" method="post">
-        Nome:<br>
-        <input type="text" name="nome"><br>
-        descriçao:<br>
-        <input type="text" name="descricao"><br>
+        descricao:<br>
+        <input type="text" name="descricao" value="<?php echo $descricao; ?>"> <br><br>
 
-        <input type="submit" value="Cadastrar">
-        
+        <input type="submit" value="<?php echo $botao; ?>">
+
+
     </form>
 </body>
 </html>
-

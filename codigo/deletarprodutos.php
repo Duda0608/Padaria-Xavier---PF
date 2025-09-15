@@ -6,4 +6,6 @@
     $sql = "DELETE FROM tb_produtos WHERE idprodutos = $id";
 
     mysqli_query($conexao, $sql);
+
+    header("Location: listarprodutos.php");
 ?>

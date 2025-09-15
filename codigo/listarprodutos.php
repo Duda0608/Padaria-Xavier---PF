@@ -17,7 +17,7 @@
 
     $lista_produtos = listarprodutos($conexao);
 
-    if (count($lista_produtos) == 1) {
+    if (count($lista_produtos) == 0) {
         echo "Não ha produtos";
     
     } else {
@@ -29,7 +29,6 @@
                 <td>nome</td>
                 <td>tipo</td>
                 <td>preco_venda</td>
-                <td>lucro</td>
                 <td colspan="2">açao</td>
             </tr>
 
@@ -39,7 +38,6 @@
             $nome = $produto['nome'];
             $tipo = $produto['tipo'];
             $preco_venda = $produto['preco_venda'];
-            $lucro = $produto['lucro'];
 
 
             echo "<tr>";
@@ -47,7 +45,6 @@
             echo "<td>$nome</td>";
             echo "<td>$tipo</td>";
             echo "<td>$preco_venda</td>";
-            echo "<td>$lucro</td>";
 
 
             echo "<td><a href='formprodutos.php?id=$idprodutos'>Editar</a></td>";

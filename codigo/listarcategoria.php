@@ -16,7 +16,7 @@ $lista = listarcategoria($conexao);
     </tr>
     <?php foreach ($lista as $categoria) { ?>
         <tr>
-            <form action="editarCategoria.php" method="post">
+            <form action="formcategoria.php" method="post">
                 <td><?php echo $categoria["idcategoria"]; ?></td>
                 <td><input type="text" name="nome" value="<?php echo $categoria["nome"]; ?>"></td>
                 <td><input type="text" name="descricao" value="<?php echo $categoria["descricao"]; ?>"></td>
@@ -24,7 +24,7 @@ $lista = listarcategoria($conexao);
                     <input type="hidden" name="idcategoria" value="<?php echo $categoria["idcategoria"]; ?>">
                     <button type="submit">Editar</button>
             </form>
-            <form action="deletarCategoria.php" method="post" style="display:inline;">
+            <form action="deletarcategoria.php" method="get" style="display:inline;">
                 <input type="hidden" name="idcategoria" value="<?php echo $categoria["idcategoria"]; ?>">
                 <button type="submit">Excluir</button>
             </form>

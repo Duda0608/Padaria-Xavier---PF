@@ -6,7 +6,7 @@ if(isset($_GET['id'])) {
     require_once "conexao.php";
     $id = $_GET['id'];
 
-    $sql = "SELECT *FROM tb_produtos WHERE idprodutos = $id";
+    $sql = "SELECT * FROM tb_produtos WHERE idprodutos = $id";
 
     $resultado = mysqli_query($conexao, $sql);
 
@@ -15,9 +15,8 @@ if(isset($_GET['id'])) {
     $nome = $linha['nome'];
     $tipo = $linha['tipo'];
     $preco_venda = $linha['preco_venda'];
-    $lucro = $linha['lucro'];
-    $tb_promocao_idpromocao = $linha['tb_promocao_idpromocao'];
-    $tbcategoria_idcategoria =$linha['tbcategoria_idcategoria'];
+    $tbcategoria_idcategoria = $linha['tbcategoria_idcategoria'];
+
 
 
     $botao = "atualizar";
@@ -26,8 +25,7 @@ if(isset($_GET['id'])) {
     $nome = "";
     $tipo = "";
     $preco_venda = "";
-    $lucro = "";
-    $tb_promocao_idpromocao = "";
+
     $tbcategoria_idcategoria = "";
 
         $botao = "cadastrar";
@@ -44,14 +42,29 @@ if(isset($_GET['id'])) {
     <h1>Cadastro de produtos</h1>
         <form action="salvarprodutos.php?id=<?php echo $id; ?>" method ="post">
         nome:<br>
-        <input type="text" name="nome" value="<?php echo $tipo; ?>"><br><br>
+        <input type="text" name="nome" value="<?php echo $nome; ?>"><br><br>
         tipo:<br>
-        <input type="text" name="tipo" value="<?php echo $nome; ?>"><br><br>
+        <input type="text" name="tipo" value="<?php echo $tipo; ?>"><br><br>
         preco venda:<br>
         <input type="text" name="preco_venda" value="<?php echo $preco_venda; ?>"><br><br>
-        lucro:<br>
-        <input type="text" name="lucro" value="<?php echo $lucro; ?>"><br><br>
 
+        <?php
+        require_once "conexao.php";
+// Consulta as categorias
+$categorias = mysqli_query($conexao, "SELECT idcategoria, nome FROM tb_categorias");
+?>
+categoria:<br>
+<select name="tbcategoria_idcategoria">
+    <option value="">Selecione uma categoria</option>
+    <?php while ($cat = mysqli_fetch_assoc($categorias)) { ?>
+        <option value="<?php echo $cat['idcategoria']; ?>"
+            <?php if ($cat['idcategoria'] == $tbcategoria_idcategoria) echo 'selected'; ?>>
+            <?php echo htmlspecialchars($cat['nome']); ?>
+        </option>
+    <?php } ?>
+</select><br><br>
+
+        
 
         <input type="submit" value="<?php echo $botao; ?>">
     </form>
