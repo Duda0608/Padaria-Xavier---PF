@@ -1,4 +1,5 @@
 <?php
+require_once "verificarlogado.php";
 $usuario = @$_POST["usuario"];
 $comentario = @$_POST["comentario"];
 

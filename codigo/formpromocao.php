@@ -1,6 +1,7 @@
 <?php
 require_once "conexao.php";
 require_once "funcoes.php";
+require_once "verificarlogado.php";
 
 $produto = @$_POST["produto"];
 $datainicio = @$_POST["datainicio"];

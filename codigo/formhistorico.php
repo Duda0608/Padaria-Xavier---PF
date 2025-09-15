@@ -1,4 +1,5 @@
 <?php
+require_once "verificarlogado.php";
 $nomeHist = @$_POST["nomeHist"];
 $historico = @$_POST["historico"];
 
