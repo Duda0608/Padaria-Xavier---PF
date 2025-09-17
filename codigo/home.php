@@ -43,16 +43,8 @@ $adm = $_SESSION['adm'];
             echo "<a href='listarprodutos.php'>Lista Produtos</a><br>";
             echo "</li> <br>";
             echo "<li>";
-<<<<<<< Updated upstream
-            echo "<a href='formestoques.php'>Cadastrar Estoque</a><br>";
-            echo "</li> <br>";
-=======
             echo "<a href='listarcategoria.php'>lista categoria</a><br>";
             echo "</li>";
->>>>>>> Stashed changes
-            echo "<li>";
-            echo "<a href='listarestoques.php'>Listar Pedidos</a><br>";
-            echo "</li> <br>";
         }
     ?>
     <li>
