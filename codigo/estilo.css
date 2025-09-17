@@ -1,0 +1,36 @@
+/* Estilo global */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 30px;
+}
+
+/* Remove estilo padrão das listas */
+ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+/* Espaçamento entre os itens da lista */
+li {
+    margin-bottom: 10px;
+}
+
+/* Estilo dos links */
+a {
+    text-decoration: none;
+    color: #234F38;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 6px 12px;
+    display: inline-block;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Efeito hover nos links */
+a:hover {
+    background-color: #234F38;
+    color: #ffffff;
+}
