@@ -1,11 +1,8 @@
 <?php
-<<<<<<< Updated upstream
 
 require_once "verificarlogado.php";
 
-?>
 
-=======
 if (isset($_GET['id'])) {
     echo "editar";
 
@@ -33,7 +30,6 @@ if (isset($_GET['id'])) {
 }
 
 ?>
->>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="en">
 <head>

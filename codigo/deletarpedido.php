@@ -6,4 +6,7 @@
     $sql = "DELETE FROM tb_pedidos WHERE idpedido = $id";
 
     mysqli_query($conexao, $sql);
+    
+    header("Location: listarpedido.php");
+
 ?>

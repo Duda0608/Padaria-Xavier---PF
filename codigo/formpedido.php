@@ -1,7 +1,4 @@
-
-////o usuario não fixa na hora de cadastrar o que dificulta no pedido//
 <?php
-
 require_once "verificarlogado.php";
 
 

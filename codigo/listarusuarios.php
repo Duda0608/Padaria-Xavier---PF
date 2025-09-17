@@ -1,3 +1,6 @@
+<?php
+require_once "verificarlogado.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +16,7 @@
     <?php
     require_once "conexao.php";
     require_once "funcoes.php";
-    require_once "verificarlogado.php";
+
 
     $lista_usuario = listarusuario($conexao);
  

@@ -12,16 +12,14 @@ $tbcategoria_idcategoria = 1;
 
 
 if ($id == 0) {
-    // $sql = "INSERT INTO tb_pedidos (valor, `data`, avaliacao, pagamento, entrega, `status`, `tb_cliente_idcliente`) VALUES ($valor, `$data`, $avaliacao, `$pagamento`, $entrega, $status, `$tb_cliente_idcliente`)";
 
-    // chamar a função salvarpedido com os valores das variáveis...
     salvarprodutos($conexao, $nome, $tipo, $preco_venda, $tb_promocao_idpromocao, $tbcategoria_idcategoria);
-
+    header("Location: home.php");
+    
 } else {
     editarprodutos($conexao, $nome, $tipo, $preco_venda, $tb_promocao_idpromocao, $tbcategoria_idcategoria);
+    header("Location: listarprodutos.php");
 }
-// mysqli_query($conexao, $sql);
 
 
-header("Location: home.php");
 ?>

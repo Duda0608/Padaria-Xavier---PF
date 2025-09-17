@@ -16,16 +16,12 @@ session_start();
 $tb_cliente_idcliente = 2;
 
 
-if ($id == 0) {
-    // $sql = "INSERT INTO tb_pedidos (valor, `data`, avaliacao, pagamento, entrega, `status`, `tb_cliente_idcliente`) VALUES ($valor, `$data`, $avaliacao, `$pagamento`, $entrega, $status, `$tb_cliente_idcliente`)";
-
-    // chamar a função salvarpedido com os valores das variáveis...
-    salvarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente);
+if ($id == 0){
+    salvarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status);
+    header("Location: home.php");
 
 } else {
-    $sql = "UPDATE tb_pedidos SET valor = $valor, `data` = $data, avaliacao = $avaliacao, pagamento = $pagamento, entrega = $entrega, `status` = $status, tb_cliente_idcliente = $tb_cliente_idcliente WHERE idpedido = $id";
+    editarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $id);
+    header("Location: listarpedido.php");
 }
-// mysqli_query($conexao, $sql);
-
-header("Location: home.php");
 ?>

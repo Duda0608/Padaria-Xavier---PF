@@ -203,10 +203,18 @@ function salvarprodutos($conexao, $nome, $tipo, $preco_venda, $tb_promocao_idpro
 };
 
 
-function editarprodutos($conexao, $nome, $tipo, $preco_venda, $idprodutos) {
-    $sql = "UPDATE tb_produtos SET nome = '$nome', tipo = '$tipo', preco_venda = $preco_venda WHERE idprodutos = $idprodutos";
-    mysqli_query($conexao, $sql);
-};                                                                                     
+
+function editarprodutos($conexao, $nome, $tipo, $preco_venda, $idprodutos){
+    $sql = "UPDATE tb_produtos SET nome=?, tipo=?, preco_venda=? WHERE idprodutos=?";
+    $comando = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($comando, 'iidi', $nome, $tipo, $preco_venda, $idprodutos);
+
+    $funcionou = mysqli_stmt_execute($comando);
+
+    mysqli_stmt_close($comando);
+    return $funcionou;
+};
 
 
 function deletarprodutos($conexao, $idprodutos){

@@ -1,8 +1,8 @@
 <?php
 require_once("verificarlogado.php");
 
+
 $adm = $_SESSION['adm'];
-// echo $adm;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,51 +16,24 @@ $adm = $_SESSION['adm'];
 <body>
     <br>
 
-    <?php
-        if ($adm == '1') {
-            echo "<li>";
-            echo "<a href='formusuario.php'>Cadastrar Usuário</a><br>";
-            echo "</li> <br>";
-            echo "<li>";
-            echo "<a href='listarusuarios.php'>Lista de Usuário</a><br>";
-            echo "</li> <br>";
-            echo "<li>";
-            echo "<a href='listarpedido.php'>Listar pedidos existentes</a><br>";
-            echo "</li> <br>";
-            echo "<li>";
-            echo "<a href='formprodutos.php'>Cadastrar Produtos</a><br>";
-            echo "</li> <br>";
-            echo "<li>";
-            echo "<a href='listarprodutos.php'>Listar Produtos</a><br>";
-            echo "</li> <br>";
-            echo "<li>";
-            echo "<a href='formcategoria.php'>Cadastrar categoria</a><br>";
-            echo "</li> <br>";
-            echo "<li>";
-            echo "<a href='formpromocao.php'>Cadastrar Promoção</a><br>";
-            echo "</li> <br>";
-            echo "<li>";
-            echo "<a href='listarprodutos.php'>Lista Produtos</a><br>";
-            echo "</li> <br>";
-            echo "<li>";
-<<<<<<< Updated upstream
-            echo "<a href='formestoques.php'>Cadastrar Estoque</a><br>";
-            echo "</li> <br>";
-=======
-            echo "<a href='listarcategoria.php'>lista categoria</a><br>";
-            echo "</li>";
->>>>>>> Stashed changes
-            echo "<li>";
-            echo "<a href='listarestoques.php'>Listar Pedidos</a><br>";
-            echo "</li> <br>";
-        }
-    ?>
-    <li>
-    <a href="formcomentario.php">Cadastrar Comentário</a>
-    </li> <br>
-    <li><a href="formpedido.php">Cadastrar Pedido</a>
-    </li> <br>
-    
+    <?php if ($adm == '1'): ?>
+        <ul>
+            <li><a href="formusuario.php">Cadastrar Usuário</a></li>
+            <li><a href="listarusuarios.php">Lista de Usuário</a></li>
+            <li><a href="listarpedido.php">Listar pedidos existentes</a></li>
+            <li><a href="formprodutos.php">Cadastrar Produtos</a></li>
+            <li><a href="listarprodutos.php">Listar Produtos</a></li>
+            <li><a href="formcategoria.php">Cadastrar categoria</a></li>
+            <li><a href="formpromocao.php">Cadastrar Promoção</a></li>
+            <li><a href="listarcategoria.php">Lista categoria</a></li>
+        </ul>
+    <?php endif; ?>
+
+    <ul>
+        <li><a href="formcomentario.php">Cadastrar Comentário</a></li>
+        <li><a href="formpedido.php">Cadastrar Pedido</a></li>
+    </ul>
+
     <a href="deslogar.php">Sair</a>
     <br><br>
 </body>
