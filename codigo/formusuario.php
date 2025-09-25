@@ -1,5 +1,5 @@
 <?php
-require_once "verificarlogado.php";
+
 
 if(isset($_GET['id'])) {
     
