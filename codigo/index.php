@@ -29,7 +29,7 @@
             <!-- Cabeçalho -->
             <div class="text-center mb-8">
                 <h1 class="text-4xl font-bold text-white mb-2 font-serif-custom">Bem-vindo</h1>
-                <p class="text-gray-300 font-sans-custom" style="color: #D1D1D1;">Entre com suas credenciais</p>
+                <p class="text-gray-300 font-sans-custom" style="color: #D1D1D1;">Entre com suas informações pessoais</p>
             </div>
 
             <!-- Formulário -->
@@ -37,7 +37,7 @@
                 <!-- Campo E-mail -->
                 <div>
                     <label for="email" class="block text-sm font-medium text-white mb-2 font-sans-custom">
-                        E-mail
+                        E-MAIL
                     </label>
                     <input
                         type="email"
@@ -51,7 +51,7 @@
                 <!-- Campo Senha -->
                 <div>
                     <label for="senha" class="block text-sm font-medium text-white mb-2 font-sans-custom">
-                        Senha
+                        SENHA
                     </label>
                     <input
                         type="password"
