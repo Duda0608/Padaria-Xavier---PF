@@ -15,7 +15,9 @@ if ($id == 0) {
     salvarcategoria($conexao, $nome, $descricao);
 
 } else {
-    editarcategoria($conexao, $nome, $descricao, $idcategoria);
+
+    editarcategoria($conexao, $nome, $descricao, $id);
+
 }
 
 
