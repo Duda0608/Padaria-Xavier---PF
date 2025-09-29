@@ -21,7 +21,7 @@ require_once "verificarlogado.php";
     $lista_pedido = listarpedido($conexao);
 
     if (count($lista_pedido) == 0) {
-        echo "Não ha pedidos";
+        echo "Não há pedidos";
     
     } else {
     ?>
