@@ -27,6 +27,7 @@ $adm = $_SESSION['adm'];
             <li><a href="formcategoria.php">Cadastrar categoria</a></li>
             <li><a href="formpromocao.php">Cadastrar Promoção</a></li>
             <li><a href="listarcategoria.php">Lista categoria</a></li>
+            <li><a href="listarpromocao.php">Lista categoria</a></li>
         </ul>
     <?php endif; ?>
 
