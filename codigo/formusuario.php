@@ -71,22 +71,22 @@ if(isset($_GET['id'])) {
 
                     messages: {
                         nome: {
-                            required: "Esse campo deve ser preenchido",
+                            required: "Esse campo deve ser preenchido"
                         },
                         cpf: {
-                            required: "Informe seu CPF",
+                            required: "Informe seu CPF"
                         },
                         telefone: {
-                            required: "Nos informe de seu telefone para entrarmos em contato",
+                            required: "Nos informe de seu telefone para entrarmos em contato"
                         },
                         endereco: {
-                            required: "Informe-nos de seu endereço caso seja entrega",
+                            required: "Informe-nos de seu endereço caso seja entrega"
                         },
                         email: {
-                            required: "Este campo dever ser preenchido",
+                            required: "Este campo dever ser preenchido"
                         },
                         senha: {
-                            required: "É necessário uma senha para entrar",
+                            required: "É necessário uma senha para entrar"
                         },
                     }
                 }

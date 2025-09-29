@@ -2,14 +2,22 @@
 require_once "conexao.php";
 require_once "funcoes.php";
 
-$id = $_GET['id'];
+
 $nome = $_POST['nome'];
 $descricao = $_POST['descricao'];
 
 
-$sql = "INSERT INTO tb_categorias (nome, descricao) VALUES ('$nome', '$descricao')";
+$id = $_GET['id'];
 
-mysqli_query($conexao, $sql);
 
-header("Location: home.php");
-?>
+if ($id == 0) {
+
+    salvarcategoria($conexao, $nome, $descricao);
+
+} else {
+    editarcategoria($conexao, $nome, $descricao, $idcategoria);
+}
+
+
+ header("Location: listarcategoria.php");
+ ?>

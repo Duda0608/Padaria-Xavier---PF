@@ -14,21 +14,24 @@ $lista = listarcategoria($conexao);
         <th>Descrição</th>
         <th>Ações</th>
     </tr>
-    <?php foreach ($lista as $categoria) { ?>
-        <tr>
-            <form action="formcategoria.php" method="post">
-                <td><?php echo $categoria["idcategoria"]; ?></td>
-                <td><input type="text" name="nome" value="<?php echo $categoria["nome"]; ?>"></td>
-                <td><input type="text" name="descricao" value="<?php echo $categoria["descricao"]; ?>"></td>
-                <td>
-                    <input type="hidden" name="idcategoria" value="<?php echo $categoria["idcategoria"]; ?>">
-                    <button type="submit">Editar</button>
-            </form>
-            <form action="deletarcategoria.php" method="get" style="display:inline;">
-                <input type="hidden" name="idcategoria" value="<?php echo $categoria["idcategoria"]; ?>">
-                <button type="submit">Excluir</button>
-            </form>
-                </td>
-        </tr>
-    <?php } ?>
-</table>
+    <?php foreach ($lista as $categoria) {
+        $idcategoria = $categoria['idcategoria'];
+            $nome = $categoria['nome'];
+            $descricao = $categoria['descricao'];
+           
+            echo "<tr>";
+            echo "<td>$idcategoria</td>";
+            echo "<td>$nome</td>";
+            echo "<td>$descricao</td>";
+            echo "<td><a href='formcategoria.php?id=$idcategoria'>Editar</a></td>";
+            echo "<td><a href='deletarcategoria.php?id=$idcategoria'>Excluir</a></td>";
+            echo "</tr>";
+        }
+    
+    
+        ?>
+        </table>
+        </body>
+
+</html>
+   

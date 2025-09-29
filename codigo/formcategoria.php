@@ -4,7 +4,6 @@ require_once "verificarlogado.php";
 
 
 if (isset($_GET['id'])) {
-    echo "editar";
 
     require_once "conexao.php";
     $id = $_GET['id'];
