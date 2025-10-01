@@ -35,3 +35,32 @@ a:hover {
     color: #ffffff;
 }
 
+
+  .w-full h-full object-cover{
+        position: absolute;
+        left: 500px;
+    
+    }
+
+    
+    .cabecalho {
+        font-family:"Bitcount Prop Double Ink" ;
+        position: absolute;
+        left: 60%;
+        top: 20%;
+   }
+
+
+   .form {
+        position: absolute;
+        left: 65%;
+        top: 25%;
+        
+   }
+
+   .butao{
+    position: absolute;
+    left: 32%;
+    bottom: -8%;
+   }
+    

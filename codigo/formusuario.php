@@ -41,6 +41,11 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double+Ink:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilo.css">
     <script src="../jquery-3.7.1.min.js"></script>
     <script src="../jquery.validate.min.js"></script>
     <script>
@@ -106,25 +111,28 @@ if (isset($_GET['id'])) {
 </head>
 
 <body>
-    <h1>Acesso ao sistema</h1>
+    
+    <h1 class="cabecalho">Acesso ao sistema</h1>
 
-    <form id="formusuario" action="salvarusuario.php?id=<?php echo $id; ?>" method="post">
+
+    <form class="form" id="formusuario" action="salvarusuario.php?id=<?php echo $id; ?>" method="post" class="cadastrar">
+        
+            <div><label for="nome" class="nome"></label>
         Nome:<br>
-        <input type="text" name="nome" id="nome" value="<?php echo $nome; ?>"><br>
+                <input type="text" placeholder="informe seu nome" aria-label="Disabled input example" disabled> <br>
         Cpf:<br>
-        <input type="text" name="cpf" id="cpf" value="<?php echo $cpf; ?>"><br>
+                <input type="text" placeholder="informe seu cpf" aria-label="Disabled input example" disabled> <br>
         Telefone:<br>
-        <input type="text" name="telefone" id="telefone" value="<?php echo $telefone; ?>"><br>
+                <input type="text" placeholder="informe seu telefone" aria-label="Disabled input example" disabled> <br>
         Endereço:<br>
-        <input type="text" name="endereco" id="endereco" value="<?php echo $endereco; ?>"><br>
+                <input type="text" placeholder="informe seu endereco" aria-label="Disabled input example" disabled> <br>
         Email:<br>
-        <input type="email" name="email" id="email" value="<?php echo $email; ?>"><br>
+                <input type="text" placeholder="informe seu email" aria-label="Disabled input example" disabled> <br>
         Senha:<br>
-        <input type="password" name="senha" id="senha" value="<?php echo $senha; ?>"><br><br>
+                <input type="text" placeholder="informe sua senha" aria-label="Disabled input example" disabled> <br><br>
 
-        <input type="submit" value="<?php echo $botao; ?>">
-
-    </form>
+                <button class="butao" type="button" class="btn" disabled data-bs-toggle="button">cadastrar</button>    
+</form>
 </body>
 
 </html>
