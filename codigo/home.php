@@ -24,10 +24,10 @@ $adm = $_SESSION['adm'];
             <li><a href="listarpedido.php">Listar pedidos existentes</a></li>
             <li><a href="formprodutos.php">Cadastrar Produtos</a></li>
             <li><a href="listarprodutos.php">Listar Produtos</a></li>
-            <li><a href="formcategoria.php">Cadastrar categoria</a></li>
             <li><a href="formpromocao.php">Cadastrar Promoção</a></li>
+            <li><a href="listarpromocao.php">Lista Promoção</a></li>
+            <li><a href="formcategoria.php">Cadastrar categoria</a></li>
             <li><a href="listarcategoria.php">Lista categoria</a></li>
-            <li><a href="listarpromocao.php">Lista categoria</a></li>
         </ul>
     <?php endif; ?>
 
