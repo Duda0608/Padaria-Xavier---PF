@@ -189,11 +189,11 @@ function pesquisarpedidoid($conexao, $idpedido){
 
 //cardapio-produtos
 
-function salvarprodutos($conexao, $nome, $tipo, $preco_venda, $tbcategoria_idcategoria){
-    $sql = "INSERT INTO tb_produtos (nome, tipo, preco_venda, tbcategoria_idcategoria) VALUES (?, ?, ?, ?)";
+function salvarprodutos($conexao, $nome, $preco_venda, $tbcategoria_idcategoria){
+    $sql = "INSERT INTO tb_produtos (nome, preco_venda, tbcategoria_idcategoria) VALUES (?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($comando, 'sssi', $nome, $tipo, $preco_venda, 
+    mysqli_stmt_bind_param($comando, 'ssi', $nome, $preco_venda, 
      $tbcategoria_idcategoria);
 
     mysqli_stmt_execute($comando);
@@ -207,11 +207,11 @@ function salvarprodutos($conexao, $nome, $tipo, $preco_venda, $tbcategoria_idcat
 
 
 
-function editarprodutos($conexao, $nome, $tipo, $preco_venda, $idprodutos){
-    $sql = "UPDATE tb_produtos SET nome=?, tipo=?, preco_venda=? WHERE idprodutos=?";
+function editarprodutos($conexao, $nome, $preco_venda, $idcategoria, $idprodutos){
+    $sql = "UPDATE tb_produtos SET nome=?, preco_venda=?, tbcategoria_idcategoria=? WHERE idprodutos=?";
     $comando = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($comando, 'iidi', $nome, $tipo, $preco_venda, $idprodutos);
+    mysqli_stmt_bind_param($comando, 'sdii', $nome, $preco_venda, $idcategoria, $idprodutos);
 
     $funcionou = mysqli_stmt_execute($comando);
 
@@ -234,7 +234,7 @@ function deletarprodutos($conexao, $idprodutos){
 };
 
 function listarprodutos($conexao){
-    $sql = "SELECT * FROM tb_produtos";
+    $sql = "SELECT idprodutos, tb_produtos.nome as nome_produto, preco_venda, tb_categorias.nome as nome_categoria  FROM tb_produtos INNER JOIN tb_categorias ON tb_produtos.idprodutos = tb_categorias.idcategoria;";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_execute($comando);

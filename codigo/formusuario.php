@@ -64,6 +64,7 @@ if (isset($_GET['id'])) {
                                 required: true,
                             },
                             email: {
+                                email: true,
                                 required: true,
                             },
                             senha: {
@@ -89,6 +90,7 @@ if (isset($_GET['id'])) {
                             },
                             email: {
                                 required: "Este campo deve informar um e-mail.",
+                                email: "Deve ser e-mail."
                             },
                             senha: {
                                 required: "É necessário uma senha para entrar",
