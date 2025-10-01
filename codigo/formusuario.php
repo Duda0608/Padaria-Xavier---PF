@@ -113,7 +113,7 @@ if(isset($_GET['id'])) {
         Endereço:<br>
         <input type="text" name="endereco" id="endereco" value="<?php echo $endereco; ?>"><br>
         Email:<br>
-        <input type="text" name="email" id="email" value="<?php echo $email; ?>"><br>
+        <input type="email" name="email" id="email" value="<?php echo $email; ?>"><br>
         Senha:<br>
         <input type="password" name="senha" id="senha" value="<?php echo $senha; ?>"><br><br>
 
