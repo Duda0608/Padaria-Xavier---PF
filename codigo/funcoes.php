@@ -94,11 +94,11 @@ function pesquisarusuarioid($conexao, $idusuario){
 
 //pedidos
 
-function salvarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente){
-    $sql = "INSERT INTO tb_pedidos (valor, data, avaliacao, pagamento, entrega, status, tb_cliente_idcliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
+function salvarpedido($conexao, $valor, $data, $pagamento, $entrega, $tb_cliente_idcliente){
+    $sql = "INSERT INTO tb_pedidos (valor, data, pagamento, entrega, tb_cliente_idcliente) VALUES (?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($comando, 'dsissii', $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente);
+    mysqli_stmt_bind_param($comando, 'dsssi', $valor, $data, $pagamento, $entrega, $tb_cliente_idcliente);
 
     mysqli_stmt_execute($comando);
 
@@ -125,28 +125,30 @@ function listarpedido($conexao){
 
 };
 
-function editarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idpedido){
-    $sql = "UPDATE tb_pedidos SET valor=?, data=?, avaliacao=?, pagamento=?, entrega=?, status=? WHERE idpedido=?";
+function editarpedido($conexao, $valor, $data, $pagamento, $entrega, $idpedido){
+    $sql = "UPDATE tb_pedidos SET valor=?, data=?, pagamento=?, entrega=? WHERE idpedido=?";
     $comando = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($comando, 'dsiiiii', $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente);
-     $funcionou = mysqli_stmt_execute($comando);
+    mysqli_stmt_bind_param($comando, 'dsssi', $valor, $data, $pagamento, $entrega, $idpedido);
 
-     mysqli_stmt_close($comando);
-     return $funcionou;
-};
-
-function deletarpedido($conexao, $idpedido){
-    $sql = "DELETE FROM tb_pedidos  WHERE  idpedido = ?";
-    $comando = mysqli_prepare($conexao, $sql);
-
-    mysqli_stmt_bind_param($comando, 'i', $idusuario);
     $funcionou = mysqli_stmt_execute($comando);
-    
+
     mysqli_stmt_close($comando);
     return $funcionou;
+}
 
-};
+
+function deletarpedido($conexao, $idpedido){
+    $sql = "DELETE FROM tb_pedidos WHERE idpedido = ?";
+    $comando = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($comando, 'i', $idpedido);
+
+    $funcionou = mysqli_stmt_execute($comando);
+
+    mysqli_stmt_close($comando);
+    return $funcionou;
+}
 
 
 function pesquisarpedidonome($conexao, $idpedido) {
