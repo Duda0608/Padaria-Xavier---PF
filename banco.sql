@@ -11,7 +11,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `mydb` ;
 USE `mydb` ;
 
 -- -----------------------------------------------------
@@ -59,20 +59,6 @@ DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tb_promocaos`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`tb_promocaos` (
-  `idpromocao` INT(11) NOT NULL AUTO_INCREMENT,
-  `produto` VARCHAR(20) NOT NULL,
-  `datainicio` DATE NOT NULL,
-  `datafinal` DATE NOT NULL,
-  `valor` INT(11) NOT NULL,
-  PRIMARY KEY (`idpromocao`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
 -- Table `mydb`.`tb_categorias`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`tb_categorias` (
@@ -92,16 +78,9 @@ CREATE TABLE IF NOT EXISTS `mydb`.`tb_produtos` (
   `nome` VARCHAR(200) NOT NULL,
   `tipo` VARCHAR(200) NOT NULL,
   `preco_venda` DECIMAL(10,2) NOT NULL,
-  `tb_promocao_idpromocao` INT(11) NOT NULL,
   `tbcategoria_idcategoria` INT(11) NOT NULL,
   PRIMARY KEY (`idprodutos`),
-  INDEX `fk_tb_produtos_tb_promocao1_idx` (`tb_promocao_idpromocao` ASC) VISIBLE,
   INDEX `fk_tb_produtos_tbcategoria1_idx` (`tbcategoria_idcategoria` ASC) VISIBLE,
-  CONSTRAINT `fk_tb_produtos_tb_promocao1`
-    FOREIGN KEY (`tb_promocao_idpromocao`)
-    REFERENCES `mydb`.`tb_promocaos` (`idpromocao`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_tb_produtos_tbcategoria1`
     FOREIGN KEY (`tbcategoria_idcategoria`)
     REFERENCES `mydb`.`tb_categorias` (`idcategoria`)
@@ -149,6 +128,27 @@ CREATE TABLE IF NOT EXISTS `mydb`.`tb_comentarios` (
   CONSTRAINT `fk_tb_comentario_tb_usuario1`
     FOREIGN KEY (`tb_usuario_idusuario`)
     REFERENCES `mydb`.`tb_usuarios` (`idusuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`tb_promocaos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`tb_promocaos` (
+  `idpromocao` INT(11) NOT NULL AUTO_INCREMENT,
+  `produto` VARCHAR(20) NOT NULL,
+  `datainicio` DATE NOT NULL,
+  `datafinal` DATE NOT NULL,
+  `valor` INT(11) NOT NULL,
+  `tb_produtos_idprodutos` INT(11) NOT NULL,
+  PRIMARY KEY (`idpromocao`),
+  INDEX `fk_tb_promocaos_tb_produtos1_idx` (`tb_produtos_idprodutos` ASC) VISIBLE,
+  CONSTRAINT `fk_tb_promocaos_tb_produtos1`
+    FOREIGN KEY (`tb_produtos_idprodutos`)
+    REFERENCES `mydb`.`tb_produtos` (`idprodutos`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
