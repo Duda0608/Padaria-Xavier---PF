@@ -351,48 +351,6 @@ function salvarentrega($conexao, $valor, $data, $avaliacao, $pagamento, $entrega
 //Endereco, nome e demais informacoes
 
 
-//estoque
-
-function salvarestoques ($conexao, $nome, $tipo, $data, $quantidade, $tb_produtos_idprodutos) {
-    $sql = "INSERT INTO tb_estoques (nome, tipo, data, quantidade, tb_produtos_idprodutos) VALUES (?, ?, ?, ?, ?)";
-
-    $comando = mysqli_prepare($conexao, $sql);
-
-    mysqli_stmt_bind_param($comando, 'sssii', $nome, $tipo, $data, $quantidade, $tb_produtos_idprodutos);
-
-    $funcionou = mysqli_stmt_execute($comando);
-
-    mysqli_stmt_close($comando);
-    return $funcionou;
-};
-
-function editarestoque($conexao, $nome, $tipo, $data, $quantidade, $idestoque){
-        $sql = "UPDATE tb_estoques SET nome=?, tipo=?, data=?, quantidade=?, idestoque=?";
-
-    $comando = mysqli_prepare($conexao, $sql);
-
-    mysqli_stmt_bind_param($comando, 'sssis', $nome, $tipo, $data, $quantidade, $idestoque);
-
-    $funcionou = mysqli_stmt_execute($comando);
-
-    mysqli_stmt_close($comando);
-    return $funcionou;
-
-};
-
-function deletarestoque($conexao, $idestoque){
-    $sql = "DELETE FROM tb_estoques WHERE idestoque = ?";
-    $comando = mysqli_prepare($conexao, $sql);
-
-    mysqli_stmt_bind_param($comando, 'i', $idestoque);
-    $funcionou= mysqli_stmt_execute($comando);
-
-    mysqli_stmt_close($comando);
-    return $funcionou;
-    
-
-};
-
 function garanteProdutoExistente($conexao) {
     $sql = "SELECT idprodutos FROM tb_produtos WHERE idprodutos = 1";
     $res = mysqli_query($conexao, $sql);
