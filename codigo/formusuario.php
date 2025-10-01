@@ -1,8 +1,8 @@
 <?php
 
 
-if(isset($_GET['id'])) {
-    
+if (isset($_GET['id'])) {
+
     require_once "conexao.php";
     $id = $_GET['id'];
 
@@ -36,6 +36,7 @@ if(isset($_GET['id'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,63 +44,67 @@ if(isset($_GET['id'])) {
     <script src="../jquery-3.7.1.min.js"></script>
     <script src="../jquery.validate.min.js"></script>
     <script>
-        $(document).ready(function () {
-                $("#formusuario").validate({
-                    rules: {
-                        nome: {
-                            required: true,
+        $(document).ready(function() {
+                    $("#formusuario").validate({
+                        rules: {
+                            nome: {
+                                required: true,
+                            },
+                            cpf: {
+                                required: true,
+                                minlength: 11,
+                                digits: true,
+                            },
+                            telefone: {
+                                required: true,
+                                minlength: 11,
+                                digits: true,
+                            },
+                            endereco: {
+                                required: true,
+                            },
+                            email: {
+                                required: true,
+                            },
+                            senha: {
+                                required: true,
+                            },
                         },
-                        cpf: {
-                            required: true,
-                            minlength: 11,
-                            digits: true,
-                        },
-                        telefone: {
-                            required: true,
-                            minlength: 11,
-                            digits: true,
-                        },
-                        endereco: {
-                            required: true,
-                        },
-                        email: {
-                            required: true,
-                        },
-                        senha: {
-                            required: true,
-                        },
+                        messages: {
+                            nome: {
+                                required: "Esse campo deve ser preenchido.",
+                            },
+                            cpf: {
+                                required: "Informe seu CPF.",
+                                minlength: "Está invalido a quantidade de números.",
+                                digits: "Deves conter números."
+                            },
+                            telefone: {
+                                required: "Informe de seu telefone para entrarmos em contato",
+                                minlength: "Está invalido a quantidade de números.",
+                                digits: "Deve conter apenas números.",
+                            },
+                            endereco: {
+                                required: "Informe-nos de seu endereço caso seja entrega",
+                            },
+                            email: {
+                                required: "Este campo deve informar um e-mail.",
+                            },
+                            senha: {
+                                required: "É necessário uma senha para entrar",
+                            },
+                        }
+                    })
+                })
+    </script>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
 
-                    messages: {
-                        nome: {
-                            required: "Esse campo deve ser preenchido"
-                        },
-                        cpf: {
-                            required: "Informe seu CPF"
-                        },
-                        telefone: {
-                            required: "Nos informe de seu telefone para entrarmos em contato"
-                        },
-                        endereco: {
-                            required: "Informe-nos de seu endereço caso seja entrega"
-                        },
-                        email: {
-                            required: "Este campo dever ser preenchido"
-                        },
-                        senha: {
-                            required: "É necessário uma senha para entrar"
-                        },
-                    }
-                }
-            })
-        });
-</script>
-<style>
-    .error {
-        color: red;
-    }
-</style>
-             
 </head>
+
 <body>
     <h1>Acesso ao sistema</h1>
 
@@ -118,8 +123,8 @@ if(isset($_GET['id'])) {
         <input type="password" name="senha" id="senha" value="<?php echo $senha; ?>"><br><br>
 
         <input type="submit" value="<?php echo $botao; ?>">
-        
+
     </form>
 </body>
-</html>
 
+</html>
