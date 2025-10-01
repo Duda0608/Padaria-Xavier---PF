@@ -94,11 +94,11 @@ function pesquisarusuarioid($conexao, $idusuario){
 
 //pedidos
 
-function salvarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente){
-    $sql = "INSERT INTO tb_pedidos (valor, data, avaliacao, pagamento, entrega, status, tb_cliente_idcliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
+function salvarpedido($conexao, $valor, $data, $pagamento, $entrega, $tb_cliente_idcliente){
+    $sql = "INSERT INTO tb_pedidos (valor, data, pagamento, entrega, tb_cliente_idcliente) VALUES (?, ?, ?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($comando, 'dsissii', $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente);
+    mysqli_stmt_bind_param($comando, 'dsssi', $valor, $data, $pagamento, $entrega, $tb_cliente_idcliente);
 
     mysqli_stmt_execute($comando);
 
@@ -125,28 +125,30 @@ function listarpedido($conexao){
 
 };
 
-function editarpedido($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idpedido){
-    $sql = "UPDATE tb_pedidos SET valor=?, data=?, avaliacao=?, pagamento=?, entrega=?, status=? WHERE idpedido=?";
+function editarpedido($conexao, $valor, $data, $pagamento, $entrega, $idpedido){
+    $sql = "UPDATE tb_pedidos SET valor=?, data=?, pagamento=?, entrega=? WHERE idpedido=?";
     $comando = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($comando, 'dsiiiii', $valor, $data, $avaliacao, $pagamento, $entrega, $status, $tb_cliente_idcliente);
-     $funcionou = mysqli_stmt_execute($comando);
+    mysqli_stmt_bind_param($comando, 'dsssi', $valor, $data, $pagamento, $entrega, $idpedido);
 
-     mysqli_stmt_close($comando);
-     return $funcionou;
-};
-
-function deletarpedido($conexao, $idpedido){
-    $sql = "DELETE FROM tb_pedidos  WHERE  idpedido = ?";
-    $comando = mysqli_prepare($conexao, $sql);
-
-    mysqli_stmt_bind_param($comando, 'i', $idusuario);
     $funcionou = mysqli_stmt_execute($comando);
-    
+
     mysqli_stmt_close($comando);
     return $funcionou;
+}
 
-};
+
+function deletarpedido($conexao, $idpedido){
+    $sql = "DELETE FROM tb_pedidos WHERE idpedido = ?";
+    $comando = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($comando, 'i', $idpedido);
+
+    $funcionou = mysqli_stmt_execute($comando);
+
+    mysqli_stmt_close($comando);
+    return $funcionou;
+}
 
 
 function pesquisarpedidonome($conexao, $idpedido) {
@@ -187,11 +189,11 @@ function pesquisarpedidoid($conexao, $idpedido){
 
 //cardapio-produtos
 
-function salvarprodutos($conexao, $nome, $tipo, $preco_venda, $tbcategoria_idcategoria){
-    $sql = "INSERT INTO tb_produtos (nome, tipo, preco_venda, tbcategoria_idcategoria) VALUES (?, ?, ?, ?)";
+function salvarprodutos($conexao, $nome, $preco_venda, $tbcategoria_idcategoria){
+    $sql = "INSERT INTO tb_produtos (nome, preco_venda, tbcategoria_idcategoria) VALUES (?, ?, ?)";
     $comando = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($comando, 'sssi', $nome, $tipo, $preco_venda, 
+    mysqli_stmt_bind_param($comando, 'ssi', $nome, $preco_venda, 
      $tbcategoria_idcategoria);
 
     mysqli_stmt_execute($comando);
@@ -205,11 +207,11 @@ function salvarprodutos($conexao, $nome, $tipo, $preco_venda, $tbcategoria_idcat
 
 
 
-function editarprodutos($conexao, $nome, $tipo, $preco_venda, $idprodutos){
-    $sql = "UPDATE tb_produtos SET nome=?, tipo=?, preco_venda=? WHERE idprodutos=?";
+function editarprodutos($conexao, $nome, $preco_venda, $idcategoria, $idprodutos){
+    $sql = "UPDATE tb_produtos SET nome=?, preco_venda=?, tbcategoria_idcategoria=? WHERE idprodutos=?";
     $comando = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($comando, 'iidi', $nome, $tipo, $preco_venda, $idprodutos);
+    mysqli_stmt_bind_param($comando, 'sdii', $nome, $preco_venda, $idcategoria, $idprodutos);
 
     $funcionou = mysqli_stmt_execute($comando);
 
@@ -232,7 +234,7 @@ function deletarprodutos($conexao, $idprodutos){
 };
 
 function listarprodutos($conexao){
-    $sql = "SELECT * FROM tb_produtos";
+    $sql = "SELECT idprodutos, tb_produtos.nome as nome_produto, preco_venda, tb_categorias.nome as nome_categoria  FROM tb_produtos INNER JOIN tb_categorias ON tb_produtos.idprodutos = tb_categorias.idcategoria;";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_execute($comando);

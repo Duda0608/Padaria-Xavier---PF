@@ -13,7 +13,6 @@ if(isset($_GET['id'])) {
     $linha = mysqli_fetch_array($resultado);
 
     $nome = $linha['nome'];
-    $tipo = $linha['tipo'];
     $preco_venda = $linha['preco_venda'];
     $tbcategoria_idcategoria = $linha['tbcategoria_idcategoria'];
 
@@ -23,9 +22,7 @@ if(isset($_GET['id'])) {
 } else {
     $id = 0;
     $nome = "";
-    $tipo = "";
     $preco_venda = "";
-
     $tbcategoria_idcategoria = "";
 
         $botao = "cadastrar";
@@ -43,8 +40,6 @@ if(isset($_GET['id'])) {
         <form action="salvarprodutos.php?id=<?php echo $id; ?>" method ="post">
         nome:<br>
         <input type="text" name="nome" value="<?php echo $nome; ?>"><br><br>
-        tipo:<br>
-        <input type="text" name="tipo" value="<?php echo $tipo; ?>"><br><br>
         preco venda:<br>
         <input type="text" name="preco_venda" value="<?php echo $preco_venda; ?>"><br><br>
 
@@ -55,7 +50,7 @@ $categorias = mysqli_query($conexao, "SELECT idcategoria, nome FROM tb_categoria
 ?>
 categoria:<br>
 <select name="tbcategoria_idcategoria">
-    <option value="">Selecione uma categoria</option>
+    <!-- <option value="">Selecione uma categoria</option> -->
     <?php while ($cat = mysqli_fetch_assoc($categorias)) { ?>
         <option value="<?php echo $cat['idcategoria']; ?>"
             <?php if ($cat['idcategoria'] == $tbcategoria_idcategoria) echo 'selected'; ?>>

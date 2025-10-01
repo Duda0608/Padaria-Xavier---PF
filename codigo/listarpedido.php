@@ -7,7 +7,7 @@ require_once "verificarlogado.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lista de pedidos</title>
 </head>
 
 <body>
@@ -22,7 +22,6 @@ require_once "verificarlogado.php";
 
     if (count($lista_pedido) == 0) {
         echo "Não há pedidos";
-    
     } else {
     ?>
 
@@ -31,11 +30,9 @@ require_once "verificarlogado.php";
                 <td>id</td>
                 <td>valor</td>
                 <td>data</td>
-                <td>avaliacao</td>
                 <td>pagamento</td>
                 <td>entrega</td>
-                <td>status</td>
-                <td colspan="2">açao</td>
+                <td colspan="2">ação</td>
             </tr>
 
         <?php
@@ -43,31 +40,23 @@ require_once "verificarlogado.php";
             $idpedido = $pedido['idpedido'];
             $valor = $pedido['valor'];
             $data = $pedido['data'];
-            $avaliacao = $pedido['avaliacao'];
             $pagamento = $pedido['pagamento'];
             $entrega = $pedido['entrega'];
-            $status = $pedido['status'];
-
 
             echo "<tr>";
             echo "<td>$idpedido</td>";
             echo "<td>$valor</td>";
             echo "<td>$data</td>";
-            echo "<td>$avaliacao</td>";
             echo "<td>$pagamento</td>";
             echo "<td>$entrega</td>";
-            echo "<td>$status</td>";
-
 
             echo "<td><a href='formpedido.php?id=$idpedido'>Editar</a></td>";
             echo "<td><a href='deletarpedido.php?id=$idpedido'>Excluir</a></td>";
             echo "</tr>";
-
-
         }
     }
         ?>
         </table>
-        </body>
+</body>
 
 </html>
