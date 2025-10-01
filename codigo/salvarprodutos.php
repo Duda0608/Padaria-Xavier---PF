@@ -7,17 +7,16 @@ $id = $_GET['id'];
 $nome = $_POST['nome'];
 $tipo = $_POST['tipo'];
 $preco_venda = $_POST['preco_venda'];
-$tb_promocao_idpromocao = 1;
 $tbcategoria_idcategoria = 1;
 
 
 if ($id == 0) {
 
-    salvarprodutos($conexao, $nome, $tipo, $preco_venda, $tb_promocao_idpromocao, $tbcategoria_idcategoria);
+    salvarprodutos($conexao, $nome, $tipo, $preco_venda, $tbcategoria_idcategoria);
     header("Location: home.php");
     
 } else {
-    editarprodutos($conexao, $nome, $tipo, $preco_venda, $tb_promocao_idpromocao, $tbcategoria_idcategoria);
+    editarprodutos($conexao, $nome, $tipo, $preco_venda, $tbcategoria_idcategoria);
     header("Location: listarprodutos.php");
 }
 

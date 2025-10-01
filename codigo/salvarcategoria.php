@@ -21,5 +21,5 @@ if ($id == 0) {
 }
 
 
- header("Location: listarcategoria.php");
+ header("Location: home.php");
  ?>
