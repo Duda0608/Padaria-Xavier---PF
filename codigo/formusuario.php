@@ -112,8 +112,11 @@ if (isset($_GET['id'])) {
 
 </head>
 
-<body>
-    
+<body >
+ 
+        
+  
+    <div class="bordaform">
     <h1 class="cabecalho">Acesso ao sistema</h1>
 
 
@@ -121,20 +124,27 @@ if (isset($_GET['id'])) {
         
             <div><label for="nome" class="nome"></label>
         Nome:<br>
-                <input type="text" placeholder="informe seu nome" aria-label="Disabled input example" disabled> <br>
+                <input name="nome" type="text" placeholder="informe seu nome" aria-label="Disabled input example" > <br>
         Cpf:<br>
-                <input type="text" placeholder="informe seu cpf" aria-label="Disabled input example" disabled> <br>
+                <input name="cpf" type="text" placeholder="informe seu cpf" aria-label="Disabled input example" > <br>
         Telefone:<br>
-                <input type="text" placeholder="informe seu telefone" aria-label="Disabled input example" disabled> <br>
+                <input name="telefone" type="text" placeholder="informe seu telefone" aria-label="Disabled input example" > <br>
         Endereço:<br>
-                <input type="text" placeholder="informe seu endereco" aria-label="Disabled input example" disabled> <br>
+                <input name="endereco" type="text" placeholder="informe seu endereco" aria-label="Disabled input example" > <br>
         Email:<br>
-                <input type="text" placeholder="informe seu email" aria-label="Disabled input example" disabled> <br>
+                <input name="email" type="text" placeholder="informe seu email" aria-label="Disabled input example" > <br>
         Senha:<br>
-                <input type="text" placeholder="informe sua senha" aria-label="Disabled input example" disabled> <br><br>
+                <input name="senha" type="text" placeholder="informe sua senha" aria-label="Disabled input example" > <br><br>
 
-                <button class="butao" type="button" class="btn" disabled data-bs-toggle="button">cadastrar</button>    
+                <button class="butao" type="submit" class="btn"  data-bs-toggle="button">cadastrar</button>    
 </form>
+    </div>
+
+    
 </body>
+
+
+
+
 
 </html>

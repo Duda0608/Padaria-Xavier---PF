@@ -9,6 +9,8 @@ require_once "verificarlogado.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilo.css">
 
 <body>
     <h1>Lista de usuários</h1>
@@ -25,7 +27,7 @@ require_once "verificarlogado.php";
         echo "Não existe usuarios";
     } else {
     ?>
-        <table border="1">
+        <table class="table table-striped-columns" border="1">
             <tr>
                 <td>id</td>
                 <td>nome</td>
