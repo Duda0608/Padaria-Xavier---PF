@@ -19,24 +19,24 @@ $adm = $_SESSION['adm'];
 
     <?php if ($adm == '1'): ?>
         <ul>
-            <li><a href="formusuario.php">Cadastrar Usuário</a></li>
-            <li><a href="listarusuarios.php">Lista de Usuário</a></li>
-            <li><a href="listarpedido.php">Listar pedidos existentes</a></li>
-            <li><a href="formprodutos.php">Cadastrar Produtos</a></li>
-            <li><a href="listarprodutos.php">Listar Produtos</a></li>
-            <li><a href="formpromocao.php">Cadastrar Promoção</a></li>
-            <li><a href="listarpromocao.php">Lista Promoção</a></li>
-            <li><a href="formcategoria.php">Cadastrar categoria</a></li>
-            <li><a href="listarcategoria.php">Lista categoria</a></li>
+            <li><a href="formusuario.php">CADASTRAR USUÁRIO</a></li>
+            <li><a href="listarusuarios.php">USUÁRIOS CADASTRADOS</a></li>
+            <li><a href="listarpedido.php">PEDIDOS CADASTRADOS</a></li>
+            <li><a href="formprodutos.php">CADASTRAR PRODUTOS</a></li>
+            <li><a href="listarprodutos.php">PRODUTOS CADASTRADOS</a></li>
+            <li><a href="formpromocao.php">CADASTRAR PROMOÇÃO</a></li>
+            <li><a href="listarpromocao.php">PROMOÇÕES CADASTRADAS</a></li>
+            <li><a href="formcategoria.php">CADASTRAR CATEGORIA</a></li>
+            <li><a href="listarcategoria.php">CATEGORIAS CADASTRADAS</a></li>
         </ul>
     <?php endif; ?>
 
     <ul>
-        <li><a href="formcomentario.php">Cadastrar Comentário</a></li>
-        <li><a href="formpedido.php">Cadastrar Pedido</a></li>
+        <li><a href="formcomentario.php">CADASTRAR COMENTÁRIO</a></li>
+        <li><a href="formpedido.php">CADASTRAR PEDIDOS</a></li>
     </ul>
 
-    <a href="deslogar.php">Sair</a>
+    <a href="deslogar.php">SAIR</a>
     <br><br>
 </body>
 

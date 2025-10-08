@@ -36,11 +36,11 @@ if(isset($_GET['id'])) {
     <title>formprodutos</title>
 </head>
 <body>
-    <h1>Cadastro de produtos</h1>
+    <h1>PRODUTOS</h1>
         <form action="salvarprodutos.php?id=<?php echo $id; ?>" method ="post">
-        nome:<br>
+        NOME:<br>
         <input type="text" name="nome" value="<?php echo $nome; ?>"><br><br>
-        preco venda:<br>
+        PREÇO:<br>
         <input type="text" name="preco_venda" value="<?php echo $preco_venda; ?>"><br><br>
 
         <?php
@@ -48,7 +48,7 @@ if(isset($_GET['id'])) {
 // Consulta as categorias
 $categorias = mysqli_query($conexao, "SELECT idcategoria, nome FROM tb_categorias");
 ?>
-categoria:<br>
+CATEGORIA:<br>
 <select name="tbcategoria_idcategoria">
     <!-- <option value="">Selecione uma categoria</option> -->
     <?php while ($cat = mysqli_fetch_assoc($categorias)) { ?>

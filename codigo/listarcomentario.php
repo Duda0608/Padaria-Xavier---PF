@@ -6,14 +6,14 @@ require_once "verificarlogado.php";
 $lista = listarcomentarios($conexao);
 ?>
 
-<h2>Comentários</h2>
+<h2>COMENTÁRIOS</h2>
 
 <table border="1" cellpadding="5">
     <tr>
         <th>ID</th>
-        <th>Comentário</th>
-        <th>ID Usuário</th>
-        <th>Ações</th>
+        <th>COMENTÁRIO</th>
+        <th>ID USUÁRIO</th>
+        <th>AÇÕES</th>
     </tr>
 
     <?php foreach ($lista as $comentario) { ?>

@@ -3,18 +3,18 @@
 require_once "conexao.php";
 require_once "funcoes.php";
 
-$produto = $_POST["produto"];
 $datainicio = $_POST["datainicio"];
 $datafinal = $_POST["datafinal"];
 $valor = $_POST["valor"];
+$tb_produtos_idprodutos = $_POST["tb_produtos_idprodutos"];
 
 $id = $_GET['id'];
 
-if ($produto != "") {
-  salvarpromocao($conexao, $produto, $datainicio, $datafinal, $valor); 
+if ($id == 0) {
+  salvarpromocao($conexao, $datainicio, $datafinal, $valor, $tb_produtos_idprodutos); 
 } else {
-  editarpromocao($conexao, $produto, $datainicio, $datafinal, $valor, $id);
+  editarpromocao($conexao, $datainicio, $datafinal, $valor, $tb_produtos_idprodutos, $id);
 }
 
 header("listarpromocao.php");
-?>
+?>  

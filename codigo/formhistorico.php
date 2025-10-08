@@ -11,10 +11,10 @@ if ($nomeHist != "") {
 }
 ?>
 
-<h3>Salvar Histórico</h3>
+<h3>SALVAR HISTÓRICO</h3>
 <form method="POST">
-  Nome: <input type="text" name="nomeHist"><br>
-  Histórico: <input type="text" name="historico"><br>
+  NOME: <input type="text" name="nomeHist"><br>
+  HISTÓRICO: <input type="text" name="historico"><br>
   <input type="submit" value="Salvar Histórico">
 </form>
 

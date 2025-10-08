@@ -37,12 +37,12 @@ if (isset($_GET['id'])) {
     <title>Document</title>
 </head>
 <body>
-    <h1>cadastrar categoria</h1>
+    <h1>CADASTRAR CATEGORIA</h1>
     <form action="salvarcategoria.php?id=<?php echo $id; ?>" method="post">
-        Nome: <br>
+        NOME: <br>
         <input type="text" name="nome" value="<?php echo $nome; ?>"> <br><br>
 
-        descricao:<br>
+        DESCRIÇÃO:<br>
         <input type="text" name="descricao" value="<?php echo $descricao; ?>"> <br><br>
 
         <input type="submit" value="<?php echo $botao; ?>">

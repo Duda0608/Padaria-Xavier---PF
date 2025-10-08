@@ -11,10 +11,10 @@ if ($usuario != "") {
 }
 ?>
 
-<h3>Salvar Comentário</h3>
+<h3>SALVAR COMENTÁRIO</h3>
 <form method="POST">
-  Nome: <input type="text" name="usuario"><br>
-  Comentário: <input type="text" name="comentario"><br>
+  NOME: <input type="text" name="usuario"><br>
+  COMENTÁRIO: <input type="text" name="comentario"><br>
   <input type="submit" value="Salvar Comentário">
 </form>
 
