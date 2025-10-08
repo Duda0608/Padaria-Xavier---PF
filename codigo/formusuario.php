@@ -134,7 +134,7 @@ if (isset($_GET['id'])) {
         Email:<br>
                 <input name="email" type="text" placeholder="informe seu email" aria-label="Disabled input example" > <br>
         Senha:<br>
-                <input name="senha" type="text" placeholder="informe sua senha" aria-label="Disabled input example" > <br><br>
+                <input name="senha" type="password" placeholder="informe sua senha" aria-label="Disabled input example" > <br><br>
 
                 <button class="butao" type="submit" class="btn"  data-bs-toggle="button">cadastrar</button>    
 </form>

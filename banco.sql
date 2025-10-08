@@ -74,7 +74,6 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `mydb`.`tb_produtos` (
   `idprodutos` INT(11) NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(200) NOT NULL,
-  `tipo` VARCHAR(200) NOT NULL,
   `preco_venda` DECIMAL(10,2) NOT NULL,
   `tbcategoria_idcategoria` INT(11) NOT NULL,
   PRIMARY KEY (`idprodutos`),

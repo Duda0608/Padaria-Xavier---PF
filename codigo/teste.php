@@ -1,20 +1,16 @@
-<?php
-if (isset($_GET['id'])) {
+<?php if (isset($_GET['id'])) {
     require_once "conexao.php";
     $id = $_GET['id'];
-
     $sql = "SELECT * FROM tb_usuarios WHERE idusuario = $id";
     $resultado = mysqli_query($conexao, $sql);
     $linha = mysqli_fetch_array($resultado);
-
     $nome = $linha['nome'];
     $cpf = $linha['cpf'];
     $telefone = $linha['telefone'];
     $endereco = $linha['endereco'];
     $email = $linha['email'];
     $senha = $linha['senha'];
-
-    $botao = "atualizar";
+    $botao = "Atualizar";
 } else {
     $id = 0;
     $nome = "";
@@ -23,11 +19,8 @@ if (isset($_GET['id'])) {
     $endereco = "";
     $email = "";
     $senha = "";
-
     $botao = "Cadastrar";
-}
-?>
-
+} ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -35,144 +28,113 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuário</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double+Ink:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="estilo.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#formusuario").validate({
-                rules: {
-                    nome: { required: true },
-                    cpf: { required: true, minlength: 11, digits: true },
-                    telefone: { required: true, minlength: 11, digits: true },
-                    endereco: { required: true },
-                    email: { email: true, required: true },
-                    senha: { required: true },
-                },
-                messages: {
-                    nome: { required: "Esse campo deve ser preenchido." },
-                    cpf: {
-                        required: "Informe seu CPF.",
-                        minlength: "Está invalido a quantidade de números.",
-                        digits: "Deve conter números."
-                    },
-                    telefone: {
-                        required: "Informe seu telefone.",
-                        minlength: "Está invalido a quantidade de números.",
-                        digits: "Deve conter apenas números."
-                    },
-                    endereco: { required: "Informe seu endereço caso haja entrega." },
-                    email: {
-                        required: "Este campo deve informar um e-mail.",
-                        email: "Deve ser um e-mail válido."
-                    },
-                    senha: { required: "É necessário uma senha para entrar." },
-                }
-            });
-        });
-    </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        .error {
-            color: red;
-        }
         body {
-            background-color: #f4f4f4;
-            background-image: url('3.png');
-            background-size: cover;
-            background-position: center;
+            font-family: 'Inter', sans-serif;
+            background-color: #2E4A2B;
+            color: #E8DCC0;
+            margin: 0;
+            padding: 0;
         }
 
-        .bordaform {
-            border: 2px solid #f1e0c6;
-            padding: 20px;
-            margin-top: 30px;
-            border-radius: 15px;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: #fff;
+        .container-fluid {
+            height: 100vh;
         }
 
-        .cabecalho {
-            text-align: center;
-            font-family: 'Bitcount Prop Double Ink', sans-serif;
-            margin-bottom: 20px;
-            color: #fff;
+        .left-side {
+            background: url('padaria.jpg') center center/cover no-repeat;
         }
 
-        .form label {
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .form input {
-            margin-bottom: 15px;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            width: 100%;
-        }
-
-        .butao {
-            width: 100%;
-            padding: 12px;
-            border-radius: 5px;
-            background-color: #a16e3f;
-            color: white;
-            border: none;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .butao:hover {
-            background-color: #7a4e2a;
+        .right-side {
+            background-color: #2E4A2B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .form-container {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #E8DCC0;
+        }
+
+        label {
+            font-size: 0.9rem;
+            color: #E8DCC0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-control {
+            background-color: transparent;
+            border: 2px solid #E8DCC0;
+            border-radius: 50px;
+            color: #fff;
+            padding: 10px 20px;
+        }
+
+        .form-control:focus {
+            background-color: transparent;
+            border-color: #C4A574;
+            box-shadow: none;
+            color: #fff;
+        }
+
+        .btn-custom {
+            background-color: transparent;
+            border: 2px solid #E8DCC0;
+            border-radius: 50px;
+            color: #E8DCC0;
+            width: 100%;
+            padding: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #C4A574;
+            color: #2E4A2B;
+        }
+
+        .row .col-md-6 {
+            padding-right: 5px;
+            padding-left: 5px;
         }
     </style>
 </head>
 
 <body>
-    <div class="container form-container">
-        <div class="bordaform">
-            <h1 class="cabecalho">Acesso ao sistema</h1>
-            <form id="formusuario" action="salvarusuario.php?id=<?php echo $id; ?>" method="post">
-                <div>
-                    <label for="nome">Nome:</label>
-                    <input name="nome" type="text" placeholder="Informe seu nome" value="<?php echo $nome; ?>" required>
+    <div class="container-fluid">
+        <div class="row h-100">
+            <div class="col-md-6 left-side d-none d-md-block"></div>
+            <div class="col-md-6 right-side">
+                <div class="form-container">
+                    <h2>Cadastre-se</h2>
+                    <form id="formusuario" method="post" action="salvarusuario.php"> <input type="hidden" name="id" value="<?= $id ?>">
+                        <div class="mb-3"> <label for="nome">Nome:</label> <input type="text" class="form-control" id="nome" name="nome" value="<?= $nome ?>"> </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6"> <label for="cpf">CPF:</label> <input type="text" class="form-control" id="cpf" name="cpf" value="<?= $cpf ?>"> </div>
+                            <div class="col-md-6"> <label for="telefone">Telefone:</label> <input type="text" class="form-control" id="telefone" name="telefone" value="<?= $telefone ?>"> </div>
+                        </div>
+                        <div class="mb-3"> <label for="email">Email:</label> <input type="email" class="form-control" id="email" name="email" value="<?= $email ?>"> </div>
+                        <div class="mb-3"> <label for="senha">Senha:</label> <input type="password" class="form-control" id="senha" name="senha" value="<?= $senha ?>"> </div> <button type="submit" class="btn btn-custom"><?= $botao ?></button>
+                    </form>
                 </div>
-                <div>
-                    <label for="cpf">CPF:</label>
-                    <input name="cpf" type="text" placeholder="Informe seu CPF" value="<?php echo $cpf; ?>" required>
-                </div>
-                <div>
-                    <label for="telefone">Telefone:</label>
-                    <input name="telefone" type="text" placeholder="Informe seu telefone" value="<?php echo $telefone; ?>" required>
-                </div>
-                <div>
-                    <label for="endereco">Endereço:</label>
-                    <input name="endereco" type="text" placeholder="Informe seu endereço" value="<?php echo $endereco; ?>" required>
-                </div>
-                <div>
-                    <label for="email">Email:</label>
-                    <input name="email" type="email" placeholder="Informe seu email" value="<?php echo $email; ?>" required>
-                </div>
-                <div>
-                    <label for="senha">Senha:</label>
-                    <input name="senha" type="password" placeholder="Informe sua senha" value="<?php echo $senha; ?>" required>
-                </div>
-                <button class="butao" type="submit"><?php echo $botao; ?></button>
-            </form>
+            </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../jquery-3.7.1.min.js"></script>
+    <script src="../jquery.validate.min.js"></script>
 </body>
 
 </html>
