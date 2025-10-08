@@ -7,16 +7,16 @@ require_once "verificarlogado.php";
 $lista = listarpromocao($conexao);
 ?>
 
-<h2>Promoções</h2>
+<h2>PROMOÇÕES</h2>
 
 <table border="1" cellpadding="5">
     <tr>
         <th>ID</th>
-        <th>Produto</th>
-        <th>Data Início</th>
-        <th>Data Final</th>
-        <th>Valor</th>
-        <th>Ações</th>
+        <th>PRODUTO</th>
+        <th>DATA INÍCIO</th>
+        <th>DATA FINAL</th>
+        <th>VALOR</th>
+        <th>AÇÕES</th>
     </tr>
      <?php
         foreach ($lista as $promocao) {

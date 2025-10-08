@@ -11,7 +11,7 @@ require_once "verificarlogado.php";
 </head>
 
 <body>
-    <h1>Lista de pedidos</h1>
+    <h1>PEDIDOS</h1>
 
     <?php
     require_once "conexao.php";

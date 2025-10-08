@@ -10,10 +10,10 @@ if ($email != "") {
 }
 ?>
 
-<h3>Salvar Login</h3>
+<h3>SALVAR LOGIN</h3>
 <form method="POST">
-  Email: <input type="text" name="email"><br>
-  Senha: <input type="password" name="senha"><br>
+  EMAIL: <input type="text" name="email"><br>
+  SENHA: <input type="password" name="senha"><br>
   <input type="submit" value="Salvar Login">
 </form>
 

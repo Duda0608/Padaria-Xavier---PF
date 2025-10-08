@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>Lista de entregas</h1>
+    <h1>ENTREGAS</h1>
 
     <?php
     require_once "conexao.php";
@@ -26,14 +26,14 @@
 
         <table border="1">
             <tr>
-                <td>id</td>
-                <td>valor</td>
-                <td>data</td>
-                <td>avaliacao</td>
-                <td>pagamento</td>
-                <td>entrega</td>
-                <td>status</td>
-                <td colspan="2">açao</td>
+                <td>ID</td>
+                <td>VALOR</td>
+                <td>DATA</td>
+                <td>AVALIAÇÃO</td>
+                <td>PAGAMENTO</td>
+                <td>ENTREGA</td>
+                <td>STATUS</td>
+                <td colspan="2">AÇÃO</td>
             </tr>
 
         <?php

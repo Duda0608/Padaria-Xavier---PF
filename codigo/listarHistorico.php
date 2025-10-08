@@ -6,14 +6,14 @@ require_once "verificarlogado.php";
 $lista = listarhistorico($conexao);
 ?>
 
-<h2>Histórico</h2>
+<h2>HISTÓRICO</h2>
 
 <table border="1" cellpadding="5">
     <tr>
-        <th>ID Pedido</th>
-        <th>Nome</th>
-        <th>Histórico</th>
-        <th>Ações</th>
+        <th>ID PEDIDO</th>
+        <th>NOME</th>
+        <th>HISTÓRICO</th>
+        <th>AÇÕES</th>
     </tr>
     <?php foreach ($lista as $item) { ?>
         <tr>

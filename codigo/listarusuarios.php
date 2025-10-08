@@ -13,7 +13,7 @@ require_once "verificarlogado.php";
     <link rel="stylesheet" href="estilo.css">
 
 <body>
-    <h1>Lista de usuários</h1>
+    <h1>LISTA DE USUÁRIOS</h1>
 
     <?php
     require_once "conexao.php";
@@ -29,13 +29,13 @@ require_once "verificarlogado.php";
     ?>
         <table class="table table-striped-columns" border="1">
             <tr>
-                <td>id</td>
-                <td>nome</td>
-                <td>cpf</td>
-                <td>telefone</td>
-                <td>endereco</td>
-                <td>email</td>
-                <td colspan="2">açao</td>
+                <td>ID</td>
+                <td>NOME</td>
+                <td>CPF</td>
+                <td>TELEFONE</td>
+                <td>ENDERECO</td>
+                <td>EMAIL</td>
+                <td colspan="2">AÇÃO</td>
 
             </tr>
 
@@ -56,14 +56,18 @@ require_once "verificarlogado.php";
             echo "<td>$endereco</td>";
             echo "<td>$email</td>";
 
-            echo "<td><a href='formusuario.php?id=$idusuario'>Editar</a></td>";
-            echo "<td><a href='deletarusuario.php?id=$idusuario'>Excluir</a></td>";
+            echo "<td><a href='formusuario.php?id=$idusuario'>editar</a></td>";
+            echo "<td><a href='deletarusuario.php?id=$idusuario'>excluir</a></td>";
             echo "</tr>";
         }
      
     }
         ?>
         </table>
+
+    <a href="deslogar.php">SAIR</a>
+    <br><br>
+
         </body>
 
 </html>

@@ -11,7 +11,7 @@ require_once "verificarlogado.php";
 </head>
 
 <body>
-    <h1>Lista de produtos</h1>
+    <h1>PRODUTOS CADASTRADOS</h1>
 
     <?php
     require_once "conexao.php";
@@ -20,18 +20,18 @@ require_once "verificarlogado.php";
     $lista_produtos = listarprodutos($conexao);
 
     if (count($lista_produtos) == 0) {
-        echo "Não ha produtos";
+        echo "Não há produtos";
     
     } else {
     ?>
 
         <table border="1">
             <tr>
-                <td>id</td>
-                <td>nome</td>
-                <td>preco_venda</td>
-                <td>categoria</td>
-                <td colspan="2">açao</td>
+                <td>ID</td>
+                <td>NOME</td>
+                <td>PREÇO</td>
+                <td>CATEGORIA</td>
+                <td colspan="2">AÇÃO</td>
             </tr>
 
         <?php

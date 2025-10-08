@@ -1,6 +1,5 @@
 <?php
 
-
 if (isset($_GET['id'])) {
 
     require_once "conexao.php";
@@ -18,7 +17,6 @@ if (isset($_GET['id'])) {
     $endereco = $linha['endereco'];
     $email = $linha['email'];
     $senha = $linha['senha'];
-
 
     $botao = "atualizar";
 } else {
@@ -50,59 +48,59 @@ if (isset($_GET['id'])) {
     <script src="../jquery.validate.min.js"></script>
     <script>
         $(document).ready(function() {
-                    $("#formusuario").validate({
-                        rules: {
-                            nome: {
-                                required: true,
-                            },
-                            cpf: {
-                                required: true,
-                                minlength: 11,
-                                digits: true,
-                            },
-                            telefone: {
-                                required: true,
-                                minlength: 11,
-                                digits: true,
-                            },
-                            endereco: {
-                                required: true,
-                            },
-                            email: {
-                                email: true,
-                                required: true,
-                            },
-                            senha: {
-                                required: true,
-                            },
-                        },
-                        messages: {
-                            nome: {
-                                required: "Esse campo deve ser preenchido.",
-                            },
-                            cpf: {
-                                required: "Informe seu CPF.",
-                                minlength: "Está invalido a quantidade de números.",
-                                digits: "Deves conter números."
-                            },
-                            telefone: {
-                                required: "Informe de seu telefone para entrarmos em contato",
-                                minlength: "Está invalido a quantidade de números.",
-                                digits: "Deve conter apenas números.",
-                            },
-                            endereco: {
-                                required: "Informe-nos de seu endereço caso seja entrega",
-                            },
-                            email: {
-                                required: "Este campo deve informar um e-mail.",
-                                email: "Deve ser e-mail."
-                            },
-                            senha: {
-                                required: "É necessário uma senha para entrar",
-                            },
-                        }
-                    })
-                })
+            $("#formusuario").validate({
+                rules: {
+                    nome: {
+                        required: true,
+                    },
+                    cpf: {
+                        required: true,
+                        minlength: 11,
+                        digits: true,
+                    },
+                    telefone: {
+                        required: true,
+                        minlength: 11,
+                        digits: true,
+                    },
+                    endereco: {
+                        required: true,
+                    },
+                    email: {
+                        email: true,
+                        required: true,
+                    },
+                    senha: {
+                        required: true,
+                    },
+                },
+                messages: {
+                    nome: {
+                        required: "Esse campo deve ser preenchido.",
+                    },
+                    cpf: {
+                        required: "Informe seu CPF.",
+                        minlength: "Está invalido a quantidade de números.",
+                        digits: "Deves conter números."
+                    },
+                    telefone: {
+                        required: "Informe de seu telefone para entrarmos em contato",
+                        minlength: "Está invalido a quantidade de números.",
+                        digits: "Deve conter apenas números.",
+                    },
+                    endereco: {
+                        required: "Informe-nos de seu endereço caso seja entrega",
+                    },
+                    email: {
+                        required: "Este campo deve informar um e-mail.",
+                        email: "Deve ser e-mail."
+                    },
+                    senha: {
+                        required: "É necessário uma senha para entrar",
+                    },
+                }
+            })
+        })
     </script>
     <style>
         .error {
@@ -112,39 +110,31 @@ if (isset($_GET['id'])) {
 
 </head>
 
-<body >
- 
-        
-  
+<body>
+
     <div class="bordaform">
-    <h1 class="cabecalho">Acesso ao sistema</h1>
+        <h1 class="cabecalho">ACESSO AO SISTEMA</h1>
 
+        <form class="form" id="formusuario" action="salvarusuario.php?id=<?php echo $id; ?>" method="post" class="cadastrar">
 
-    <form class="form" id="formusuario" action="salvarusuario.php?id=<?php echo $id; ?>" method="post" class="cadastrar">
-        
             <div><label for="nome" class="nome"></label>
-        Nome:<br>
-                <input name="nome" type="text" placeholder="informe seu nome" aria-label="Disabled input example" > <br>
-        Cpf:<br>
-                <input name="cpf" type="text" placeholder="informe seu cpf" aria-label="Disabled input example" > <br>
-        Telefone:<br>
-                <input name="telefone" type="text" placeholder="informe seu telefone" aria-label="Disabled input example" > <br>
-        Endereço:<br>
-                <input name="endereco" type="text" placeholder="informe seu endereco" aria-label="Disabled input example" > <br>
-        Email:<br>
-                <input name="email" type="text" placeholder="informe seu email" aria-label="Disabled input example" > <br>
-        Senha:<br>
-                <input name="senha" type="password" placeholder="informe sua senha" aria-label="Disabled input example" > <br><br>
+                NOME:<br>
+                <input name="nome" type="text" placeholder="informe seu nome" aria-label="Disabled input example" value="<?php echo $nome; ?>"> <br>
+                CPF:<br>
+                <input name="cpf" type="text" placeholder="informe seu cpf" aria-label="Disabled input example" value="<?php echo $cpf; ?>"> <br>
+                TELEFONE:<br>
+                <input name="telefone" type="text" placeholder="informe seu telefone" aria-label="Disabled input example" value="<?php echo $telefone; ?>"> <br>
+                ENDEREÇO:<br>
+                <input name="endereco" type="text" placeholder="informe seu endereco" aria-label="Disabled input example" value="<?php echo $endereco; ?>"> <br>
+                EMAIL:<br>
+                <input name="email" type="text" placeholder="informe seu email" aria-label="Disabled input example" value="<?php echo $email; ?>"> <br>
+                SENHA:<br>
+                <input name="senha" type="password" placeholder="informe sua senha" aria-label="Disabled input example" value="<?php echo $senha; ?>"> <br><br>
 
-                <button class="butao" type="submit" class="btn"  data-bs-toggle="button">cadastrar</button>    
-</form>
+                <button class="butao" type="submit" class="btn" data-bs-toggle="button"><?php echo $botao; ?></button>
+        </form>
     </div>
 
-    
 </body>
-
-
-
-
 
 </html>

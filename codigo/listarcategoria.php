@@ -5,14 +5,14 @@ require_once "verificarlogado.php";
 $lista = listarcategoria($conexao);
 ?>
 
-<h2>Categorias</h2>
+<h2>CATEGORIAS</h2>
 
 <table border="1" cellpadding="5">
     <tr>
         <th>ID</th>
-        <th>Nome</th>
-        <th>Descrição</th>
-        <th>Ações</th>
+        <th>NOME</th>
+        <th>DESCRIÇÃO</th>
+        <th>AÇÕES</th>
     </tr>
     <?php foreach ($lista as $categoria) {
         $idcategoria = $categoria['idcategoria'];
