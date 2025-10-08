@@ -47,14 +47,14 @@ if(isset($_GET['id'])) {
       
       <?php
         require_once "conexao.php";
-// Consulta as promocao
-$promocao = mysqli_query($conexao, "SELECT idpromocao, nome FROM tb_promocaos");
+// Consulta os produtos
+$produto = mysqli_query($conexao, "SELECT idprodutos, nome FROM tb_produtos");
 ?>
       
 produto:<br>
 <select name="tb_produtos_idprodutos">
   <!-- <option value="">Selecione um Produto</option> -->
-  <?php while ($cat = mysqli_fetch_assoc($promocao)) { ?>
+  <?php while ($cat = mysqli_fetch_assoc($produto)) { ?>
     <option value="<?php echo $cat['idprodutos']; ?>"
     <?php if ($cat['idprodutos'] == $tb_produtos_idprodutos) echo 'selected'; ?>>
     <?php echo htmlspecialchars($cat['nome']); ?>

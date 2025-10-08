@@ -10,7 +10,7 @@ $$tb_produtos_idprodutos = $_POST["$tb_produtos_idprodutos"];
 
 $id = $_GET['id'];
 
-if ($produto != "") {
+if ($id == 0) {
   salvarpromocao($conexao, $datainicio, $datafinal, $valor, $tb_produtos_idprodutos); 
 } else {
   editarpromocao($conexao, $datainicio, $datafinal, $valor, $tb_produtos_idprodutos, $id);
