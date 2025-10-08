@@ -39,7 +39,7 @@
             padding: 0;
         }
 
-        .container-fluid {
+        .container {
             height: 100vh;
         }
 
@@ -54,7 +54,7 @@
             justify-content: center;
         }
 
-        .form-container {
+        .formusu {
             width: 80%;
             max-width: 400px;
         }
@@ -113,11 +113,11 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container">
         <div class="row h-100">
             <div class="col-md-6 left-side d-none d-md-block"></div>
             <div class="col-md-6 right-side">
-                <div class="form-container">
+                <div class="formusu">
                     <h2>Cadastre-se</h2>
                     <form id="formusuario" method="post" action="salvarusuario.php"> <input type="hidden" name="id" value="<?= $id ?>">
                         <div class="mb-3"> <label for="nome">Nome:</label> <input type="text" class="form-control" id="nome" name="nome" value="<?= $nome ?>"> </div>

@@ -112,39 +112,35 @@ if (isset($_GET['id'])) {
 
 </head>
 
-<body >
- 
-        
-  
-    <div class="bordaform">
-    <h1 class="cabecalho">Acesso ao sistema</h1>
+<body class="corpousuario">
+    <div class="logo"> <img src="logo.png" alt="Logo da Empresa"> </div>
+        <div class="container">
+            <div class="row h-100">
+                <div class="col-md-6 imgesquerda d-none d-md-block"></div>
+                    <div class="col-md-6 direita">
+                    <div class="formusuario">
+                        <h1>Criar Conta</h1>
+                        <p>Preencha suas informações para se cadastrar</p>
+                        <form id="formusuario" method="post" action="salvarusuario.php"> <input type="hidden" name="id" value="<?= $id ?>">
+                            <div class="mb-3"> <label for="nome">Nome:</label> <input type="text" class="campusu" id="nome" name="nome" value="<?= $nome ?>"> </div>
+                            <div class="row mb-3">
+                                <div class="col-md-6"> <label for="cpf">CPF:</label> <input type="text" class="campusu" id="cpf" name="cpf" value="<?= $cpf ?>"> </div>
+                                <div class="col-md-6"> <label for="telefone">Telefone:</label> <input type="text" class="campusu" id="telefone" name="telefone" value="<?= $telefone ?>"> </div>
+                            </div>
+                            <div class="mb-3"> <label for="email">Email:</label> <input type="email" class="campusu" id="email" name="email" value="<?= $email ?>"> </div>
+                            <div class="mb-3"> <label for="senha">Senha:</label> <input type="password" class="campusu" id="senha" name="senha" value="<?= $senha ?>"> </div> <button type="submit" class="botaousu"><?= $botao ?></button>
+                        </form>
+                        <div class="login-link"> Já tem uma conta? <a href="#">Entre aqui</a> </div>
 
-
-    <form class="form" id="formusuario" action="salvarusuario.php?id=<?php echo $id; ?>" method="post" class="cadastrar">
-        
-            <div><label for="nome" class="nome"></label>
-        Nome:<br>
-                <input name="nome" type="text" placeholder="informe seu nome" aria-label="Disabled input example" > <br>
-        Cpf:<br>
-                <input name="cpf" type="text" placeholder="informe seu cpf" aria-label="Disabled input example" > <br>
-        Telefone:<br>
-                <input name="telefone" type="text" placeholder="informe seu telefone" aria-label="Disabled input example" > <br>
-        Endereço:<br>
-                <input name="endereco" type="text" placeholder="informe seu endereco" aria-label="Disabled input example" > <br>
-        Email:<br>
-                <input name="email" type="text" placeholder="informe seu email" aria-label="Disabled input example" > <br>
-        Senha:<br>
-                <input name="senha" type="password" placeholder="informe sua senha" aria-label="Disabled input example" > <br><br>
-
-                <button class="butao" type="submit" class="btn"  data-bs-toggle="button">cadastrar</button>    
-</form>
+                    </div>                
+                </div>
+            </div>
+            <footer>Sistema de Acesso Seguro</footer>
+        </div>
     </div>
-
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../jquery-3.7.1.min.js"></script>
+    <script src="../jquery.validate.min.js"></script>
 </body>
-
-
-
-
 
 </html>
