@@ -6,7 +6,7 @@ require_once "funcoes.php";
 $datainicio = $_POST["datainicio"];
 $datafinal = $_POST["datafinal"];
 $valor = $_POST["valor"];
-$$tb_produtos_idprodutos = $_POST["$tb_produtos_idprodutos"];
+$tb_produtos_idprodutos = $_POST["tb_produtos_idprodutos"];
 
 $id = $_GET['id'];
 
@@ -17,4 +17,4 @@ if ($id == 0) {
 }
 
 header("listarpromocao.php");
-?>
+?>  

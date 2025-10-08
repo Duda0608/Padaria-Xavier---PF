@@ -577,12 +577,12 @@ function listarpermissoes($conexao, $idadm) {
 //promocao
 
 function salvarpromocao($conexao, $datainicio, $datafinal, $valor, $tb_produtos_idprodutos) {
-    $sql = "INSERT INTO tb_promocaos (datainicio, datafinal, valor, $tb_produtos_idprodutos) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO tb_promocaos (datainicio, datafinal, valor, tb_produtos_idprodutos) VALUES (?, ?, ?, ?)";
     $stmt = mysqli_prepare($conexao, $sql);
     if (!$stmt) {
         die("Erro na preparação da query: " . mysqli_error($conexao));
     }
-    mysqli_stmt_bind_param($stmt, "sssdi", $produto, $datainicio, $datafinal, $valor, $$tb_produtos_idprodutos);
+    mysqli_stmt_bind_param($stmt, "ssdi", $datainicio, $datafinal, $valor, $tb_produtos_idprodutos);
 
     if (mysqli_stmt_execute($stmt)) {
         $idpromocao = mysqli_insert_id($conexao);
