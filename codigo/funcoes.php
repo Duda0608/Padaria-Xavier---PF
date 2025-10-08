@@ -576,13 +576,13 @@ function listarpermissoes($conexao, $idadm) {
 
 //promocao
 
-function salvarpromocao($conexao, $produto, $datainicio, $datafinal, $valor) {
-    $sql = "INSERT INTO tb_promocaos (produto, datainicio, datafinal, valor) VALUES (?, ?, ?, ?)";
+function salvarpromocao($conexao, $datainicio, $datafinal, $valor, $tb_produtos_idprodutos) {
+    $sql = "INSERT INTO tb_promocaos (datainicio, datafinal, valor, $tb_produtos_idprodutos) VALUES (?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conexao, $sql);
     if (!$stmt) {
         die("Erro na preparação da query: " . mysqli_error($conexao));
     }
-    mysqli_stmt_bind_param($stmt, "sssd", $produto, $datainicio, $datafinal, $valor);
+    mysqli_stmt_bind_param($stmt, "sssdi", $produto, $datainicio, $datafinal, $valor, $$tb_produtos_idprodutos);
 
     if (mysqli_stmt_execute($stmt)) {
         $idpromocao = mysqli_insert_id($conexao);
@@ -596,11 +596,11 @@ function salvarpromocao($conexao, $produto, $datainicio, $datafinal, $valor) {
 }
 
 
-function editarpromocao($conexao, $produto, $datainicio, $datafinal, $valor, $idpromocao){
-    $sql = "UPDATE tb_promocaos SET produto=?, datainicio=?, datafinal=?, valor=? WHERE idpromocao=?";
+function editarpromocao($conexao, $datainicio, $datafinal, $valor, $tb_produtos_idprodutos, $idpromocao){
+    $sql = "UPDATE tb_promocaos SET produto=?, datainicio=?, datafinal=?, valor=?, $tb_produtos_idprodutos=? WHERE idpromocao=?";
     $comando = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($comando, 'sssdi', $produto, $datainicio, $datafinal, $valor, $idpromocao);
+    mysqli_stmt_bind_param($comando, 'ssdii', $datainicio, $datafinal, $valor, $idpromocao, $tb_produtos_idprodutos);
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
 
