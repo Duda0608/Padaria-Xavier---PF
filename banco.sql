@@ -136,7 +136,6 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`tb_promocaos` (
   `idpromocao` INT(11) NOT NULL AUTO_INCREMENT,
-  `produto` VARCHAR(20) NOT NULL,
   `datainicio` DATE NOT NULL,
   `datafinal` DATE NOT NULL,
   `valor` INT(11) NOT NULL,
