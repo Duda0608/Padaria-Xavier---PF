@@ -1,24 +1,16 @@
-<?php
-
-if (isset($_GET['id'])) {
-
+<?php if (isset($_GET['id'])) {
     require_once "conexao.php";
     $id = $_GET['id'];
-
-    $sql = "SELECT *FROM tb_usuarios WHERE idusuario = $id";
-
+    $sql = "SELECT * FROM tb_usuarios WHERE idusuario = $id";
     $resultado = mysqli_query($conexao, $sql);
-
     $linha = mysqli_fetch_array($resultado);
-
     $nome = $linha['nome'];
     $cpf = $linha['cpf'];
     $telefone = $linha['telefone'];
     $endereco = $linha['endereco'];
     $email = $linha['email'];
     $senha = $linha['senha'];
-
-    $botao = "atualizar";
+    $botao = "Atualizar";
 } else {
     $id = 0;
     $nome = "";
@@ -27,119 +19,94 @@ if (isset($_GET['id'])) {
     $endereco = "";
     $email = "";
     $senha = "";
-
     $botao = "Cadastrar";
-}
-?>
-
+} ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double+Ink:wght@100..900&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Acesso ao Sistema</title>
     <link rel="stylesheet" href="estilo.css">
-    <script src="../jquery-3.7.1.min.js"></script>
-    <script src="../jquery.validate.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="corpousu">
+    <div class="cartaousu">
+        <h2>Bem-vindo</h2>
+        <p>Entre com suas informações pessoais</p>
+        <form id="formusuario" action="salvarusuario.php?id=<?= $id ?>" method="post">
+            <div class="mb-3"> <label for="nome" class="formusu">NOME</label> <input type="text" class="form-control" id="nome" name="nome" placeholder="Seu nome completo" value="<?= $nome ?>"> </div>
+            <div class="mb-3"> <label for="cpf" class="formusu">CPF</label> <input type="text" class="form-control" id="cpf" name="cpf" placeholder="00000000000" value="<?= $cpf ?>"> </div>
+            <div class="mb-3"> <label for="telefone" class="formusu">TELEFONE</label> <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(00) 00000-0000" value="<?= $telefone ?>"> </div>
+            <div class="mb-3"> <label for="endereco" class="formusu">ENDEREÇO</label> <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Rua, número, bairro" value="<?= $endereco ?>"> </div>
+            <div class="mb-3"> <label for="email" class="formusu">E-MAIL</label> <input type="email" class="form-control" id="email" name="email" placeholder="seu@email.com" value="<?= $email ?>"> </div>
+            <div class="mb-3"> <label for="senha" class="formusu">SENHA</label> <input type="password" class="form-control" id="senha" name="senha" placeholder="********" value="<?= $senha ?>"> </div> <a href="#" class="link">Não tem conta? Cadastre-se aqui</a>
+            <button type="submit" class="btn-custom"><?= $botao ?></button>
+        </form>
+        <footer>Sistema de Acesso Seguro</footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
     <script>
         $(document).ready(function() {
             $("#formusuario").validate({
                 rules: {
                     nome: {
-                        required: true,
+                        required: true
                     },
                     cpf: {
                         required: true,
                         minlength: 11,
-                        digits: true,
+                        digits: true
                     },
                     telefone: {
                         required: true,
                         minlength: 11,
-                        digits: true,
+                        digits: true
                     },
                     endereco: {
-                        required: true,
+                        required: true
                     },
                     email: {
-                        email: true,
                         required: true,
+                        email: true
                     },
                     senha: {
-                        required: true,
-                    },
+                        required: true
+                    }
                 },
                 messages: {
                     nome: {
-                        required: "Esse campo deve ser preenchido.",
+                        required: "Esse campo deve ser preenchido."
                     },
                     cpf: {
                         required: "Informe seu CPF.",
-                        minlength: "Está invalido a quantidade de números.",
-                        digits: "Deves conter números."
+                        minlength: "Quantidade inválida de números.",
+                        digits: "Apenas números."
                     },
                     telefone: {
-                        required: "Informe de seu telefone para entrarmos em contato",
-                        minlength: "Está invalido a quantidade de números.",
-                        digits: "Deve conter apenas números.",
+                        required: "Informe seu telefone.",
+                        minlength: "Quantidade inválida de números.",
+                        digits: "Apenas números."
                     },
                     endereco: {
-                        required: "Informe-nos de seu endereço caso seja entrega",
+                        required: "Informe seu endereço."
                     },
                     email: {
-                        required: "Este campo deve informar um e-mail.",
-                        email: "Deve ser e-mail."
+                        required: "Informe seu e-mail.",
+                        email: "E-mail inválido."
                     },
                     senha: {
-                        required: "É necessário uma senha para entrar",
-                    },
+                        required: "Informe uma senha."
+                    }
                 }
-            })
-        })
+            });
+        });
     </script>
-    <style>
-        .error {
-            color: red;
-        }
-    </style>
-
-</head>
-
-<body class="corpousuario">
- 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../jquery-3.7.1.min.js"></script>
-    <script src="../jquery.validate.min.js"></script>
-<body>
-
-    <div class="bordaform">
-        <h1 class="cabecalho">ACESSO AO SISTEMA</h1>
-
-        <form class="form" id="formusuario" action="salvarusuario.php?id=<?php echo $id; ?>" method="post" class="cadastrar">
-
-            <div><label for="nome" class="nome"></label>
-                NOME:<br>
-                <input name="nome" type="text" placeholder="informe seu nome" aria-label="Disabled input example" value="<?php echo $nome; ?>"> <br>
-                CPF:<br>
-                <input name="cpf" type="text" placeholder="informe seu cpf" aria-label="Disabled input example" value="<?php echo $cpf; ?>"> <br>
-                TELEFONE:<br>
-                <input name="telefone" type="text" placeholder="informe seu telefone" aria-label="Disabled input example" value="<?php echo $telefone; ?>"> <br>
-                ENDEREÇO:<br>
-                <input name="endereco" type="text" placeholder="informe seu endereco" aria-label="Disabled input example" value="<?php echo $endereco; ?>"> <br>
-                EMAIL:<br>
-                <input name="email" type="text" placeholder="informe seu email" aria-label="Disabled input example" value="<?php echo $email; ?>"> <br>
-                SENHA:<br>
-                <input name="senha" type="password" placeholder="informe sua senha" aria-label="Disabled input example" value="<?php echo $senha; ?>"> <br><br>
-
-                <input type="submit" value="<?php echo $botao; ?>">
-        </form>
-    </div>
-
 </body>
 
 </html>

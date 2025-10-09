@@ -1,123 +1,197 @@
+<?php if (isset($_GET['id'])) {
+    require_once "conexao.php";
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM tb_usuarios WHERE idusuario = $id";
+    $resultado = mysqli_query($conexao, $sql);
+    $linha = mysqli_fetch_array($resultado);
+    $nome = $linha['nome'];
+    $cpf = $linha['cpf'];
+    $telefone = $linha['telefone'];
+    $endereco = $linha['endereco'];
+    $email = $linha['email'];
+    $senha = $linha['senha'];
+    $botao = "Atualizar";
+} else {
+    $id = 0;
+    $nome = "";
+    $cpf = "";
+    $telefone = "";
+    $endereco = "";
+    $email = "";
+    $senha = "";
+    $botao = "Cadastrar";
+} ?>
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Usuário</title>
+    <title>Acesso ao Sistema</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        corpousuario {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
+        body {
             background-color: #2E4A2B;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            font-family: 'Inter', sans-serif;
+            color: #e8dcc0;
             height: 100vh;
-            color: #D1D1D1;
-            flex-direction: column;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .logo {
-            margin-bottom: 20px;
-        }
-
-        .logo img {
-            width: 80px;
-            height: auto;
-        }
-
-        .container {
-            background-color: rgba(46, 74, 43, 0.95);
-            padding: 40px;
+        .card {
+            background-color: #355a33;
+            border: none;
             border-radius: 12px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            width: 320px;
-            text-align: center;
+            padding: 2rem;
+            width: 100%;
+            max-width: 420px;
         }
 
-        h1 {
+        .card h2 {
             font-family: 'Playfair Display', serif;
-            color: #E8DCC0;
-            margin-bottom: 10px;
+            color: #e8dcc0;
+            text-align: center;
+            margin-bottom: 0.5rem;
         }
 
-        p {
-            font-size: 14px;
-            color: #D1D1D1;
-            margin-bottom: 25px;
+        .card p {
+            text-align: center;
+            color: #d4c5a9;
+            margin-bottom: 1.5rem;
         }
 
-        label {
-            display: block;
-            text-align: left;
-            font-size: 12px;
-            margin-bottom: 5px;
-            color: #D1D1D1;
+        .form-label {
+            color: #e8dcc0;
+            font-weight: 500;
         }
 
-        input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #5C7551;
-            border-radius: 6px;
+        .form-control {
             background-color: transparent;
-            color: #E8DCC0;
-            margin-bottom: 15px;
+            border: 1px solid #d4c5a9;
+            color: #e8dcc0;
         }
 
-        input::placeholder {
-            color: #A9B8A0;
+        .form-control::placeholder {
+            color: #d1d1d1;
         }
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #5C7551;
+        .form-control:focus {
+            border-color: #c4a574;
+            box-shadow: none;
+        }
+
+        .btn-custom {
+            background-color: #c4a574;
+            color: #2E4A2B;
+            font-weight: 600;
             border: none;
-            border-radius: 6px;
-            color: #fff;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
         }
 
-        button:hover {
-            background-color: #4E6445;
+        .btn-custom:hover {
+            background-color: #d4c5a9;
         }
 
-        .login-link {
-            margin-top: 10px;
-            font-size: 13px;
-        }
-
-        .login-link a {
-            color: #D4C5A9;
+        .link {
+            color: #d1d1d1;
+            text-align: center;
+            display: block;
+            margin-top: 1rem;
             text-decoration: none;
         }
 
-        .login-link a:hover {
-            text-decoration: underline;
+        .link:hover {
+            color: #c4a574;
         }
 
         footer {
-            position: absolute;
-            bottom: 20px;
-            font-size: 12px;
-            color: #D1D1D1;
+            text-align: center;
+            color: #d1d1d1;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 
 <body>
-    <div class="logo"> <img src="logo.png" alt="Logo da Empresa"> </div>
-    <div class="container">
-        <h1>Criar Conta</h1>
-        <p>Preencha suas informações para se cadastrar</p>
-        <form> <label for="nome">NOME COMPLETO</label> <input type="text" id="nome" placeholder="Seu nome completo" required> <label for="email">E-MAIL</label> <input type="email" id="email" placeholder="seu@email.com" required> <label for="senha">SENHA</label> <input type="password" id="senha" placeholder="********" required> <label for="confirmar-senha">CONFIRMAR SENHA</label> <input type="password" id="confirmar-senha" placeholder="********" required> <button type="submit">Cadastrar</button> </form>
-        <div class="login-link"> Já tem uma conta? <a href="#">Entre aqui</a> </div>
+    <div class="card">
+        <h2>Bem-vindo</h2>
+        <p>Entre com suas informações pessoais</p>
+        <form id="formusuario" action="salvarusuario.php?id=<?= $id ?>" method="post">
+            <div class="mb-3"> <label for="nome" class="form-label">NOME</label> <input type="text" class="form-control" id="nome" name="nome" placeholder="Seu nome completo" value="<?= $nome ?>"> </div>
+            <div class="mb-3"> <label for="cpf" class="form-label">CPF</label> <input type="text" class="form-control" id="cpf" name="cpf" placeholder="00000000000" value="<?= $cpf ?>"> </div>
+            <div class="mb-3"> <label for="telefone" class="form-label">TELEFONE</label> <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(00) 00000-0000" value="<?= $telefone ?>"> </div>
+            <div class="mb-3"> <label for="endereco" class="form-label">ENDEREÇO</label> <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Rua, número, bairro" value="<?= $endereco ?>"> </div>
+            <div class="mb-3"> <label for="email" class="form-label">E-MAIL</label> <input type="email" class="form-control" id="email" name="email" placeholder="seu@email.com" value="<?= $email ?>"> </div>
+            <div class="mb-3"> <label for="senha" class="form-label">SENHA</label> <input type="password" class="form-control" id="senha" name="senha" placeholder="********" value="<?= $senha ?>"> </div> <a href="#" class="link">Não tem conta? Cadastre-se aqui</a> <button type="submit" class="btn btn-custom mt-3"><?= $botao ?></button>
+        </form>
+        <footer>Sistema de Acesso Seguro</footer>
     </div>
-    <footer>Sistema de Acesso Seguro</footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#formusuario").validate({
+                rules: {
+                    nome: {
+                        required: true
+                    },
+                    cpf: {
+                        required: true,
+                        minlength: 11,
+                        digits: true
+                    },
+                    telefone: {
+                        required: true,
+                        minlength: 11,
+                        digits: true
+                    },
+                    endereco: {
+                        required: true
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    senha: {
+                        required: true
+                    }
+                },
+                messages: {
+                    nome: {
+                        required: "Esse campo deve ser preenchido."
+                    },
+                    cpf: {
+                        required: "Informe seu CPF.",
+                        minlength: "Quantidade inválida de números.",
+                        digits: "Apenas números."
+                    },
+                    telefone: {
+                        required: "Informe seu telefone.",
+                        minlength: "Quantidade inválida de números.",
+                        digits: "Apenas números."
+                    },
+                    endereco: {
+                        required: "Informe seu endereço."
+                    },
+                    email: {
+                        required: "Informe seu e-mail.",
+                        email: "E-mail inválido."
+                    },
+                    senha: {
+                        required: "Informe uma senha."
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

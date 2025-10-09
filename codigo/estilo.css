@@ -42,108 +42,89 @@ a:hover {
 
 }
 
+        .corpousu {
+            background-color: #2E4A2B;
+            font-family: 'Inter', sans-serif;
+            color: #e8dcc0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
+        .cartaousu {
+            background-color: #355a33;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            width: 100%;
+            max-width: 420px;
+        }
 
+        .cartaousu h2 {
+            font-family: 'Playfair Display', serif;
+            color: #e8dcc0;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
 
+        .cartaousu p {
+            text-align: center;
+            color: #d4c5a9;
+            margin-bottom: 1.5rem;
+        }
 
+        .formusu {
+            color: #e8dcc0;
+            font-weight: 500;
+        }
 
-.corpousuario {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background-color: #2E4A2B;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: #D1D1D1;
-    flex-direction: column;
-}
+        .form-control {
+            background-color: transparent;
+            border: 1px solid #d4c5a9;
+            color: #e8dcc0;
+        }
 
-.logo {
-    margin-bottom: 20px;
-}
+        .form-control::placeholder {
+            color: #d1d1d1;
+        }
 
-.logo img {
-    width: 80px;
-    height: auto;
-}
+        .form-control:focus {
+            border-color: #c4a574;
+            box-shadow: none;
+        }
 
-.container {
-    background-color: rgba(46, 74, 43, 0.95);
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    width: 320px;
-    text-align: center;
-}
+        .btn-custom {
+            background-color: #c4a574;
+            color: #2E4A2B;
+            font-weight: 600;
+            border: none;
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
 
-.h1 {
-    font-family: 'Playfair Display', serif;
-    color: #E8DCC0;
-    margin-bottom: 10px;
-}
+        .btn-custom:hover {
+            background-color: #d4c5a9;
+        }
 
-.p {
-    font-size: 14px;
-    color: #D1D1D1;
-    margin-bottom: 25px;
-}
+        .link {
+            color: #d1d1d1;
+            text-align: center;
+            display: block;
+            margin-top: 1rem;
+            text-decoration: none;
+        }
 
-.formcamp {
-    display: block;
-    text-align: left;
-    font-size: 12px;
-    margin-bottom: 5px;
-    color: #D1D1D1;
-}
+        .link:hover {
+            color: #c4a574;
+        }
 
-.input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #5C7551;
-    border-radius: 6px;
-    background-color: transparent;
-    color: #E8DCC0;
-    margin-bottom: 15px;
-}
-
-.input::placeholder {
-    color: #A9B8A0;
-}
-
-.button {
-    width: 100%;
-    padding: 10px;
-    background-color: #5C7551;
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.button:hover {
-    background-color: #4E6445;
-}
-
-.login-link {
-    margin-top: 10px;
-    font-size: 13px;
-}
-
-.login-link a {
-    color: #D4C5A9;
-    text-decoration: none;
-}
-
-.login-link a:hover {
-    text-decoration: underline;
-}
-
-.footer {
-    position: absolute;
-    bottom: 20px;
-    font-size: 12px;
-    color: #D1D1D1;
-}
+        footer {
+            text-align: center;
+            color: #d1d1d1;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+        }
