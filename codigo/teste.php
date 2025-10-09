@@ -1,140 +1,121 @@
-<?php if (isset($_GET['id'])) {
-    require_once "conexao.php";
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM tb_usuarios WHERE idusuario = $id";
-    $resultado = mysqli_query($conexao, $sql);
-    $linha = mysqli_fetch_array($resultado);
-    $nome = $linha['nome'];
-    $cpf = $linha['cpf'];
-    $telefone = $linha['telefone'];
-    $endereco = $linha['endereco'];
-    $email = $linha['email'];
-    $senha = $linha['senha'];
-    $botao = "Atualizar";
-} else {
-    $id = 0;
-    $nome = "";
-    $cpf = "";
-    $telefone = "";
-    $endereco = "";
-    $email = "";
-    $senha = "";
-    $botao = "Cadastrar";
-} ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Usuário</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <title>Acesso - Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         body {
+            background-color: #2E4A2B;
             font-family: 'Inter', sans-serif;
-            background-color: #2E4A2B;
-            color: #E8DCC0;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
             height: 100vh;
-        }
-
-        .left-side {
-            background: url('padaria.jpg') center center/cover no-repeat;
-        }
-
-        .right-side {
-            background-color: #2E4A2B;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .formusu {
-            width: 80%;
+        .login-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            padding: 2.5rem;
+            width: 100%;
             max-width: 400px;
+            color: #D1D1D1;
         }
 
-        h2 {
+        .login-card h1 {
             font-family: 'Playfair Display', serif;
-            text-align: center;
-            margin-bottom: 2rem;
             color: #E8DCC0;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 0.5rem;
         }
 
-        label {
-            font-size: 0.9rem;
+        .login-card p {
+            text-align: center;
+            color: #D1D1D1;
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
             color: #E8DCC0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-weight: 500;
+            font-size: 0.9rem;
         }
 
         .form-control {
-            background-color: transparent;
-            border: 2px solid #E8DCC0;
-            border-radius: 50px;
-            color: #fff;
-            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #E8DCC0;
+            border-radius: 8px;
+            padding: 0.75rem;
+        }
+
+        .form-control::placeholder {
+            color: #D1D1D1;
         }
 
         .form-control:focus {
-            background-color: transparent;
-            border-color: #C4A574;
-            box-shadow: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: #c4a574;
+            box-shadow: 0 0 0 0.25rem rgba(196, 165, 116, 0.25);
             color: #fff;
         }
 
-        .btn-custom {
-            background-color: transparent;
-            border: 2px solid #E8DCC0;
-            border-radius: 50px;
-            color: #E8DCC0;
-            width: 100%;
-            padding: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .btn-login {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 0.75rem;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
 
-        .btn-custom:hover {
-            background-color: #C4A574;
-            color: #2E4A2B;
+        .btn-login:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+            color: #fff;
         }
 
-        .row .col-md-6 {
-            padding-right: 5px;
-            padding-left: 5px;
+        .register-link {
+            display: block;
+            text-align: center;
+            color: #D1D1D1;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            text-decoration: none;
+        }
+
+        .register-link:hover {
+            color: #E8DCC0;
+            text-decoration: underline;
+        }
+
+        .footer-text {
+            text-align: center;
+            color: #D1D1D1;
+            font-size: 0.85rem;
+            margin-top: 2rem;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="row h-100">
-            <div class="col-md-6 left-side d-none d-md-block"></div>
-            <div class="col-md-6 right-side">
-                <div class="formusu">
-                    <h2>Cadastre-se</h2>
-                    <form id="formusuario" method="post" action="salvarusuario.php"> <input type="hidden" name="id" value="<?= $id ?>">
-                        <div class="mb-3"> <label for="nome">Nome:</label> <input type="text" class="form-control" id="nome" name="nome" value="<?= $nome ?>"> </div>
-                        <div class="row mb-3">
-                            <div class="col-md-6"> <label for="cpf">CPF:</label> <input type="text" class="form-control" id="cpf" name="cpf" value="<?= $cpf ?>"> </div>
-                            <div class="col-md-6"> <label for="telefone">Telefone:</label> <input type="text" class="form-control" id="telefone" name="telefone" value="<?= $telefone ?>"> </div>
-                        </div>
-                        <div class="mb-3"> <label for="email">Email:</label> <input type="email" class="form-control" id="email" name="email" value="<?= $email ?>"> </div>
-                        <div class="mb-3"> <label for="senha">Senha:</label> <input type="password" class="form-control" id="senha" name="senha" value="<?= $senha ?>"> </div> <button type="submit" class="btn btn-custom"><?= $botao ?></button>
-                    </form>
-                </div>
-            </div>
-        </div>
+    <div class="login-card">
+        <h1>Bem-vindo</h1>
+        <p>Entre com suas informações pessoais</p>
+        <form action="verificarlogin.php" method="post">
+            <div class="mb-3"> <label for="email" class="form-label">E-MAIL</label> <input type="email" class="form-control" id="email" name="email" placeholder="seu@email.com" required> </div>
+            <div class="mb-3"> <label for="senha" class="form-label">SENHA</label> <input type="password" class="form-control" id="senha" name="senha" placeholder="••••••••" required> </div> <a href="formusuario.php" class="register-link">Não tem conta? Cadastre-se aqui</a> <button type="submit" class="btn btn-login w-100 mt-3">Entrar</button>
+        </form>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../jquery-3.7.1.min.js"></script>
-    <script src="../jquery.validate.min.js"></script>
+    <div class="footer-text">Sistema de Acesso Seguro</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
