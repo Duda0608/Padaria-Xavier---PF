@@ -621,7 +621,8 @@ function deletarpromocao($conexao, $idpromocao){
 };
 
 function listarpromocao($conexao){
-    $sql = "SELECT * FROM tb_promocaos";
+    $sql = "SELECT idpromocao, tb_promocaos.idpromocao as idpromocao_promocao, datainicio, datafinal, valor tb_produtos.nome as nome_produtos  FROM tb_promocaos INNER JOIN tb_produtos ON tb_promocaos.idpromocao = tb_produtos.idprodutos;";
+    //$sql = "SELECT * FROM tb_promocaos";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_execute($comando);

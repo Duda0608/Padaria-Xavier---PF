@@ -24,10 +24,12 @@ if ($id == 0) {
 
     salvarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo);
     header("Location: index.php");
+    exit;
 
 } else {
     editarusuario($conexao, $nome, $cpf, $telefone, $endereco, $email, $senha, $administrador, $controlelogin, $gerenciapromo, $id);
     header("Location: listarusuarios.php");
+    exit;
 }
 
 

@@ -18,26 +18,30 @@ require_once "verificarlogado.php";
     require_once "funcoes.php";
 
 
-    $lista = listarpromocao($conexao);
+    $lista_promocao = listarpromocao($conexao);
 
+    if (count($lista_promocao) == 0) {
+        echo "Não existe promoção";
+    } else {        
+    ?>    
+    <table border="1">
+        <tr>
+            <td>ID</td>
+            <td>DATA INÍCIO</td>
+            <td>DATA FINAL</td>
+            <td>VALOR</td>
+            <td>PRODUTO</td>
+            <td colspan="2">AÇÕES</td>
 
-
-<table border="1" cellpadding="5">
-    <tr>
-        <th>ID</th>
-        <th>DATA INÍCIO</th>
-        <th>DATA FINAL</th>
-        <th>VALOR</th>
-        <th>PRODUTO</th>
-        <th>AÇÕES</th>
-    </tr>
+        </tr>
+        
      <?php
-        foreach ($lista as $promocao) {
+        foreach ($lista_promocao as $promocao) {
             $idpromocao = $promocao['idpromocao'];
             $datainicio = $promocao['datainicio'];
             $datafinal = $promocao['datafinal'];
             $valor = $promocao['valor'];
-            $tb_produtos_idprodutos = $promocao['tb_produtos_idprodutos'];
+            $nome_produtos = $promocao['nome_produtos'];
             
         
             echo "<tr>";
@@ -45,12 +49,13 @@ require_once "verificarlogado.php";
             echo "<td>$datainicio</td>";
             echo "<td>$datafinal</td>";
             echo "<td>$valor</td>";
-            echo "<td>$tb_produtos_idprodutos</td>";
+            echo "<td>$nome_produtos</td>";
 
             echo "<td><a href='formpromocao.php?id=$idpromocao'>Editar</a></td>";
             echo "<td><a href='deletarpromocao.php?id=$idpromocao'>Excluir</a></td>";
             echo "</tr>";
         }
+    }
      
     
         ?>
