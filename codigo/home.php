@@ -34,6 +34,7 @@ $adm = $_SESSION['adm'];
     <ul>
         <li><a href="formcomentario.php">CADASTRAR COMENTÁRIO</a></li>
         <li><a href="formpedido.php">CADASTRAR PEDIDOS</a></li>
+        <li><a href="sobrenos.php">SOBRE NÓS<Script:module></Script:module></a></li>
     </ul>
 
     <a href="deslogar.php">SAIR</a>
