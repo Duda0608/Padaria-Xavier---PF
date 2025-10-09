@@ -12,9 +12,12 @@ $id = $_GET['id'];
 
 if ($id == 0) {
   salvarpromocao($conexao, $datainicio, $datafinal, $valor, $tb_produtos_idprodutos); 
+  header("listarpromocao.php");
+  exit;
 } else {
   editarpromocao($conexao, $datainicio, $datafinal, $valor, $tb_produtos_idprodutos, $id);
+  header("listarpromocao.php");
+  exit;
 }
 
-header("listarpromocao.php");
 ?>  
