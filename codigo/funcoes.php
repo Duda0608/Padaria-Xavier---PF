@@ -621,22 +621,26 @@ function deletarpromocao($conexao, $idpromocao){
 };
 
 function listarpromocao($conexao){
-    $sql = "SELECT idpromocao, tb_promocaos.idpromocao as idpromocao_promocao, datainicio, datafinal, valor tb_produtos.nome as nome_produtos  FROM tb_promocaos INNER JOIN tb_produtos ON tb_promocaos.idpromocao = tb_produtos.idprodutos;";
-    //$sql = "SELECT * FROM tb_promocaos";
-    $comando = mysqli_prepare($conexao, $sql);
+    $sql = "SELECT 
+                tb_promocaos.idpromocao,
+                tb_promocaos.datainicio,
+                tb_promocaos.datafinal,
+                tb_promocaos.valor,
+                tb_produtos.nome AS nome_produtos
+            FROM tb_promocaos
+            INNER JOIN tb_produtos
+                ON tb_promocaos.tb_produtos_idprodutos = tb_produtos.idprodutos";
 
-    mysqli_stmt_execute($comando);
-    $resultado = mysqli_stmt_get_result($comando);
+    $resultado = mysqli_query($conexao, $sql);
 
-    $lista = [];
-    while ($item = mysqli_fetch_assoc($resultado)) {
+    $lista = array();
+    while ($item = mysqli_fetch_array($resultado)) {
         $lista[] = $item;
     }
-    mysqli_stmt_close($comando);
 
     return $lista;
+}
 
-};
 
 
 //login
