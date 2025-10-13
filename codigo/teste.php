@@ -1,117 +1,121 @@
+<?php require_once "verificarlogado.php";
+if (isset($_GET['id'])) {
+    require_once "conexao.php";
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM tb_produtos WHERE idprodutos = $id";
+    $resultado = mysqli_query($conexao, $sql);
+    $linha = mysqli_fetch_array($resultado);
+    $nome = $linha['nome'];
+    $preco_venda = $linha['preco_venda'];
+    $tbcategoria_idcategoria = $linha['tbcategoria_idcategoria'];
+    $botao = "Atualizar";
+} else {
+    $id = 0;
+    $nome = "";
+    $preco_venda = "";
+    $tbcategoria_idcategoria = "";
+    $botao = "Cadastrar";
+} ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acesso - Login</title>
+    <title>Formulário de Produtos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: #2E4A2B;
             font-family: 'Inter', sans-serif;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
+            margin: 0;
         }
 
-        .login-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .cartaoproduto {
+            background-color: #355E3B;
             border-radius: 12px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
             padding: 2.5rem;
             width: 100%;
             max-width: 400px;
-            color: #D1D1D1;
+            text-align: center;
         }
 
-        .login-card h1 {
+        .cartaoproduto h1 {
             font-family: 'Playfair Display', serif;
             color: #E8DCC0;
             font-weight: 700;
-            text-align: center;
             margin-bottom: 0.5rem;
         }
 
-        .login-card p {
-            text-align: center;
+        .cartaoproduto p {
             color: #D1D1D1;
             margin-bottom: 2rem;
         }
 
-        .form-label {
+        .formproduto {
             color: #E8DCC0;
             font-weight: 500;
             font-size: 0.9rem;
+            text-align: left;
+            display: block;
+            margin-bottom: 5px;
         }
 
-        .form-control {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #E8DCC0;
-            border-radius: 8px;
-            padding: 0.75rem;
+        .controleproduto {
+            width: 100%;
+            background-color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 10px;
+            color: #333;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
         }
 
-        .form-control::placeholder {
-            color: #D1D1D1;
+        .controleproduto:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #c4a574;
         }
 
-        .form-control:focus {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-color: #c4a574;
-            box-shadow: 0 0 0 0.25rem rgba(196, 165, 116, 0.25);
-            color: #fff;
-        }
-
-        .btn-login {
-            background-color: rgba(255, 255, 255, 0.15);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            padding: 0.75rem;
+        .btn-custom {
+            background-color: #c4a574;
+            color: #2E4A2B;
+            border: none;
+            border-radius: 6px;
+            padding: 10px;
             font-weight: 600;
+            width: 100%;
             transition: all 0.3s ease;
         }
 
-        .btn-login:hover {
-            background-color: rgba(255, 255, 255, 0.25);
-            color: #fff;
-        }
-
-        .register-link {
-            display: block;
-            text-align: center;
-            color: #D1D1D1;
-            font-size: 0.9rem;
-            margin-top: 1rem;
-            text-decoration: none;
-        }
-
-        .register-link:hover {
-            color: #E8DCC0;
-            text-decoration: underline;
+        .btn-custom:hover {
+            background-color: #d4c5a9;
         }
 
         .footer-text {
-            text-align: center;
             color: #D1D1D1;
             font-size: 0.85rem;
-            margin-top: 2rem;
+            text-align: center;
+            margin-top: 1.5rem;
         }
     </style>
 </head>
 
 <body>
-    <div class="login-card">
-        <h1>Bem-vindo</h1>
-        <p>Entre com suas informações pessoais</p>
-        <form action="verificarlogin.php" method="post">
-            <div class="mb-3"> <label for="email" class="form-label">E-MAIL</label> <input type="email" class="form-control" id="email" name="email" placeholder="seu@email.com" required> </div>
-            <div class="mb-3"> <label for="senha" class="form-label">SENHA</label> <input type="password" class="form-control" id="senha" name="senha" placeholder="••••••••" required> </div> <a href="formusuario.php" class="register-link">Não tem conta? Cadastre-se aqui</a> <button type="submit" class="btn btn-login w-100 mt-3">Entrar</button>
+    <div class="cartaoproduto">
+        <h1>Produtos</h1>
+        <p>Preencha as informações do produto</p>
+        <form action="salvarprodutos.php?id=<?php echo $id; ?>" method="post">
+            <div class="mb-3 text-start"> <label for="nome" class="formproduto">Nome</label> <input type="text" class="controleproduto" id="nome" name="nome" value="<?php echo htmlspecialchars($nome); ?>" placeholder="Nome do produto" required> </div>
+            <div class="mb-3 text-start"> <label for="preco_venda" class="formproduto">Preço</label> <input type="text" class="controleproduto" id="preco_venda" name="preco_venda" value="<?php echo htmlspecialchars($preco_venda); ?>" placeholder="0,00" required> </div> <?php require_once "conexao.php";
+                                                                                                                                                                                                                                                                                $categorias = mysqli_query($conexao, "SELECT idcategoria, nome FROM tb_categorias"); ?> <div class="mb-4 text-start"> <label for="tbcategoria_idcategoria" class="formproduto">Categoria</label> <select class="controleproduto" id="tbcategoria_idcategoria" name="tbcategoria_idcategoria" required> <?php while ($cat = mysqli_fetch_assoc($categorias)) { ?> <option value="<?php echo $cat['idcategoria']; ?>" <?php if ($cat['idcategoria'] == $tbcategoria_idcategoria) echo 'selected'; ?>> <?php echo htmlspecialchars($cat['nome']); ?> </option> <?php } ?> </select> </div> <button type="submit" class="btn btn-custom"><?php echo $botao; ?></button>
         </form>
     </div>
     <div class="footer-text">Sistema de Acesso Seguro</div>

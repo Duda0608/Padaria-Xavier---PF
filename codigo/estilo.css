@@ -42,89 +42,186 @@ a:hover {
 
 }
 
-        .corpousu {
-            background-color: #2E4A2B;
-            font-family: 'Inter', sans-serif;
-            color: #e8dcc0;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.corpousu {
+    background-color: #2E4A2B;
+    font-family: 'Inter', sans-serif;
+    color: #e8dcc0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .cartaousu {
-            background-color: #355a33;
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            padding: 2rem;
-            width: 100%;
-            max-width: 420px;
-        }
+.cartaousu {
+    background-color: #355a33;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    width: 100%;
+    max-width: 420px;
+}
 
-        .cartaousu h2 {
-            font-family: 'Playfair Display', serif;
-            color: #e8dcc0;
-            text-align: center;
-            margin-bottom: 0.5rem;
-        }
+.cartaousu h2 {
+    font-family: 'Playfair Display', serif;
+    color: #e8dcc0;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
 
-        .cartaousu p {
-            text-align: center;
-            color: #d4c5a9;
-            margin-bottom: 1.5rem;
-        }
+.cartaousu p {
+    text-align: center;
+    color: #d4c5a9;
+    margin-bottom: 1.5rem;
+}
 
-        .formusu {
-            color: #e8dcc0;
-            font-weight: 500;
-        }
+.formusu {
+    color: #e8dcc0;
+    font-weight: 500;
+}
 
-        .form-control {
-            background-color: transparent;
-            border: 1px solid #d4c5a9;
-            color: #e8dcc0;
-        }
+.form-control {
+    background-color: transparent;
+    border: 1px solid #d4c5a9;
+    color: #e8dcc0;
+}
 
-        .form-control::placeholder {
-            color: #d1d1d1;
-        }
+.form-control::placeholder {
+    color: #d1d1d1;
+}
 
-        .form-control:focus {
-            border-color: #c4a574;
-            box-shadow: none;
-        }
+.form-control:focus {
+    border-color: #c4a574;
+    box-shadow: none;
+}
 
-        .btn-custom {
-            background-color: #c4a574;
-            color: #2E4A2B;
-            font-weight: 600;
-            border: none;
-            width: 100%;
-            padding: 0.75rem;
-            border-radius: 8px;
-            transition: background-color 0.3s ease;
-        }
+.btn-custom {
+    background-color: #c4a574;
+    color: #2E4A2B;
+    font-weight: 600;
+    border: none;
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
 
-        .btn-custom:hover {
-            background-color: #d4c5a9;
-        }
+.btn-custom:hover {
+    background-color: #d4c5a9;
+}
 
-        .link {
-            color: #d1d1d1;
-            text-align: center;
-            display: block;
-            margin-top: 1rem;
-            text-decoration: none;
-        }
+.link {
+    color: #d1d1d1;
+    text-align: center;
+    display: block;
+    margin-top: 1rem;
+    text-decoration: none;
+}
 
-        .link:hover {
-            color: #c4a574;
-        }
+.link:hover {
+    color: #c4a574;
+}
 
-        footer {
-            text-align: center;
-            color: #d1d1d1;
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
-        }
+footer {
+    text-align: center;
+    color: #d1d1d1;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+
+
+/* === FORMULÁRIO DE PRODUTOS === */
+/* Fundo e centralização */
+.teste {
+    background-color: #2E4A2B;
+    /* verde escuro */
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+/* Cartão principal */
+.cartaoproduto {
+    background-color: #355E3B;
+    /* verde médio sólido */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Título e subtítulo */
+.cartaoproduto h1 {
+    font-family: 'Playfair Display', serif;
+    color: #E8DCC0;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.cartaoproduto p {
+    color: #D1D1D1;
+    margin-bottom: 2rem;
+}
+
+/* Rótulos */
+.formproduto {
+    color: #E8DCC0;
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-align: left;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Campos de entrada */
+.controleproduto {
+    width: 100%;
+    background-color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    color: #333;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+.controleproduto::placeholder {
+    color: #999;
+}
+
+.controleproduto:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #c4a574;
+}
+
+/* Botão principal */
+.btn-custom {
+    background-color: #c4a574;
+    /* dourado */
+    color: #2E4A2B;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    font-weight: 600;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #d4c5a9;
+}
+
+/* Texto do rodapé */
+.footer-text {
+    color: #D1D1D1;
+    font-size: 0.85rem;
+    text-align: center;
+    margin-top: 1.5rem;
+}
