@@ -234,7 +234,8 @@ function deletarprodutos($conexao, $idprodutos){
 };
 
 function listarprodutos($conexao){
-    $sql = "SELECT idprodutos, tb_produtos.nome as nome_produto, preco_venda, tb_categorias.nome as nome_categoria  FROM tb_produtos INNER JOIN tb_categorias ON tb_produtos.idprodutos = tb_categorias.idcategoria;";
+    $sql = "SELECT idprodutos, tb_produtos.nome as nome_produto, preco_venda, tb_categorias.nome as nome_categoria FROM tb_produtos INNER JOIN tb_categorias ON tb_produtos.tbcategoria_idcategoria = tb_categorias.idcategoria";
+
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_execute($comando);

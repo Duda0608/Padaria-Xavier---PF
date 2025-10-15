@@ -1,16 +1,9 @@
 <?php
 require_once "verificarlogado.php";
-$usuario = @$_POST["usuario"];
-$comentario = @$_POST["comentario"];
-
-if ($usuario != "") {
-  if ($comentario != "") {
-    salvarcomentario($conexao, $usuario, $comentario);
-    echo "Comentário salvo.<br><br>";
-  }
-}
+require_once "conexao.php";
+require_once "funcoes.php";
 ?>
-
+  
 <h3>SALVAR COMENTÁRIO</h3>
 <form method="POST">
   NOME: <input type="text" name="usuario"><br>
