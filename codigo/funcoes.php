@@ -597,7 +597,7 @@ function salvarpromocao($conexao, $datainicio, $datafinal, $valor, $tb_produtos_
 
 
 function editarpromocao($conexao, $datainicio, $datafinal, $valor, $tb_produtos_idprodutos, $idpromocao){
-    $sql = "UPDATE tb_promocaos SET produto=?, datainicio=?, datafinal=?, valor=?, $tb_produtos_idprodutos=? WHERE idpromocao=?";
+    $sql = "UPDATE tb_promocaos SET datainicio=?, datafinal=?, valor=?, tb_produtos_idprodutos=? WHERE idpromocao=?";
     $comando = mysqli_prepare($conexao, $sql);
 
     mysqli_stmt_bind_param($comando, 'ssdii', $datainicio, $datafinal, $valor, $idpromocao, $tb_produtos_idprodutos);

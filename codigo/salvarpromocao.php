@@ -17,6 +17,6 @@ if ($id == 0) {
   editarpromocao($conexao, $datainicio, $datafinal, $valor, $tb_produtos_idprodutos, $id);
   
 }
-header("listarpromocao.php");
+header("Location: listarpromocao.php");
 
 ?>  
