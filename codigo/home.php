@@ -32,9 +32,10 @@ $adm = $_SESSION['adm'];
     <?php endif; ?>
 
     <ul>
+        <a href="carrinho.php">MEU CARRINHO</a>
         <li><a href="formcomentario.php">CADASTRAR COMENTÁRIO</a></li>
         <li><a href="formpedido.php">CADASTRAR PEDIDOS</a></li>
-        <li><a href="sobrenos.php">SOBRE NÓS<Script:module></Script:module></a></li>
+        <li><a href="sobrenos.php">SOBRE NÓS</a></li>
     </ul>
 
     <a href="deslogar.php">SAIR</a>
