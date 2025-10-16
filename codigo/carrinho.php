@@ -9,7 +9,6 @@ require_once "funcoes.php";
 <head>
     <meta charset="UTF-8">
     <title>Carrinho</title>
-    <script src="jquery-3.7.1.min.js"></script>
 </head>
 <body>
     <h2>Seu Carrinho</h2>
@@ -20,67 +19,50 @@ require_once "funcoes.php";
     } else {
         $total = 0;
         echo "<table border='1'>";
-        echo "<tr><th>Produto</th><th>Preço</th><th>Quantidade</th><th>Total</th><th>Remover</th></tr>";
+        echo "<tr><th>Pedido</th><th>Valor</th><th>Quantidade</th><th>Total</th><th>Ação</th></tr>";
 
-        foreach ($_SESSION['carrinho'] as $id => $quantidade) {
-            $produto = pesquisarprodutosid($conexao, $id);
-            $preco = $produto['preco_venda'];
-            $nome = $produto['nome'];
-            $total_unitario = $preco * $quantidade;
-            $total += $total_unitario;
+        foreach ($_SESSION['carrinho'] as $idpedido => $quantidade) {
+            if (is_array($quantidade) || $quantidade < 1) {
+                $quantidade = 1;
+            }
+
+            $sql = "SELECT * FROM tb_pedidos WHERE idpedido = $idpedido";
+            $res = mysqli_query($conexao, $sql);
+            $pedido = mysqli_fetch_array($res);
+
+            if ($pedido == null) continue;
+
+            $nome = "Pedido #" . $pedido['idpedido'];
+            $preco = $pedido['valor'];
+            $total_item = $preco * $quantidade;
+            $total += $total_item;
 
             echo "<tr>";
             echo "<td>$nome</td>";
-            echo "<td>R$ <span class='preco_venda'>$preco</span></td>";
-            echo "<td><input type='number' value='$quantidade' data-id='$id' class='quantidade' min='1'></td>";
-            echo "<td>R$ <span class='total_unitario'>$total_unitario</span></td>";
-            echo "<td><a href='remover.php?id=$id'>[Remover]</a></td>";
+            echo "<td>R$ $preco</td>";
+
+            // Formulário para atualizar quantidade
+            echo "<td>";
+            echo "<form action='atualiza_carrinho.php' method='post'>";
+            echo "<input type='hidden' name='id' value='$idpedido'>";
+            echo "<input type='number' name='quantidade' value='$quantidade' min='1'>";
+            echo "<input type='submit' value='Atualizar'>";
+            echo "</form>";
+            echo "</td>";
+
+            echo "<td>R$ $total_item</td>";
+            echo "<td><a href='remover.php?id=$idpedido'>[Remover]</a></td>";
             echo "</tr>";
         }
 
         echo "</table>";
-        echo "<h3>Total da compra: R$ <span id='total'>$total</span></h3>";
+        echo "<h3>Total da compra: R$ $total</h3>";
     }
     ?>
 
     <p>
-        <a href="index.php">[Continuar comprando]</a><br>
+        <a href="formpedido.php">[Continuar comprando]</a><br>
         <a href="gravar.php">[Finalizar compra]</a>
     </p>
-
-    <script>
-        function atualizar_total() {
-            let total = 0;
-            $('span.total_unitario').each(function() {
-                total += parseFloat($(this).text());
-            });
-            $('#total').text(total);
-        }
-
-        function somar() {
-            const linha = $(this).closest('tr');
-            const preco_unitario = parseFloat(linha.find('span.preco_venda').text());
-            const quantidade = parseInt($(this).val());
-            const id = $(this).data('id');
-
-            const total = preco_unitario * quantidade;
-            linha.find('span.total_unitario').text(total);
-            atualizar_total();
-
-            const dados = new URLSearchParams();
-            dados.append('id', id);
-            dados.append('quantidade', quantidade);
-
-            fetch('atualiza_carrinho.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: dados.toString()
-            });
-        }
-
-        $("input[type='number']").change(somar);
-    </script>
 </body>
 </html>
