@@ -19,14 +19,14 @@ $adm = $_SESSION['adm'];
 
     <?php if ($adm == '1'): ?>
         <ul>
-            <li><a href="formusuario.php">CADASTRAR USUÁRIO</a></li>
+            <li><a href="formusuario.php">CADASTRAR USUÁRIO.</a></li>
             <li><a href="listarusuarios.php">USUÁRIOS CADASTRADOS</a></li>
             <li><a href="listarpedido.php">PEDIDOS CADASTRADOS</a></li>
-            <li><a href="formprodutos.php">CADASTRAR PRODUTOS</a></li>
+            <li><a href="formprodutos.php">CADASTRAR PRODUTOS.</a></li>
             <li><a href="listarprodutos.php">PRODUTOS CADASTRADOS</a></li>
             <li><a href="formpromocao.php">CADASTRAR PROMOÇÃO</a></li>
             <li><a href="listarpromocao.php">PROMOÇÕES CADASTRADAS</a></li>
-            <li><a href="formcategoria.php">CADASTRAR CATEGORIA</a></li>
+            <li><a href="formcategoria.php">CADASTRAR CATEGORIA.</a></li>
             <li><a href="listarcategoria.php">CATEGORIAS CADASTRADAS</a></li>
         </ul>
     <?php endif; ?>

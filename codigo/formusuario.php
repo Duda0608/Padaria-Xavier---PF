@@ -44,7 +44,7 @@
             <div class="mb-3"> <label for="telefone" class="formusu">TELEFONE</label> <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(00) 00000-0000" value="<?= $telefone ?>"> </div>
             <div class="mb-3"> <label for="endereco" class="formusu">ENDEREÇO</label> <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Rua, número, bairro" value="<?= $endereco ?>"> </div>
             <div class="mb-3"> <label for="email" class="formusu">E-MAIL</label> <input type="email" class="form-control" id="email" name="email" placeholder="seu@email.com" value="<?= $email ?>"> </div>
-            <div class="mb-3"> <label for="senha" class="formusu">SENHA</label> <input type="password" class="form-control" id="senha" name="senha" placeholder="********" value="<?= $senha ?>"> </div> <a href="#" class="link">Não tem conta? Cadastre-se aqui</a>
+            <div class="mb-3"> <label for="senha" class="formusu">SENHA</label> <input type="password" class="form-control" id="senha" name="senha" placeholder="********" value="<?= $senha ?>"> </div> <a href="#" class="link">Ja tem conta? Entre aqui</a>
             <button type="submit" class="btn-custom"><?= $botao ?></button>
         </form>
         <footer>Sistema de Acesso Seguro</footer>

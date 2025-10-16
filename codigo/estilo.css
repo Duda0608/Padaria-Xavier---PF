@@ -20,7 +20,7 @@ li {
 /* Estilo dos links */
 a {
     text-decoration: none;
-    color: #234F38;
+    color: #87968e;
     font-weight: bold;
     font-size: 16px;
     padding: 6px 12px;
@@ -228,20 +228,21 @@ footer {
     margin-top: 1.5rem;
 }
 
-        footer {
-            text-align: center;
-            color: #d1d1d1;
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
-        }
+.footer {
+    text-align: center;
+    color: #d1d1d1;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
 
 
- /* Página Sobre Nós */
+/* Página Sobre Nós */
 
 .sobre-container {
     display: flex;
     width: 100%;
-    height: 100vh; /* ocupa toda a altura da tela */
+    height: 100vh;
+    /* ocupa toda a altura da tela */
     margin: 0 auto;
     overflow: hidden;
     background-color: #fff;
@@ -254,17 +255,21 @@ footer {
 .sobre-imagem img {
     width: 100%;
     height: 100%;
-    object-fit: cover;/* cobre toda a div sem distorcer */
-    object-position: 15% 10%;/* mais para esquerda e um pouco para cima */
+    object-fit: cover;
+    /* cobre toda a div sem distorcer */
+    object-position: 15% 10%;
+    /* mais para esquerda e um pouco para cima */
 }
 
 .sobre-texto {
     flex: 1;
-    padding: 80px 60px;            /* mais espaço interno para o texto */
+    padding: 80px 60px;
+    /* mais espaço interno para o texto */
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: rgba(255, 255, 255, 0.9); /* fundo semi-transparente para destacar */
+    background-color: rgba(255, 255, 255, 0.9);
+    /* fundo semi-transparente para destacar */
 }
 
 .sobre-texto h1 {
@@ -286,10 +291,13 @@ footer {
         flex-direction: column;
         height: auto;
     }
+
     .sobre-imagem img {
         height: 400px;
-        object-position: center; /* centraliza a imagem em telas médias */
+        object-position: center;
+        /* centraliza a imagem em telas médias */
     }
+
     .sobre-texto {
         padding: 40px 30px;
         text-align: center;
@@ -298,12 +306,82 @@ footer {
 
 @media (max-width: 480px) {
     .sobre-imagem img {
-        height: 250px; /* altura menor para celulares pequenos */
+        height: 250px;
+        /* altura menor para celulares pequenos */
     }
+
     .sobre-texto h1 {
         font-size: 28px;
     }
+
     .sobre-texto p {
         font-size: 14px;
     }
+}
+
+
+
+.body {
+    background-color: #2E4A2B;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-custom {
+    background: #3b5a36;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(44, 44, 44, 0.15);
+    padding: 32px 28px;
+    width: 100%;
+    max-width: 370px;
+}
+
+.form-label,
+.form-control,
+.form-text,
+.card-title {
+    color: #fff;
+}
+
+.form-control {
+    background: #2E4A2B;
+    border: 1px solid #c4a574;
+    color: #fff;
+}
+
+.form-control:focus {
+    border-color: #c4a574;
+    box-shadow: 0 0 0 0.2rem rgba(196, 165, 116, 0.25);
+    background: #2E4A2B;
+    color: #fff;
+}
+
+.btn-custom {
+    background-color: #c4a574;
+    color: #2E4A2B;
+    font-weight: 600;
+    border: none;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-custom:hover {
+    background-color: #d4c5a9;
+    color: #2E4A2B;
+}
+
+.card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.card-subtitle {
+    font-size: 1rem;
+    color: #e8dcc0;
+    text-align: center;
+    margin-bottom: 18px;
 }
