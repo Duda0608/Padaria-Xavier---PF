@@ -10,19 +10,19 @@ $lista = listarcategoria($conexao);
 <table border="1" cellpadding="5">
     <tr>
         <th>ID</th>
-        <th>NOME</th>
         <th>DESCRIÇÃO</th>
+        <th>NOME</th>
         <th>AÇÕES</th>
     </tr>
     <?php foreach ($lista as $categoria) {
         $idcategoria = $categoria['idcategoria'];
-            $nome = $categoria['nome'];
             $descricao = $categoria['descricao'];
+            $nome = $categoria['nome'];
            
             echo "<tr>";
             echo "<td>$idcategoria</td>";
-            echo "<td>$nome</td>";
             echo "<td>$descricao</td>";
+            echo "<td>$nome</td>";
             echo "<td><a href='formcategoria.php?id=$idcategoria'>Editar</a></td>";
             echo "<td><a href='deletarcategoria.php?id=$idcategoria'>Excluir</a></td>";
             echo "</tr>";
