@@ -39,7 +39,6 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`tb_pedidos` (
   `idpedido` INT(11) NOT NULL AUTO_INCREMENT,
-  `nomepedido` VARCHAR(45) NOT NULL,
   `valor` DECIMAL(10,2) NOT NULL,
   `data` DATE NOT NULL,
   `pagamento` VARCHAR(22) NOT NULL,
