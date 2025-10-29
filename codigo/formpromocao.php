@@ -45,7 +45,7 @@ if (isset($_GET['id'])) {
   <form id="formpromocao" action="salvarpromocao.php?id=<?php echo $id; ?>" method="post">
     DATA INÍCIO: <input type="date" name="datainicio" value="<?php echo $datainicio; ?>"><br>
     DATA FINAL: <input type="date" name="datafinal" value="<?php echo $datafinal; ?>"><br>
-    VALOR: <input type="text" name="valor" value="<?php echo $valor; ?>"><br>
+    VALOR: <input type="number" name="valor" max="99999999999" value="<?php echo $valor; ?>"><br>
 
     <?php
     require_once "conexao.php";
