@@ -8,14 +8,14 @@ require_once "funcoes.php";
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Carrinho</title>
+    <title>CARRINHO</title>
 </head>
 <body>
-    <h2>Seu Carrinho</h2>
+    <h2>SEU CARRINHO</h2>
 
     <?php
     if (empty($_SESSION['carrinho'])) {
-        echo "Carrinho vazio";
+        echo "CARRINHO VAZIO";
     } else {
         $total = 0;
         echo "<table border='1'>";
@@ -61,8 +61,8 @@ require_once "funcoes.php";
     ?>
 
     <p>
-        <a href="formpedido.php">[Continuar comprando]</a><br>
-        <a href="gravar.php">[Finalizar compra]</a>
+        <a href="formpedido.php">[CONTINUAR COMPRANDO]</a><br>
+        <a href="gravar.php">[FINALIZAR COMPRA]</a>
     </p>
 </body>
 </html>

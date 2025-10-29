@@ -34,15 +34,15 @@ if (isset($_GET['id'])) {
 <body>
     <div class="card card-custom mx-auto">
         <div class="card-body">
-            <h2 class="card-title">Categoria</h2>
-            <div class="card-subtitle mb-2">Preencha as informações abaixo</div>
+            <h2 class="card-title">CATEGORIA</h2>
+            <div class="card-subtitle mb-2">PREENCHA AS INFORMAÇÕES ABAIXO</div>
             <form action="salvarcategoria.php?id=<?php echo $id; ?>" method="post">
                  <div class="mb-3">
-                    <label for="descricao" class="form-label">Descrição</label>
+                    <label for="descricao" class="form-label">DESCRIÇÃO</label>
                     <input type="text" class="form-control" id="descricao" name="descricao" value="<?php echo htmlspecialchars($descricao); ?>" required>
                 </div>
                 <div class="mb-3">
-                    <label for="nome" class="form-label">Nome</label>
+                    <label for="nome" class="form-label">NOME</label>
                     <input type="text" class="form-control" id="nome" name="nome" value="<?php echo htmlspecialchars($nome); ?>" required>
                
                 </div>
