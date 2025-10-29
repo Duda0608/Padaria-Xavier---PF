@@ -38,14 +38,14 @@ if (isset($_GET['id'])) {
             <div class="card-subtitle mb-2">Preencha as informações abaixo</div>
             <form action="salvarcategoria.php?id=<?php echo $id; ?>" method="post">
                  <div class="mb-3">
+                    <label for="nome" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="nome" name="nome" value="<?php echo htmlspecialchars($nome); ?>" required>
+                </div>
+                 <div class="mb-3">
                     <label for="descricao" class="form-label">Descrição</label>
                     <input type="text" class="form-control" id="descricao" name="descricao" value="<?php echo htmlspecialchars($descricao); ?>" required>
                 </div>
-                <div class="mb-3">
-                    <label for="nome" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="nome" name="nome" value="<?php echo htmlspecialchars($nome); ?>" required>
-               
-                </div>
+
                 <button type="submit" class="btn btn-custom"><?php echo $botao; ?></button>
             </form>
         </div>

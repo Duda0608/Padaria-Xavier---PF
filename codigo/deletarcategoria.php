@@ -1,8 +1,8 @@
 <?php
 require_once "conexao.php";
 
-if (isset($_GET['idcategoria'])) {
-    $id = $_GET['idcategoria'];
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
 
     $sql = "DELETE FROM tb_categorias WHERE idcategoria = $id";
 
@@ -11,7 +11,8 @@ if (isset($_GET['idcategoria'])) {
     header("Location: listarcategoria.php");
     exit;
 } else {
-    echo "idcategoria não fornecido.";
+    echo "Não existe categoria.<br><br>";
+    echo '<a href="formcategoria.php">Cadastrar Categoria</a>';
     exit;
 }
 ?>
