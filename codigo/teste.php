@@ -1,238 +1,271 @@
 <?php
 require_once "verificarlogado.php";
+require_once "funcoes.php";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Usuários</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <title>Cardápio - Xavier</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(120deg, #e8dcc0 0%, #d4c5a9 60%, #2E4A2B 100%);
-            font-family: 'Inter', Arial, sans-serif;
-            color: #2E4A2B;
-            min-height: 100vh;
-            margin: 0;
+            background-color: #fff;
+            font-family: 'Inter', sans-serif;
         }
-
-        .main-card {
-            background: rgba(255,255,255,0.97);
-            border-radius: 24px;
-            box-shadow: 0 8px 32px rgba(44, 74, 43, 0.13);
-            padding: 48px 32px 32px 32px;
-            max-width: 1100px;
-            margin: 48px auto 0 auto;
+        .navbar {
+            background-color: #2E4A2B;
         }
-
-        .titulo-usuarios {
+        .navbar-brand {
+            color: #fff;
             font-family: 'Playfair Display', serif;
-            color: #2E4A2B;
-            font-size: 2.6rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-align: center;
-            margin-bottom: 36px;
-            text-shadow: 0 2px 8px #e8dcc0;
+            font-size: 1.8rem;
         }
-
-        .tabela-usuarios {
-            background: #fff;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 2px 16px rgba(44, 74, 43, 0.08);
+        .navbar-brand span {
+            color: #c4a574;
         }
-
-        .tabela-usuarios thead tr {
-            background: #2E4A2B;
-            color: #e8dcc0;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.13rem;
+        .nav-link {
+            color: #fff !important;
+            text-transform: uppercase;
+            font-size: 0.9rem;
             letter-spacing: 1px;
         }
-
-        .tabela-usuarios tbody tr {
-            transition: box-shadow 0.2s, transform 0.2s;
-        }
-
-        .tabela-usuarios tbody tr:hover {
-            box-shadow: 0 2px 12px #2E4A2B33;
-            transform: scale(1.01);
-            background: #e8dcc0 !important;
-        }
-
-        .tabela-usuarios tbody tr:nth-of-type(odd) {
-            background-color: #f5f3ee;
-        }
-
-        .tabela-usuarios tbody tr:nth-of-type(even) {
-            background-color: #d4c5a9;
-        }
-
-        .tabela-usuarios td, .tabela-usuarios th {
-            vertical-align: middle;
-            padding: 16px 12px;
-            border: none;
-        }
-
-        .btn-editar {
-            background: #2E4A2B;
+        .banner {
+            background-image: url('img/banner-cafe.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .categoria {
+            font-weight: bold;
+            color: #2E4A2B;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .produto-card {
             border: none;
-            border-radius: 6px;
-            padding: 7px 22px;
-            font-size: 1rem;
-            font-family: 'Inter', Arial, sans-serif;
-            font-weight: 500;
-            margin: 0 2px;
-            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-            box-shadow: 0 1px 4px rgba(44, 74, 43, 0.07);
-        }
-
-        .btn-editar:hover {
-            background: #c4a574;
-            color: #2E4A2B;
-            box-shadow: 0 2px 8px #c4a57455;
-        }
-
-        .btn-excluir {
-            background: #c4a574;
-            color: #2E4A2B;
-            border: none;
-            border-radius: 6px;
-            padding: 7px 22px;
-            font-size: 1rem;
-            font-family: 'Inter', Arial, sans-serif;
-            font-weight: 500;
-            margin: 0 2px;
-            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-            box-shadow: 0 1px 4px rgba(44, 74, 43, 0.07);
-        }
-
-        .btn-excluir:hover {
-            background: #2E4A2B;
-            color: #fff;
-            box-shadow: 0 2px 8px #2E4A2B55;
-        }
-
-        .btn-sair {
-            background: #2E4A2B;
-            color: #fff;
-            padding: 14px 44px;
-            border-radius: 12px;
-            font-family: 'Inter', Arial, sans-serif;
-            font-size: 1.13rem;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: 0 2px 12px rgba(44, 74, 43, 0.13);
-            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-            margin-top: 32px;
-        }
-
-        .btn-sair:hover {
-            background: #c4a574;
-            color: #2E4A2B;
-            box-shadow: 0 4px 16px #c4a57455;
-        }
-
-        .alert-warning {
-            background: #fffbe6;
-            color: #856404;
-            border: 1px solid #ffeeba;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 32px;
             text-align: center;
-            font-size: 1.13rem;
-            font-family: 'Inter', Arial, sans-serif;
+            background-color: #fff;
         }
-
-        @media (max-width: 900px) {
-            .main-card {
-                padding: 32px 8px 24px 8px;
-            }
-            .titulo-usuarios {
-                font-size: 1.5rem;
-            }
+        .produto-card img {
+            width: 100%;
+            border-radius: 4px;
         }
-        @media (max-width: 600px) {
-            .main-card {
-                padding: 16px 2px 12px 2px;
-            }
-            .titulo-usuarios {
-                font-size: 1.1rem;
-            }
-            .btn-sair {
-                padding: 10px 18px;
-                font-size: 1rem;
-            }
-            .tabela-usuarios td, .tabela-usuarios th {
-                padding: 10px 4px;
-            }
+        .produto-nome {
+            font-weight: 600;
+            margin-top: 10px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        .produto-preco {
+            color: #2E4A2B;
+            font-weight: bold;
+        }
+        .btn-add {
+            background-color: #2E4A2B;
+            color: #fff;
+            border: none;
+            margin-top: 5px;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        .btn-add:hover {
+            background-color: #c4a574;
+        }
+        .pedido-box {
+            background-color: #f8f5f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+        .btn-custom {
+            background-color: #2E4A2B;
+            color: #fff;
+            border: none;
+        }
+        .btn-custom:hover {
+            background-color: #c4a574;
+        }
+        .list-group-item.active {
+            background-color: #2E4A2B;
+            border-color: #2E4A2B;
+        }
+        #mensagemFinal {
+            display: none;
+            background-color: #e8dcc0;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            color: #2E4A2B;
+            font-weight: bold;
         }
     </style>
 </head>
-
 <body>
-    <div class="main-card">
-        <h1 class="titulo-usuarios mb-4">LISTA DE USUÁRIOS</h1>
-        <?php
-        require_once "conexao.php";
-        require_once "funcoes.php";
 
-        $lista_usuario = listarusuario($conexao);
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">xavier<span>*</span></a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#">Página Inicial</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Cardápio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Promoção</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Pedidos</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-        if (count($lista_usuario) == 0) {
-            echo "<div class='alert alert-warning text-center'>Não existe usuários cadastrados.</div>";
-        } else {
-        ?>
-            <div class="table-responsive rounded-4 shadow-sm">
-                <table class="table align-middle table-hover tabela-usuarios">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>NOME</th>
-                            <th>CPF</th>
-                            <th>TELEFONE</th>
-                            <th>ENDEREÇO</th>
-                            <th>EMAIL</th>
-                            <th colspan="2" class="text-center">AÇÃO</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    foreach ($lista_usuario as $usuario) {
-                        $idusuario = $usuario['idusuario'];
-                        $nome = $usuario['nome'];
-                        $cpf = $usuario['cpf'];
-                        $telefone = $usuario['telefone'];
-                        $endereco = $usuario['endereco'];
-                        $email = $usuario['email'];
+<div class="banner">
+    <div>Cardápio<br><small style="font-size:1rem;">Confira nossos produtos</small></div>
+</div>
 
-                        echo "<tr>";
-                        echo "<td>$idusuario</td>";
-                        echo "<td>$nome</td>";
-                        echo "<td>$cpf</td>";
-                        echo "<td>$telefone</td>";
-                        echo "<td>$endereco</td>";
-                        echo "<td>$email</td>";
-                        echo "<td class='text-center'><a class='btn btn-sm btn-editar' href='formusuario.php?id=$idusuario'>Editar</a></td>";
-                        echo "<td class='text-center'><a class='btn btn-sm btn-excluir' href='deletarusuario.php?id=$idusuario'>Excluir</a></td>";
-                        echo "</tr>";
-                    }
-                    ?>
-                    </tbody>
-                </table>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-3">
+            <input type="text" class="form-control mb-3" placeholder="O que você procura?">
+            <ul class="list-group" id="categorias">
+                <li class="list-group-item active" data-categoria="paes">Pães</li>
+                <li class="list-group-item" data-categoria="sanduiches">Sanduíches e Salgados</li>
+                <li class="list-group-item" data-categoria="bolos">Bolos</li>
+                <li class="list-group-item" data-categoria="bebidas">Café e Bebidas</li>
+                <li class="list-group-item" data-categoria="doces">Doces Finos</li>
+            </ul>
+        </div>
+
+        <div class="col-md-9">
+            <div id="produtos" class="row g-4"></div>
+
+            <div class="pedido-box mt-5" id="carrinhoBox">
+                <h5 class="text-center mb-4">Carrinho</h5>
+                <ul id="listaCarrinho" class="list-group mb-3"></ul>
+                <div class="text-center mb-3">
+                    <strong>Valor Total:</strong> R$ <span id="valorTotal">0,00</span>
+                </div>
+                <div class="text-center">
+                    <button id="finalizarPedido" class="btn btn-custom px-5 py-2">Finalizar Pedido</button>
+                </div>
             </div>
-        <?php
-        }
-        ?>
-        <div class="text-center">
-            <a class="btn btn-sair" href="deslogar.php">SAIR</a>
+
+            <div id="mensagemFinal" class="mt-4">
+                Pedido sendo preparado...<br>
+                <a href="#" class="text-decoration-none" style="color:#2E4A2B;">Rastrear pedido</a>
+            </div>
         </div>
     </div>
+</div>
+
+<script>
+const produtos = {
+    paes: [
+        {nome: "Pão Francês", preco: 10.00, img: "img/pao1.jpg"},
+        {nome: "Pão Integral", preco: 12.00, img: "img/pao2.jpg"},
+        {nome: "Pão de Queijo", preco: 11.00, img: "img/pao3.jpg"},
+        {nome: "Croissant Simples", preco: 14.00, img: "img/pao4.jpg"},
+        {nome: "Pão Doce com Coco Ralado", preco: 13.00, img: "img/pao5.jpg"}
+    ],
+    sanduiches: [
+        {nome: "Misto Quente", preco: 15.00, img: "img/sanduiche1.jpg"},
+        {nome: "Sanduíche Natural", preco: 14.00, img: "img/sanduiche2.jpg"},
+        {nome: "Bauru", preco: 16.00, img: "img/sanduiche3.jpg"},
+        {nome: "Coxinha de Frango", preco: 9.00, img: "img/salgado1.jpg"},
+        {nome: "Empada", preco: 8.00, img: "img/salgado2.jpg"},
+        {nome: "Pastel Assado", preco: 10.00, img: "img/salgado3.jpg"}
+    ],
+    bolos: [
+        {nome: "Fatia de Bolo de Chocolate", preco: 9.00, img: "img/bolo1.jpg"},
+        {nome: "Bolo Red Velvet", preco: 12.00, img: "img/bolo2.jpg"},
+        {nome: "Bolo Inteiro Caseiro", preco: 35.00, img: "img/bolo3.jpg"},
+        {nome: "Cheesecake", preco: 14.00, img: "img/bolo4.jpg"}
+    ],
+    bebidas: [
+        {nome: "Café Coado", preco: 6.00, img: "img/bebida1.jpg"},
+        {nome: "Café Expresso", preco: 7.00, img: "img/bebida2.jpg"},
+        {nome: "Capuccino", preco: 9.00, img: "img/bebida3.jpg"},
+        {nome: "Chocolate Quente", preco: 10.00, img: "img/bebida4.jpg"},
+        {nome: "Suco Natural de Laranja", preco: 8.00, img: "img/bebida5.jpg"},
+        {nome: "Coca-Cola", preco: 6.00, img: "img/bebida6.jpg"},
+        {nome: "Guaraná", preco: 6.00, img: "img/bebida7.jpg"},
+        {nome: "Água Mineral com Gás", preco: 4.00, img: "img/bebida8.jpg"},
+        {nome: "Água Mineral sem Gás", preco: 4.00, img: "img/bebida9.jpg"}
+    ],
+    doces: [
+        {nome: "Brigadeiro Gourmet", preco: 5.00, img: "img/doce1.jpg"},
+        {nome: "Camafeu de Nozes", preco: 6.00, img: "img/doce2.jpg"},
+        {nome: "Mini Torta de Limão", preco: 7.00, img: "img/doce3.jpg"},
+        {nome: "Trufa Artesanal", preco: 6.00, img: "img/doce4.jpg"},
+        {nome: "Bombom de Uva", preco: 5.00, img: "img/doce5.jpg"}
+    ]
+};
+
+let carrinho = [];
+
+function carregarProdutos(categoria) {
+    const container = document.getElementById('produtos');
+    container.innerHTML = '';
+    produtos[categoria].forEach((p, index) => {
+        container.innerHTML += `
+            <div class="col-md-4">
+                <div class="produto-card">
+                    <img src="${p.img}" alt="${p.nome}">
+                    <div class="produto-nome">${p.nome}</div>
+                    <div class="produto-preco">R$ ${p.preco.toFixed(2).replace('.', ',')}</div>
+                    <button class="btn-add" onclick="adicionarCarrinho('${p.nome}', ${p.preco})">Adicionar</button>
+                </div>
+            </div>
+        `;
+    });
+}
+
+function adicionarCarrinho(nome, preco) {
+    carrinho.push({nome, preco});
+    atualizarCarrinho();
+}
+
+function atualizarCarrinho() {
+    const lista = document.getElementById('listaCarrinho');
+    const total = document.getElementById('valorTotal');
+    lista.innerHTML = '';
+    let soma = 0;
+    carrinho.forEach(item => {
+        lista.innerHTML += `<li class="list-group-item d-flex justify-content-between">${item.nome}<span>R$ ${item.preco.toFixed(2).replace('.', ',')}</span></li>`;
+        soma += item.preco;
+    });
+    total.textContent = soma.toFixed(2).replace('.', ',');
+}
+
+document.querySelectorAll('#categorias .list-group-item').forEach(item => {
+    item.addEventListener('click', function() {
+        document.querySelectorAll('#categorias .list-group-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+        carregarProdutos(this.dataset.categoria);
+    });
+});
+
+document.getElementById('finalizarPedido').addEventListener('click', () => {
+    document.getElementById('carrinhoBox').style.display = 'none';
+    document.getElementById('mensagemFinal').style.display = 'block';
+});
+
+carregarProdutos('paes');
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+Esse código mantém o mesmo layout e estilo da versão anterior, mas agora:
+
+Cada produto pode ser adicionado automaticamente ao carrinho.
+O carrinho mostra os itens e o valor total.
+Ao clicar em Finalizar Pedido, aparece a mensagem “Pedido sendo preparado... Rastrear pedido”.
