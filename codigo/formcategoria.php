@@ -38,6 +38,7 @@ if (isset($_GET['id'])) {
             <div class="card-subtitle mb-2">PREENCHA AS INFORMAÇÕES ABAIXO</div>
             <form action="salvarcategoria.php?id=<?php echo $id; ?>" method="post">
                  <div class="mb-3">
+<<<<<<< HEAD
                     <label for="descricao" class="form-label">DESCRIÇÃO</label>
                     <input type="text" class="form-control" id="descricao" name="descricao" value="<?php echo htmlspecialchars($descricao); ?>" required>
                 </div>
@@ -46,6 +47,16 @@ if (isset($_GET['id'])) {
                     <input type="text" class="form-control" id="nome" name="nome" value="<?php echo htmlspecialchars($nome); ?>" required>
                
                 </div>
+=======
+                    <label for="nome" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="nome" name="nome" value="<?php echo htmlspecialchars($nome); ?>" required>
+                </div>
+                 <div class="mb-3">
+                    <label for="descricao" class="form-label">Descrição</label>
+                    <input type="text" class="form-control" id="descricao" name="descricao" value="<?php echo htmlspecialchars($descricao); ?>" required>
+                </div>
+
+>>>>>>> 65dc31358b907ab4779b51bc2e7844d0dbdd52b3
                 <button type="submit" class="btn btn-custom"><?php echo $botao; ?></button>
             </form>
         </div>
