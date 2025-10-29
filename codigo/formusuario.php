@@ -51,8 +51,12 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="./jquery.mask.min.js"></script>
+
     <script>
         $(document).ready(function() {
+            $('#cpf').mask('000.000.000-00');
+            $('#telefone').mask('(00) 00000-0000');
             $("#formusuario").validate({
                 rules: {
                     nome: {
@@ -103,7 +107,7 @@
                     senha: {
                         required: "Informe uma senha."
                     }
-                }
+                }            
             });
         });
     </script>
