@@ -60,6 +60,11 @@ require_once "verificarlogado.php";
     }
         ?>
         </table>
+
+    <br>
+    <a href="home.php">SAIR</a>
+    <br><br>
+
         </body>
 
 </html>

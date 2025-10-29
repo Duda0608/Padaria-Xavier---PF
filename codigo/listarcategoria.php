@@ -31,6 +31,11 @@ $lista = listarcategoria($conexao);
     
         ?>
         </table>
+    
+    <br>
+    <a href="home.php">SAIR</a>
+    <br><br>
+
         </body>
 
 </html>
