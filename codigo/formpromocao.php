@@ -41,11 +41,11 @@ if (isset($_GET['id'])) {
 </head>
 
 <body>
-  <h3>Salvar Promoção</h3>
+  <h3>SALVAR PROMOÇÃO</h3>
   <form id="formpromocao" action="salvarpromocao.php?id=<?php echo $id; ?>" method="post">
-    Data Início: <input type="date" name="datainicio" value="<?php echo $datainicio; ?>"><br>
-    Data Final: <input type="date" name="datafinal" value="<?php echo $datafinal; ?>"><br>
-    Valor: <input type="text" name="valor" value="<?php echo $valor; ?>"><br>
+    DATA INÍCIO: <input type="date" name="datainicio" value="<?php echo $datainicio; ?>"><br>
+    DATA FINAL: <input type="date" name="datafinal" value="<?php echo $datafinal; ?>"><br>
+    VALOR: <input type="number" name="valor" max="99999999999" value="<?php echo $valor; ?>"><br>
 
     <?php
     require_once "conexao.php";
@@ -53,7 +53,7 @@ if (isset($_GET['id'])) {
     $produto = mysqli_query($conexao, "SELECT idprodutos, nome FROM tb_produtos");
     ?>
 
-    produto:<br>
+    PRODUTO:<br>
     <select name="tb_produtos_idprodutos">
       <!-- <option value="">Selecione um Produto</option> -->
       <?php while ($cat = mysqli_fetch_assoc($produto)) { ?>

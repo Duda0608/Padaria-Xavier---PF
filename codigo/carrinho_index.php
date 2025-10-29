@@ -8,10 +8,10 @@ session_start();
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Produtos</title>
+    <title>LISTA DE PRODUTOS</title>
 </head>
 <body>
-    <h2>Produtos disponíveis</h2>
+    <h2>PRODUTOS DISPONÍVEIS</h2>
 
     <a href="destruir_carrinho.php">[Esvaziar Carrinho]</a><br>
     <a href="carrinho.php">[Ver Carrinho]</a><br><br>

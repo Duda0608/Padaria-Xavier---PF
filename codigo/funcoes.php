@@ -601,7 +601,7 @@ function editarpromocao($conexao, $datainicio, $datafinal, $valor, $tb_produtos_
     $sql = "UPDATE tb_promocaos SET datainicio=?, datafinal=?, valor=?, tb_produtos_idprodutos=? WHERE idpromocao=?";
     $comando = mysqli_prepare($conexao, $sql);
 
-    mysqli_stmt_bind_param($comando, 'ssdii', $datainicio, $datafinal, $valor, $idpromocao, $tb_produtos_idprodutos);
+    mysqli_stmt_bind_param($comando, 'ssdii', $datainicio, $datafinal, $valor, $tb_produtos_idprodutos, $idpromocao);
     $funcionou = mysqli_stmt_execute($comando);
     mysqli_stmt_close($comando);
 
