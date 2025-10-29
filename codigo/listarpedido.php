@@ -21,18 +21,18 @@ require_once "verificarlogado.php";
     $lista_pedido = listarpedido($conexao);
 
     if (count($lista_pedido) == 0) {
-        echo "Não há pedidos";
+        echo "NÃO HÁ PEDIDOS";
     } else {
     ?>
 
         <table border="1">
             <tr>
-                <td>id</td>
-                <td>valor</td>
-                <td>data</td>
-                <td>pagamento</td>
-                <td>entrega</td>
-                <td colspan="2">ação</td>
+                <td>ID</td>
+                <td>VALOR</td>
+                <td>DATA</td>
+                <td>PAGAMENTO</td>
+                <td>ENTREGA</td>
+                <td colspan="2">AÇÃO</td>
             </tr>
 
         <?php

@@ -34,6 +34,7 @@ $adm = $_SESSION['adm'];
     <ul>
         <a href="carrinho.php">MEU CARRINHO</a>
         <li><a href="formcomentario.php">CADASTRAR COMENTÁRIO</a></li>
+        <li><a href="listarcomentario.php">LISTAR COMENTÁRIO</a></li>
         <li><a href="formpedido.php">CADASTRAR PEDIDOS</a></li>
         <li><a href="sobrenos.php">SOBRE NÓS</a></li>
     </ul>
