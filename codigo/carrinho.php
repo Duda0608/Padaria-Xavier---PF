@@ -21,18 +21,18 @@ require_once "funcoes.php";
         echo "<table border='1'>";
         echo "<tr><th>Pedido</th><th>Valor</th><th>Quantidade</th><th>Total</th><th>Ação</th></tr>";
 
-        foreach ($_SESSION['carrinho'] as $idpedido => $quantidade) {
+        foreach ($_SESSION['carrinho'] as $iditem_pedido => $quantidade) {
             if (is_array($quantidade) || $quantidade < 1) {
                 $quantidade = 1;
             }
 
-            $sql = "SELECT * FROM tb_pedidos WHERE idpedido = $idpedido";
+            $sql = "SELECT * FROM tb_pedidos WHERE id_item_pedidos = $iditem_pedido";
             $res = mysqli_query($conexao, $sql);
             $pedido = mysqli_fetch_array($res);
 
             if ($pedido == null) continue;
 
-            $nome = "Pedido #" . $pedido['idpedido'];
+            $nome = "Pedido #" . $pedido['iditem_pedido'];
             $preco = $pedido['valor'];
             $total_item = $preco * $quantidade;
             $total += $total_item;
@@ -44,7 +44,7 @@ require_once "funcoes.php";
             // Formulário para atualizar quantidade
             echo "<td>";
             echo "<form action='atualiza_carrinho.php' method='post'>";
-            echo "<input type='hidden' name='id' value='$idpedido'>";
+            echo "<input type='hidden' name='id' value='$iditem_pedido'>";
             echo "<input type='number' name='quantidade' value='$quantidade' min='1'>";
             echo "<input type='submit' value='Atualizar'>";
             echo "</form>";

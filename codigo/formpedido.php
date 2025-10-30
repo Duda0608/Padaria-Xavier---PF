@@ -43,7 +43,7 @@ if (isset($_GET['id'])) {
     <a href="destruir_carrinho.php">destruir carrinho</a>
 
     <form action="adicionar.php" method="post">
-    
+
         <h1>CADASTRAR PEDIDOS</h1>
         <ul>
             <?php
@@ -52,26 +52,28 @@ if (isset($_GET['id'])) {
             foreach ($lista_produtos as $listarprodutos):
             ?>
                 <li>
-                    <input type="checkbox" name="idprodutos[]" value="<?php echo $ $lista_produtos['idprodutos']; ?>"> R$ <span><?php echo $lista_produtos['preco_venda']; ?><span> -- <?php echo $lista_produtos["nome"]; ?>
+                    <input type="checkbox" name="idprodutos[]" value="<?php echo $listarprodutos['idprodutos']; ?>">
+                    R$ <span><?php echo $listarprodutos['preco_venda']; ?></span> 
+                    <?php echo $listarprodutos['nome_produto']; ?>
 
-                    <input type="number" name="quantidade[<?php echo $lista_produtos['idprodutos'] ?>]" value="1" min="1">
-                <?php endforeach; ?>
+                    <input type="number" name="quantidade[<?php echo $listarprodutos['idprodutos']; ?>]" value="1" min="1">
                 </li>
+            <?php endforeach; ?>
 
-        </ul>
-        <input type="submit" value="adicionar selecionados ao carrinho">
-    </form>   
+
+            <input type="submit" value="adicionar selecionados ao carrinho">
+    </form>
 
 
     <!-- [[[CHAMAR UMA FUNÇÃO QUE TRAZ TODOS OS PRODUTOS LÁ DO BANCO -->
-     <!-- [[[GUARDAR ISSO NUMA VARIÁVEL: $PRODUTOS -->
+    <!-- [[[GUARDAR ISSO NUMA VARIÁVEL: $PRODUTOS -->
 
-     <!-- FOR QUE IMPRIME TODOS OS PRODUTOS (EXEMPLO LÁ NO INDEX DO EXEMPLO-CARRINHO) -->
+    <!-- FOR QUE IMPRIME TODOS OS PRODUTOS (EXEMPLO LÁ NO INDEX DO EXEMPLO-CARRINHOggg) -->
 
 
-     <!-- DEPOIS QUE O USUÁRIO SELECIONAR OS PRODUTSO QUE ELE QUER, E PREENCHER A FORMA DE PAGAMENTO, LOCAL DE ENTREGA, ELE CLICA NO BOTÃO SALVAR -->
+    <!-- DEPOIS QUE O USUÁRIO SELECIONAR OS PRODUTSO QUE ELE QUER, E PREENCHER A FORMA DE PAGAMENTO, LOCAL DE ENTREGA, ELE CLICA NO BOTÃO SALVARvvvv -->
 
-     <!-- VOCÊ CRIA UM ARQUIVO QUE VAI SER CHAMADO NESSE MOMENTO, ESSE ARQUIVO QUE É CHAMADO ELE DEVE GRAVAR OS DADOS NA TABELA DO PEDIDO E DEPOIS NA TABELA DOS ITENS E PRONTO -->
+    <!-- VOCÊ CRIA UM ARQUIVO QUE VAI SER CHAMADO NESSE MOMENTO, ESSE ARQUIVO QUE É CHAMADO ELE DEVE GRAVAR OS DADOS NA TABELA DO PEDIDO E DEPOIS NA TABELA DOS ITENS E PRONTO -->
 
     <form action="salvarpedido.php?id=<?php echo $id; ?>" method="post">
         VALOR:<br>
