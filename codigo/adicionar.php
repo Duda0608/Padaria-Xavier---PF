@@ -5,8 +5,8 @@ if (!isset($_SESSION['carrinho'])) {
     $_SESSION['carrinho'] = [];
 }
 
-if (!empty($_POST['idproduto'])) {
-    $selecionados = $_POST['idproduto'];
+if (!empty($_POST['idprodutos'])) {
+    $selecionados = $_POST['idprodutos'];
 
     foreach ($selecionados as $id) {
         $quantidade = $_POST['quantidade'][$id];
