@@ -65,12 +65,12 @@
                     cpf: {
                         required: true,
                         minlength: 11,
-                        digits: true
+                        // digits: true
                     },
                     telefone: {
                         required: true,
                         minlength: 11,
-                        digits: true
+                        // digits: true
                     },
                     endereco: {
                         required: true

@@ -20,8 +20,8 @@ USE `mydb` ;
 CREATE TABLE IF NOT EXISTS `mydb`.`tb_usuarios` (
   `idusuario` INT(11) NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(200) NOT NULL,
-  `cpf` VARCHAR(11) NOT NULL,
-  `telefone` VARCHAR(11) NOT NULL,
+  `cpf` VARCHAR(14) NOT NULL,
+  `telefone` VARCHAR(15) NOT NULL,
   `endereco` VARCHAR(100) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `senha` VARCHAR(255) NOT NULL,

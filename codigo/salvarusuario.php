@@ -18,7 +18,8 @@ $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
 
 $id = $_GET['id'];
 
-
+// var_dump($_POST);
+// die;
 
 if ($id == 0) {
 
