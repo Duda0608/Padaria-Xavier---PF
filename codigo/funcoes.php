@@ -234,10 +234,17 @@ function deletarprodutos($conexao, $idprodutos){
 };
 
 function listarprodutos($conexao){
-    $sql = "SELECT idprodutos, tb_produtos.nome as nome_produto, preco_venda, tb_categorias.nome as nome_categoria FROM tb_produtos INNER JOIN tb_categorias ON tb_produtos.tbcategoria_idcategoria = tb_categorias.idcategoria";
+    $sql = "SELECT 
+                tb_produtos.idprodutos, 
+                tb_produtos.nome AS nome_produto, 
+                tb_produtos.preco_venda, 
+                tb_produtos.foto, 
+                tb_categorias.nome AS nome_categoria
+            FROM tb_produtos
+            INNER JOIN tb_categorias 
+                ON tb_produtos.tbcategoria_idcategoria = tb_categorias.idcategoria";
 
     $comando = mysqli_prepare($conexao, $sql);
-
     mysqli_stmt_execute($comando);
     $resultado = mysqli_stmt_get_result($comando);
 
@@ -248,8 +255,8 @@ function listarprodutos($conexao){
 
     mysqli_stmt_close($comando);
     return $lista_produto;
+}
 
-};
 
 function pesquisarprodutosnome($conexao, $nome) {
     $sql = "SELECT * FROM tb_produtos WHERE nome = ?";
