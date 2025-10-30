@@ -76,6 +76,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`tb_produtos` (
   `nome` VARCHAR(200) NOT NULL,
   `preco_venda` DECIMAL(10,2) NOT NULL,
   `tbcategoria_idcategoria` INT(11) NOT NULL,
+  `foto` VARCHAR(45) NULL,
   PRIMARY KEY (`idprodutos`),
   INDEX `fk_tb_produtos_tbcategoria1_idx` (`tbcategoria_idcategoria` ASC) VISIBLE,
   CONSTRAINT `fk_tb_produtos_tbcategoria1`
