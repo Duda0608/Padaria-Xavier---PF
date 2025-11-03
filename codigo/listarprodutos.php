@@ -63,8 +63,9 @@ require_once "verificarlogado.php";
 
 
 <?php } ?>
-
-    <a href="deslogar.php">SAIR</a>
+    
+    <br>
+    <a href="home.php">SAIR</a>
     <br><br>
 </body>
 
