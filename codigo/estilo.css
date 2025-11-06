@@ -35,13 +35,12 @@ a:hover {
     color: #ffffff;
 }
 
-
 .w-full h-full object-cover {
     position: absolute;
     left: 500px;
-
 }
 
+/* Login / Usuário */
 .corpousu {
     background-color: #2E4A2B;
     font-family: 'Inter', sans-serif;
@@ -80,6 +79,7 @@ a:hover {
     font-weight: 500;
 }
 
+/* Campos e botões */
 .form-control {
     background-color: transparent;
     border: 1px solid #d4c5a9;
@@ -95,21 +95,25 @@ a:hover {
     box-shadow: none;
 }
 
+/* Botão padrão */
 .btn-custom {
     background-color: #c4a574;
     color: #2E4A2B;
     font-weight: 600;
     border: none;
     width: 100%;
-    padding: 0.75rem;
+    padding: 10px;
     border-radius: 8px;
     transition: background-color 0.3s ease;
+    margin-top: 10px;
 }
 
 .btn-custom:hover {
     background-color: #d4c5a9;
+    color: #2E4A2B;
 }
 
+/* Links e rodapé */
 .link {
     color: #d1d1d1;
     text-align: center;
@@ -122,22 +126,17 @@ a:hover {
     color: #c4a574;
 }
 
-
-footer {
+footer,
+.footer {
     text-align: center;
     color: #d1d1d1;
     margin-top: 1.5rem;
     font-size: 0.9rem;
 }
 
-
-
-/* === FORMULÁRIO DE PRODUTOS === */
-
-/* Fundo e centralização */
+/* Formulário de produtos */
 .teste {
     background-color: #2E4A2B;
-    /* verde escuro */
     font-family: 'Inter', sans-serif;
     min-height: 100vh;
     display: flex;
@@ -147,10 +146,8 @@ footer {
     margin: 0;
 }
 
-/* Cartão principal */
 .cartaoproduto {
     background-color: #355E3B;
-    /* verde médio sólido */
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     padding: 2.5rem;
@@ -159,7 +156,6 @@ footer {
     text-align: center;
 }
 
-/* Título e subtítulo */
 .cartaoproduto h1 {
     font-family: 'Playfair Display', serif;
     color: #E8DCC0;
@@ -172,7 +168,6 @@ footer {
     margin-bottom: 2rem;
 }
 
-/* Rótulos */
 .formproduto {
     color: #E8DCC0;
     font-weight: 500;
@@ -182,7 +177,6 @@ footer {
     margin-bottom: 5px;
 }
 
-/* Campos de entrada */
 .controleproduto {
     width: 100%;
     background-color: #fff;
@@ -203,24 +197,6 @@ footer {
     box-shadow: 0 0 0 2px #c4a574;
 }
 
-/* Botão principal */
-.btn-custom {
-    background-color: #c4a574;
-    /* dourado */
-    color: #2E4A2B;
-    border: none;
-    border-radius: 6px;
-    padding: 10px;
-    font-weight: 600;
-    width: 100%;
-    transition: all 0.3s ease;
-}
-
-.btn-custom:hover {
-    background-color: #d4c5a9;
-}
-
-/* Texto do rodapé */
 .footer-text {
     color: #D1D1D1;
     font-size: 0.85rem;
@@ -228,21 +204,11 @@ footer {
     margin-top: 1.5rem;
 }
 
-.footer {
-    text-align: center;
-    color: #d1d1d1;
-    margin-top: 1.5rem;
-    font-size: 0.9rem;
-}
-
-
 /* Página Sobre Nós */
-
 .sobre-container {
     display: flex;
     width: 100%;
     height: 100vh;
-    /* ocupa toda a altura da tela */
     margin: 0 auto;
     overflow: hidden;
     background-color: #fff;
@@ -256,20 +222,16 @@ footer {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* cobre toda a div sem distorcer */
     object-position: 15% 10%;
-    /* mais para esquerda e um pouco para cima */
 }
 
 .sobre-texto {
     flex: 1;
     padding: 80px 60px;
-    /* mais espaço interno para o texto */
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: rgba(255, 255, 255, 0.9);
-    /* fundo semi-transparente para destacar */
 }
 
 .sobre-texto h1 {
@@ -295,7 +257,6 @@ footer {
     .sobre-imagem img {
         height: 400px;
         object-position: center;
-        /* centraliza a imagem em telas médias */
     }
 
     .sobre-texto {
@@ -307,7 +268,6 @@ footer {
 @media (max-width: 480px) {
     .sobre-imagem img {
         height: 250px;
-        /* altura menor para celulares pequenos */
     }
 
     .sobre-texto h1 {
@@ -319,8 +279,7 @@ footer {
     }
 }
 
-
-
+/* Cards (login, formulários pequenos) */
 .body {
     background-color: #2E4A2B;
     min-height: 100vh;
@@ -356,20 +315,6 @@ footer {
     box-shadow: 0 0 0 0.2rem rgba(196, 165, 116, 0.25);
     background: #2E4A2B;
     color: #fff;
-}
-
-.btn-custom {
-    background-color: #c4a574;
-    color: #2E4A2B;
-    font-weight: 600;
-    border: none;
-    width: 100%;
-    margin-top: 10px;
-}
-
-.btn-custom:hover {
-    background-color: #d4c5a9;
-    color: #2E4A2B;
 }
 
 .card-title {
