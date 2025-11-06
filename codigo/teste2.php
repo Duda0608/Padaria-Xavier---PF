@@ -7,7 +7,7 @@ require_once "funcoes.php";
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Carrinho - Xavier</title>
+    <title>Carrinho - </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
