@@ -1,10 +1,11 @@
 <?php
 require_once "verificarlogado.php";
 require_once "funcoes.php";
-require_once "conexao.php";
 
-if (isset($_GET['id'])) {
+if(isset($_GET['id'])) {
+    require_once "conexao.php";
     $id = $_GET['id'];
+
     $sql = "SELECT * FROM tb_pedidos WHERE idpedido = $id";
     $resultado = mysqli_query($conexao, $sql);
     $linha = mysqli_fetch_array($resultado);
@@ -13,6 +14,7 @@ if (isset($_GET['id'])) {
     $data = $linha['data'];
     $pagamento = $linha['pagamento'];
     $entrega = $linha['entrega'];
+
     $botao = "Atualizar Pedido";
 } else {
     $id = 0;
@@ -20,7 +22,8 @@ if (isset($_GET['id'])) {
     $data = "";
     $pagamento = "";
     $entrega = "";
-    $botao = "Cadastrar Pedido";
+
+    $botao = "Finalizar Pedido";
 }
 ?>
 <!DOCTYPE html>
@@ -29,8 +32,7 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cardápio - Xavier</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #fff;
@@ -64,7 +66,7 @@ if (isset($_GET['id'])) {
             color: #fff;
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
-            background-color: rgba(0, 0, 0, 0.4);
+            background-color: rgba(0,0,0,0.4);
         }
         .categoria {
             font-weight: bold;
@@ -72,7 +74,6 @@ if (isset($_GET['id'])) {
             margin-top: 30px;
             margin-bottom: 20px;
             text-transform: uppercase;
-            text-align: center;
         }
         .produto-card {
             border: none;
@@ -93,6 +94,12 @@ if (isset($_GET['id'])) {
             color: #2E4A2B;
             font-weight: bold;
         }
+        .pedido-box {
+            background-color: #f8f5f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
         .btn-custom {
             background-color: #2E4A2B;
             color: #fff;
@@ -101,32 +108,22 @@ if (isset($_GET['id'])) {
         .btn-custom:hover {
             background-color: #c4a574;
         }
-        .pedido-box {
-            background-color: #f8f5f0;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 40px;
-        }
-        .form-label {
-            color: #2E4A2B;
-            font-weight: 600;
-        }
     </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg">
-    <div class="container">
-        <a class="navbar-brand" href="#">xavier<span>*</span></a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="#">Página Inicial</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Cardápio</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Promoção</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Pedidos</a></li>
-            </ul>
-        </div>
+  <div class="container">
+    <a class="navbar-brand" href="#">xavier<span>*</span></a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#">Página Inicial</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Cardápio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Promoção</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Pedidos</a></li>
+      </ul>
     </div>
+  </div>
 </nav>
 
 <div class="banner">
@@ -134,58 +131,79 @@ if (isset($_GET['id'])) {
 </div>
 
 <div class="container my-5">
-    <h5 class="categoria">Todos os Produtos</h5>
-    <form action="adicionar.php" method="post">
-        <div class="row g-4">
-            <?php
-            $lista_produtos = listarprodutos($conexao);
-            foreach ($lista_produtos as $listarprodutos):
-            ?>
-            <div class="col-md-3">
-                <div class="produto-card">
-                    <img src="img/<?php echo $listarprodutos['imagem']; ?>" alt="<?php echo $listarprodutos['nome_produto']; ?>">
-                    <div class="produto-nome"><?php echo $listarprodutos['nome_produto']; ?></div>
-                    <div class="produto-preco">R$ <?php echo number_format($listarprodutos['preco_venda'], 2, ',', '.'); ?></div>
-                    <div class="mt-2">
-                        <input type="checkbox" name="idprodutos[]" value="<?php echo $listarprodutos['idprodutos']; ?>">
-                        <input type="number" name="quantidade[<?php echo $listarprodutos['idprodutos']; ?>]" value="1" min="1" class="form-control mt-1" style="width:80px; margin:auto;">
+    <div class="row">
+        <div class="col-md-3">
+            <input type="text" class="form-control mb-3" placeholder="O que você procura?">
+            <ul class="list-group">
+                <li class="list-group-item">Todos os produtos</li>
+                <li class="list-group-item active" style="background-color:#2E4A2B; border-color:#2E4A2B;">Pães</li>
+                <li class="list-group-item">Sanduíches e salgados</li>
+                <li class="list-group-item">Bolos</li>
+                <li class="list-group-item">Café e bebidas</li>
+                <li class="list-group-item">Doces finos</li>
+                <li class="list-group-item">Promoções</li>
+            </ul>
+        </div>
+
+        <div class="col-md-9">
+            <h5 class="categoria">Pães</h5>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="produto-card">
+                        <img src="img/pao1.jpg" alt="Pão Francês na Chapa Tradicional">
+                        <div class="produto-nome">Pão Francês na Chapa Tradicional</div>
+                        <div class="produto-preco">R$ 10,00</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="produto-card">
+                        <img src="img/pao2.jpg" alt="Pão Francês com Requeijão Benjamin">
+                        <div class="produto-nome">Pão Francês com Requeijão Benjamin</div>
+                        <div class="produto-preco">R$ 16,00</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="produto-card">
+                        <img src="img/pao3.jpg" alt="Pão de Queijo Tradicional Grande">
+                        <div class="produto-nome">Pão de Queijo Tradicional Grande</div>
+                        <div class="produto-preco">R$ 11,00</div>
                     </div>
                 </div>
             </div>
-            <?php endforeach; ?>
-        </div>
-        <div class="text-center mt-4">
-            <button type="submit" class="btn btn-custom px-5 py-2">Adicionar Selecionados ao Carrinho</button>
-        </div>
-    </form>
 
-    <div class="pedido-box mt-5">
-        <h5 class="text-center mb-4">Finalizar Pedido</h5>
-        <form action="salvarpedido.php?id=<?php echo $id; ?>" method="post">
-            <div class="mb-3">
-                <label class="form-label">Valor Total</label>
-                <input type="text" class="form-control" name="valor" value="<?php echo $valor; ?>">
+            <div class="pedido-box mt-5">
+                <h5 class="text-center mb-4">Finalizar Pedido</h5>
+                <form action="salvarpedido.php?id=<?php echo $id; ?>" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Endereço de Entrega</label>
+                        <input type="text" class="form-control" name="entrega" value="<?php echo $entrega; ?>" placeholder="Rua, número, bairro, cidade">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Forma de Pagamento</label>
+                        <select class="form-select" name="pagamento">
+                            <option value="Cartão de Crédito" <?php if($pagamento=="Cartão de Crédito") echo "selected"; ?>>Cartão de Crédito</option>
+                            <option value="Cartão de Débito" <?php if($pagamento=="Cartão de Débito") echo "selected"; ?>>Cartão de Débito</option>
+                            <option value="Pix" <?php if($pagamento=="Pix") echo "selected"; ?>>Pix</option>
+                            <option value="Dinheiro" <?php if($pagamento=="Dinheiro") echo "selected"; ?>>Dinheiro</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Data do Pedido</label>
+                        <input type="date" class="form-control" name="data" value="<?php echo $data; ?>">
+                    </div>
+                    <div class="text-center mb-3">
+                        <strong>Valor Total:</strong> R$ <span id="valorTotal"><?php echo $valor ? number_format($valor, 2, ',', '.') : '0,00'; ?></span>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-custom px-5 py-2"><?php echo $botao; ?></button>
+                    </div>
+                </form>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Data</label>
-                <input type="date" class="form-control" name="data" value="<?php echo $data; ?>">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Forma de Pagamento</label>
-                <input type="text" class="form-control" name="pagamento" value="<?php echo $pagamento; ?>">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Local de Entrega</label>
-                <input type="text" class="form-control" name="entrega" value="<?php echo $entrega; ?>">
-            </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-custom px-5 py-2"><?php echo $botao; ?></button>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 

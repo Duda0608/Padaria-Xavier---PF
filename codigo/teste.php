@@ -129,7 +129,7 @@ require_once "funcoes.php";
 <div class="banner">
     <div>Cardápio<br><small style="font-size:1rem;">Confira nossos produtos</small></div>
 </div>
-
+/
 <div class="container my-5">
     <div class="row">
         <div class="col-md-3">
