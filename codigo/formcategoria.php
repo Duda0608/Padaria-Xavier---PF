@@ -1,5 +1,4 @@
 <?php
-
 require_once "verificarlogado.php";
 
 if (isset($_GET['id'])) {
@@ -19,7 +18,6 @@ if (isset($_GET['id'])) {
     $nome = "";
     $botao = "Cadastrar";
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -31,25 +29,26 @@ if (isset($_GET['id'])) {
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="estilo.css">
 </head>
-<body>
-    <div class="card card-custom mx-auto">
-        <div class="card-body">
-            <h2 class="card-title">CATEGORIA</h2>
-            <div class="card-subtitle mb-2">PREENCHA AS INFORMAÇÕES ABAIXO</div>
-            <form action="salvarcategoria.php?id=<?php echo $id; ?>" method="post">
-                 <div class="mb-3">
+<body class="corpousu">
+    <div class="cartaousu">
+        <h2>CATEGORIA</h2>
+        <p>PREENCHA AS INFORMAÇÕES ABAIXO</p>
 
-                    <label for="nome" class="form-label">NOME</label>
-                    <input type="text" class="form-control" id="nome" name="nome" value="<?php echo htmlspecialchars($nome); ?>" required>
-                </div>
-                 <div class="mb-3">
-                    <label for="descricao" class="form-label">DESCRIÇÃO</label>
-                    <input type="text" class="form-control" id="descricao" name="descricao" value="<?php echo htmlspecialchars($descricao); ?>" required>
-                </div>
+        <form action="salvarcategoria.php?id=<?php echo $id; ?>" method="post">
+            <div class="mb-3">
+                <label for="nome" class="formusu">NOME</label>
+                <input type="text" class="form-control" id="nome" name="nome"
+                    value="<?php echo htmlspecialchars($nome); ?>" placeholder="Nome da categoria" required>
+            </div>
 
-                <button type="submit" class="btn btn-custom"><?php echo $botao; ?></button>
-            </form>
-        </div>
+            <div class="mb-3">
+                <label for="descricao" class="formusu">DESCRIÇÃO</label>
+                <input type="text" class="form-control" id="descricao" name="descricao"
+                    value="<?php echo htmlspecialchars($descricao); ?>" placeholder="Descrição da categoria" required>
+            </div>
+
+            <button type="submit" class="btn-custom"><?php echo $botao; ?></button>
+        </form>
     </div>
 </body>
 </html>
