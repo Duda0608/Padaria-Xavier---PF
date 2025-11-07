@@ -1,6 +1,6 @@
 <?php
 session_start();
 session_destroy();
-
-header("Location: index.php");
+header("Location: carrinho_index.php");
 exit;
+?>
