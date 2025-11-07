@@ -3,40 +3,36 @@ require_once "verificarlogado.php";
 require_once "funcoes.php";
 require_once "conexao.php";
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+$id = 0;
+if ($_GET) {
+$id = $_GET['id'];
+}
 
-    $sql = "SELECT * FROM tb_pedidos WHERE idpedido = $id";
-    $resultado = mysqli_query($conexao, $sql);
-    $linha = mysqli_fetch_array($resultado);
-
-    $valor = $linha['valor'];
-    $data = $linha['data'];
-    $pagamento = $linha['pagamento'];
-    $entrega = $linha['entrega'];
-
-    $botao = "atualizar";
+if ($id > 0) {
+$sql = "SELECT * FROM tb_pedidos WHERE idpedido = $id";
+$resultado = mysqli_query($conexao, $sql);
+$linha = mysqli_fetch_array($resultado);
+$valor = $linha['valor'];
+$data = $linha['data'];
+$pagamento = $linha['pagamento'];
+$entrega = $linha['entrega'];
+$botao = "atualizar";
 } else {
-    $id = 0;
-    $valor = "";
-    $data = "";
-    $pagamento = "";
-    $entrega = "";
-
-    $botao = "cadastrar";
+$valor = "";
+$data = "";
+$pagamento = "";
+$entrega = "";
+$botao = "cadastrar";
 }
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cARDAPIO</title>
-    <link rel="stylesheet" href="estilo.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedidos</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body class="corpopedido">
@@ -157,5 +153,4 @@ if (isset($_GET['id'])) {
     </div>
     
 </body>
-
 </html>

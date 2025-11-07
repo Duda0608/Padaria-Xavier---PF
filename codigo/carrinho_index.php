@@ -1,40 +1,35 @@
 <?php
 require_once "conexao.php";
 require_once "funcoes.php";
-session_start();
+require_once "verificarlogado.php";
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>LISTA DE PRODUTOS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrinho</title>
 </head>
+
 <body>
-    <h2>PRODUTOS DISPONÍVEIS</h2>
+<a href="destruir_carrinho.php">destruir carrinho</a>
+<a href="carrinho.php">ver carrinho</a>
 
-    <a href="destruir_carrinho.php">[Esvaziar Carrinho]</a><br>
-    <a href="carrinho.php">[Ver Carrinho]</a><br><br>
-
-    <form action="adicionar.php" method="POST">
-        <ul>
-            <?php
-            $produtos = listarprodutos($conexao);
-
-            foreach ($produtos as $p):
-                $id = $p['idprodutos'];
-                $nome = $p['nome_produto'];
-                $preco = $p['preco_venda'];
-            ?>
-                <li>
-                    <input type="checkbox" name="idproduto[]" value="<?php echo $id; ?>">
-                    R$ <?php echo $preco; ?> — <?php echo $nome; ?>
-                    <input type="number" name="quantidade[<?php echo $id; ?>]" value="1" min="1">
-                </li>
-            <?php endforeach; ?>
-        </ul>
-
-        <input type="submit" value="Adicionar selecionados ao carrinho">
-    </form>
+<form action="adicionar.php" method="post">
+<h2>Lista de Produtos</h2>
+<ul>
+<?php
+$produtos = listarProdutos($conexao);
+foreach ($produtos as $p) {
+echo "<li>";
+echo "<input type='checkbox' name='idproduto[]' value='".$p['idprodutos']."'> R$ ".$p['preco_venda']." -- ".$p['nome'];
+echo " <input type='number' name='quantidade[".$p['idprodutos']."]' value='1' min='1'>";
+echo "</li>";
+}
+?>
+</ul>
+<input type="submit" value="Adicionar selecionados ao carrinho">
+</form>
 </body>
 </html>
