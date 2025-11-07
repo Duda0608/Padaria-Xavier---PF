@@ -39,66 +39,78 @@ if (isset($_GET['id'])) {
 
 </head>
 
-<body>
+<body class="corpopedido">
 
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="#">xavier<span>*</span></a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Página Inicial</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Cardápio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Promoção</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Pedidos</a></li>
+            <a class="navbar-brand">xavier<span>✦</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+                aria-controls="navbarMenu" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ms-auto align-items-center gap-3">
+                    <li class="nav-item"><a class="nav-link" href="home.php">Página Inicial</a></li>
+                    <li class="nav-item"><a class="nav-link" href="formpedido.php">Cardápio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="formpromocao.php">Promoção</a></li>
+                    <li class="nav-item"><a class="nav-link" href="carrinho.php">Pedidos</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <div class="banner">
-        <div>Cardápio<br><small style="font-size:1rem;">Confira nossos produtos</small></div>
+        <div>
+            Cardápio<br />
+            <small>Confira nossos produtos</small>
+        </div>
     </div>
-
 
     <div class="container my-5">
         <div class="row">
-            <div class="col-md-3">
-                <input type="text" class="form-control mb-3" placeholder="O que você procura?">
+            <!-- Sidebar Categorias -->
+            <aside class="col-md-3 mb-4">
+                <input type="text" class="form-control mb-3" placeholder="O que você procura?" />
                 <ul class="list-group">
-                    <li class="list-group-item">Todos as categorias disponiveis</li>
-                    <li class="list-group-item active" style="background-color:#2E4A2B; border-color:#2E4A2B;">Pães</li>
+                    <li class="list-group-item">Todas as categorias disponíveis</li>
+                    <li class="list-group-item active">Pães</li>
                     <li class="list-group-item">Sanduíches e salgados</li>
                     <li class="list-group-item">Bolos</li>
                     <li class="list-group-item">Café e bebidas</li>
                     <li class="list-group-item">Doces finos</li>
                     <li class="list-group-item">Promoções</li>
                 </ul>
-            </div>
+            </aside>
 
 
 
             <a href="destruir_carrinho.php">destruir carrinho</a>
 
-            <form action="adicionar.php" method="post">
+            <form action="adicionar.php" method="post" class="mb-5">
 
-                <h1>CADASTRAR PEDIDOS</h1>
-                <ul>
+                <h2>Selecionar Produtos</h2>
+                <ul class="produtolista">
                     <?php
                     $lista_produtos = listarprodutos($conexao);
 
                     foreach ($lista_produtos as $listarprodutos):
                     ?>
                         <li>
-                            <input type="checkbox" name="idprodutos[]" value="<?php echo $listarprodutos['idprodutos']; ?>">
-                            R$ <span><?php echo $listarprodutos['preco_venda']; ?></span>
-                            <?php echo $listarprodutos['nome_produto']; ?>
+                            <label>
+                                <input type="checkbox" name="idprodutos[]" value="<?php echo $listarprodutos['idprodutos']; ?>">
+                            </label>
+                            <div>
+                                <span class="preco">R$<?php echo $listarprodutos['preco_venda']; ?></span>
+                                <?php echo $listarprodutos['nome_produto']; ?>
 
-                            <input type="number" name="quantidade[<?php echo $listarprodutos['idprodutos']; ?>]" value="1" min="1">
+
+                                <input type="number" name="quantidade[<?php echo $listarprodutos['idprodutos']; ?>]" value="1" min="1">
+                            </div>
                         </li>
                     <?php endforeach; ?>
+                </ul>
 
-
-                    <input type="submit" value="adicionar selecionados ao carrinho">
+                <input type="submit" value="adicionar selecionados ao carrinho">
             </form>
 
 
@@ -112,18 +124,38 @@ if (isset($_GET['id'])) {
 
             <!-- VOCÊ CRIA UM ARQUIVO QUE VAI SER CHAMADO NESSE MOMENTO, ESSE ARQUIVO QUE É CHAMADO ELE DEVE GRAVAR OS DADOS NA TABELA DO PEDIDO E DEPOIS NA TABELA DOS ITENS E PRONTO -->
 
-            <form action="salvarpedido.php?id=<?php echo $id; ?>" method="post">
-                VALOR:<br>
-                <input type="text" name="valor" value="<?php echo $valor; ?>"><br><br>
-                DATA:<br>
-                <input type="date" name="data" value="<?php echo $data; ?>"><br><br>
-                FORMA DE PAGAMENTO:<br>
-                <input type="text" name="pagamento" value="<?php echo $pagamento; ?>"><br><br>
-                LOCAL DE ENTREGA:<br>
-                <input type="text" name="entrega" value="<?php echo $entrega; ?>"><br><br>
+
+            <!--form cvadastrar pedido-->
+            <form action="salvarpedido.php?id=<?php echo $id; ?>" method="post" class="mb-5">
+
+                <h2>Cadastrar pedido</h2>
+                <div class="mb-3">
+                    <label for="valor" class="form_label">Valor</label>
+                    <input type="text" class="form-control" id="valor" name="valor" value="<?php echo $valor; ?>"><br><br>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="data" class="form_label">Data</label>
+                    <input type="date" class="form-control" id="data" name="data" value="<?php echo $data; ?>"><br><br>
+                </div>
+
+                <div class="mb-3">
+                    <label for="pagamento" class="form_label">Forma de pagamento</label>
+                    <input type="text" class="form-control" id="pagamento" name="pagamento" value="<?php echo $pagamento; ?>"><br><br>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="entrega" class="form_label">Local de entrega</label>
+                    <input type="text" class="form-control" id="entrega" name="entrega" value="<?php echo $entrega; ?>"><br><br>
+                </div>
 
                 <input type="submit" value="<?php echo $botao; ?>">
             </form>
+        </div>
+    </div>
+    
 </body>
 
 </html>

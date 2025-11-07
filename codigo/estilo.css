@@ -330,3 +330,225 @@ footer,
     text-align: center;
     margin-bottom: 18px;
 }
+
+
+
+
+
+/* ===========================
+   ESTILO PRINCIPAL - CARDÁPIO XAVIER
+   Paleta: Verde escuro (#2E4A2B), bege (#C4A574), branco (#FFFFFF)
+   Tipografia: Playfair Display + Inter
+   =========================== */
+
+.corpopedido {
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #fff;
+    color: #2b1bb6;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===========================
+     NAVBAR
+     =========================== */
+.navbar {
+    background-color: #2E4A2B;
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #ffffff;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+}
+
+.navbar-brand span {
+    color: #C4A574;
+}
+
+.nav-link {
+    color: #ffffff !important;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #C4A574 !important;
+}
+
+/* ===========================
+     BANNER
+     =========================== */
+.banner {
+    background: url('banner.jpg') center/cover no-repeat;
+    color: #ffffff;
+    text-align: center;
+    padding: 5rem 1rem;
+    background-color: #2E4A2B;
+}
+
+.banner div {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.banner small {
+    display: block;
+    font-size: 1rem;
+    color: #C4A574;
+    margin-top: 0.5rem;
+}
+
+/* ===========================
+     SEÇÃO DE PRODUTOS
+     =========================== */
+.produtolista {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+}
+
+.produtolista li {
+    background-color: #ffffff;
+    border: 1px solid #e0ded9;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.produtolista li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(46, 74, 43, 0.15);
+}
+
+.produtolista img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.produtolista h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    margin: 0.8rem 0 0.3rem;
+    color: #2E4A2B;
+}
+
+.produtolista .preco {
+    color: #C4A574;
+    font-weight: bold;
+    font-size: 0.95rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* ===========================
+     FORMULÁRIOS
+     =========================== */
+form {
+    background-color: #ffffff;
+    border: 1px solid #e0ded9;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+form h2 {
+    font-family: 'Playfair Display', serif;
+    color: #2E4A2B;
+    border-bottom: 2px solid #C4A574;
+    display: inline-block;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.form_label {
+    font-weight: 600;
+    color: #2E4A2B;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+.form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 0.95rem;
+}
+
+input[type="submit"] {
+    background-color: #2E4A2B;
+    color: #ffffff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #C4A574;
+    color: #2E4A2B;
+}
+
+/* ===========================
+     SIDEBAR
+     =========================== */
+aside {
+    background-color: #ffffff;
+    border: 1px solid #e0ded9;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.list-group-item {
+    border: none;
+    background-color: transparent;
+    color: #2E4A2B;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.list-group-item.active,
+.list-group-item:hover {
+    background-color: #C4A574;
+    color: #ffffff;
+}
+
+/* ===========================
+     TÍTULOS E SEÇÕES
+     =========================== */
+h2 {
+    font-family: 'Playfair Display', serif;
+    color: #2E4A2B;
+    border-bottom: 2px solid #C4A574;
+    display: inline-block;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1.5rem;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+/* ===========================
+     RODAPÉ
+     =========================== */
+footer {
+    background-color: #2E4A2B;
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+}

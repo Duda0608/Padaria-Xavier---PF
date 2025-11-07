@@ -120,7 +120,7 @@ if(isset($_GET['id'])) {
         <li class="nav-item"><a class="nav-link" href="#">Página Inicial</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Cardápio</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Promoção</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Pedidos</a></li>
+        <li class="nav-item"><a class="nav-link" href="home.php">Pedidos</a></li>
       </ul>
     </div>
   </div>
