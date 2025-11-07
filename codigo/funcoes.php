@@ -186,6 +186,20 @@ function pesquisarpedidoid($conexao, $idpedido){
 
 };
 
+function salvaritempedido($conexao, $quantidade, $idpedido, $idproduto){
+    $sql = "INSERT INTO tb_item_pedidos (quantidade, preco, tb_pedido_idpedido, tb_produtos_idtb_produtos)
+    VALUES (?, 
+    (SELECT preco_venda FROM tb_produtos WHERE idprodutos = ?),
+    ?, ?)";
+    $comando = mysqli_prepare($conexao, $sql);
+
+    mysqli_stmt_bind_param($comando, 'diii', $quantidade, $idproduto, $idpedido, $idproduto);
+
+    mysqli_stmt_execute($comando);
+
+    mysqli_stmt_close($comando);
+}
+
 
 //cardapio-produtos
 

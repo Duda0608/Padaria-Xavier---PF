@@ -1,29 +1,53 @@
 <?php
 require_once "conexao.php";
 require_once "funcoes.php";
+session_start();
 
-session_start(); // Inicia a sessão para pegar o id do cliente, se estiver usando
-
-// Pega os dados que vieram do formulário
+$id = 0;
+if ($_GET) {
 $id = $_GET['id'];
-$valor = $_POST['valor'];
-$data = $_POST['data'];
+}
+
+$nome = $_POST['nome'];
 $pagamento = $_POST['pagamento'];
 $entrega = $_POST['entrega'];
+$entrega = substr($entrega, 0, 45);
+$data = date('Y-m-d');
+$valor = 0;
+$tb_cliente_idcliente = 2;
 
-// Aqui define o cliente do pedido (está como fixo)
-$tb_cliente_idcliente = 2; // Pode usar $_SESSION['idusuario'] se estiver usando login
+if ($_POST) {
+if (array_key_exists('idprodutos', $_POST)) {
+$selecionados = $_POST['idprodutos'];
+foreach ($selecionados as $idproduto) {
+$quantidade = $_POST['quantidade'][$idproduto];
+$sql = "SELECT preco_venda FROM tb_produtos WHERE idprodutos = $idproduto";
+$resultado = mysqli_query($conexao, $sql);
+$linha = mysqli_fetch_array($resultado);
+$preco = $linha['preco_venda'];
+$total_item = $preco * $quantidade;
+$valor = $valor + $total_item;
+}
+}
+}
 
-// Verifica se é cadastro novo ou edição
-if ($id == 0){
-    // Cadastrar novo pedido
-    salvarpedido($conexao, $valor, $data, $pagamento, $entrega, $tb_cliente_idcliente);
-    header("Location: home.php"); // Volta pra home depois de cadastrar
-    exit;
+if ($id == 0) {
+$idpedido = salvarpedido($conexao, $valor, $data, $pagamento, $entrega, $tb_cliente_idcliente);
+
+if ($_POST) {
+if (array_key_exists('idprodutos', $_POST)) {
+foreach ($selecionados as $idproduto) {
+$quantidade = $_POST['quantidade'][$idproduto];
+salvaritempedido($conexao, $quantidade, $idpedido, $idproduto);
+}
+}
+}
+
+header("Location: home.php");
+exit;
 } else {
-    // Editar pedido existente
-    editarpedido($conexao, $valor, $data, $pagamento, $entrega, $id);
-    header("Location: listarpedido.php"); // Volta pra lista depois de editar
-    exit;
+editarpedido($conexao, $valor, $data, $pagamento, $entrega, $id);
+header("Location: listarpedido.php");
+exit;
 }
 ?>
