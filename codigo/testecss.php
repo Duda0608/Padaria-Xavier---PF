@@ -28,7 +28,6 @@ if ($id > 0) {
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,38 +43,30 @@ if ($id > 0) {
 
         /* Corpo da página */
         body.corpopedido {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            /* Sans-serif moderna */
-            background-color: #FFFFFF;
-            /* Branco puro */
-            color: #1A1A1A;
-            /* Preto suave para textos */
+            font-family: 'Helvetica Neue', Arial, sans-serif; /* Sans-serif moderna */
+            background-color: #FFFFFF; /* Branco puro */
+            color: #1A1A1A; /* Preto suave para textos */
             line-height: 1.6;
-            letter-spacing: 0.5px;
-            /* Espaçamento generoso entre letras */
+            letter-spacing: 0.5px; /* Espaçamento generoso entre letras */
         }
 
         /* Navbar */
         .navbar {
-            background-color: #2F4A32;
-            /* Verde escuro */
+            background-color: #2F4A32; /* Verde escuro */
             padding: 1rem 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .navbar-brand {
             font-size: 1.8rem;
             font-weight: bold;
-            text-transform: uppercase;
-            /* Caixa alta */
-            letter-spacing: 2px;
-            /* Espaçamento maior entre caracteres */
+            text-transform: uppercase; /* Caixa alta */
+            letter-spacing: 2px; /* Espaçamento maior entre caracteres */
             color: #FFFFFF;
         }
 
         .navbar-brand span {
-            color: #C79B62;
-            /* Tom de madeira para o símbolo */
+            color: #C79B62; /* Tom de madeira para o símbolo */
         }
 
         .nav-link {
@@ -87,14 +78,12 @@ if ($id > 0) {
         }
 
         .nav-link:hover {
-            color: #F5F2EC !important;
-            /* Creme/bege ao hover */
+            color: #F5F2EC !important; /* Creme/bege ao hover */
         }
 
         /* Banner */
         .banner {
-            background-color: #2F4A32;
-            /* Verde escuro sólido para fidelidade à paleta */
+            background-color: #2F4A32; /* Verde escuro sólido para fidelidade à paleta */
             color: #FFFFFF;
             text-align: center;
             padding: 4rem 2rem;
@@ -114,11 +103,10 @@ if ($id > 0) {
 
         /* Container principal */
         .container.my-5 {
-            background-color: #F5F2EC;
-            /* Creme/bege claro */
+            background-color: #F5F2EC; /* Creme/bege claro */
             padding: 2rem;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
         /* Sidebar Categorias */
@@ -126,7 +114,7 @@ if ($id > 0) {
             background-color: #FFFFFF;
             padding: 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         aside .form-control {
@@ -170,7 +158,7 @@ if ($id > 0) {
             background-color: #FFFFFF;
             padding: 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             margin-bottom: 2rem;
         }
 
@@ -245,7 +233,7 @@ if ($id > 0) {
             background-color: #FFFFFF;
             padding: 1.5rem;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .form-label {
@@ -264,8 +252,7 @@ if ($id > 0) {
 
         .form-control:focus {
             border-color: #A67C52;
-            box-shadow: 0 0 0 0.2rem rgba(47, 74, 50, 0.25);
-            /* Verde escuro com transparência */
+            box-shadow: 0 0 0 0.2rem rgba(47, 74, 50, 0.25); /* Verde escuro com transparência */
         }
 
         /* Responsividade */
@@ -287,7 +274,6 @@ if ($id > 0) {
 </head>
 
 <body class="corpopedido">
-
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand">xavier<span>✦</span></a>
@@ -313,81 +299,77 @@ if ($id > 0) {
         </div>
     </div>
 
-    
-
-
-
-
-            <form action="adicionar.php" method="post" class="mb-5">
-
-                <h2>Selecionar Produtos</h2>
-                <ul class="produtolista">
-                    <?php
-                    $lista_produtos = listarprodutos($conexao);
-
-                    foreach ($lista_produtos as $listarprodutos):
-                    ?>
-                        <li>
-                            <label>
-                                <input type="checkbox" name="idprodutos[]" value="<?php echo $listarprodutos['idprodutos']; ?>">
-                            </label>
-                            <div>
-                                <span class="preco">R$<?php echo $listarprodutos['preco_venda']; ?></span>
-                                <?php echo $listarprodutos['nome_produto']; ?>
-
-
-                                <input type="number" name="quantidade[<?php echo $listarprodutos['idprodutos']; ?>]" value="1" min="1">
-                            </div>
-                        </li>
-                    <?php endforeach; ?>
+    <div class="container my-5">
+        <div class="row">
+            <!-- Sidebar Categorias -->
+            <aside class="col-md-3 mb-4">
+                <input type="text" class="form-control mb-3" placeholder="O que você procura?" />
+                <ul class="list-group">
+                    <li class="list-group-item">Todas as categorias disponíveis</li>
+                    <li class="list-group-item active">Pães</li>
+                    <li class="list-group-item">Sanduíches e salgados</li>
+                    <li class="list-group-item">Bolos</li>
+                    <li class="list-group-item">Café e bebidas</li>
+                    <li class="list-group-item">Doces finos</li>
+                    <li class="list-group-item">Promoções</li>
                 </ul>
+            </aside>
 
-                <input type="submit" value="adicionar selecionados ao carrinho">
-            </form>
+            <div class="col-md-9">
+                <a href="destruir_carrinho.php">destruir carrinho</a>
 
+                <form action="adicionar.php" method="post" class="mb-5">
+                    <h2>Selecionar Produtos</h2>
+                    <ul class="produtolista">
+                        <?php
+                        $lista_produtos = listarprodutos($conexao);
 
-            <!-- [[[CHAMAR UMA FUNÇÃO QUE TRAZ TODOS OS PRODUTOS LÁ DO BANCO -->
-            <!-- [[[GUARDAR ISSO NUMA VARIÁVEL: $PRODUTOS -->
+                        foreach ($lista_produtos as $listarprodutos):
+                        ?>
+                            <li>
+                                <label>
+                                    <input type="checkbox" name="idprodutos[]" value="<?php echo $listarprodutos['idprodutos']; ?>">
+                                </label>
+                                <div>
+                                    <span class="preco">R$<?php echo $listarprodutos['preco_venda']; ?></span>
+                                    <?php echo $listarprodutos['nome_produto']; ?>
+                                    <input type="number" name="quantidade[<?php echo $listarprodutos['idprodutos']; ?>]" value="1" min="1">
+                                </div>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <input type="submit" value="adicionar selecionados ao carrinho">
+                </form>
 
-            <!-- FOR QUE IMPRIME TODOS OS PRODUTOS (EXEMPLO LÁ NO INDEX DO EXEMPLO-CARRINHOggg) -->
+                <!-- Formulário para cadastrar pedido -->
+                <form action="salvarpedido.php?id=<?php echo $id; ?>" method="post" class="mb-5">
+                    <h2>Cadastrar pedido</h2>
+                    <div class="mb-3">
+                        <label for="valor" class="form-label">Valor</label>
+                        <input type="text" class="form-control" id="valor" name="valor" value="<?php echo $valor; ?>">
+                    </div>
 
+                    <div class="mb-3">
+                        <label for="data" class="form-label">Data</label>
+                        <input type="date" class="form-control" id="data" name="data" value="<?php echo $data; ?>">
+                    </div>
 
-            <!-- DEPOIS QUE O USUÁRIO SELECIONAR OS PRODUTSO QUE ELE QUER, E PREENCHER A FORMA DE PAGAMENTO, LOCAL DE ENTREGA, ELE CLICA NO BOTÃO SALVARvvvv -->
+                    <div class="mb-3">
+                        <label for="pagamento" class="form-label">Forma de pagamento</label>
+                        <input type="text" class="form-control" id="pagamento" name="pagamento" value="<?php echo $pagamento; ?>">
+                    </div>
 
-            <!-- VOCÊ CRIA UM ARQUIVO QUE VAI SER CHAMADO NESSE MOMENTO, ESSE ARQUIVO QUE É CHAMADO ELE DEVE GRAVAR OS DADOS NA TABELA DO PEDIDO E DEPOIS NA TABELA DOS ITENS E PRONTO -->
+                    <div class="mb-3">
+                        <label for="entrega" class="form-label">Local de entrega</label>
+                        <input type="text" class="form-control" id="entrega" name="entrega" value="<?php echo $entrega; ?>">
+                    </div>
 
-
-            <!--form cvadastrar pedido-->
-            <form action="salvarpedido.php?id=<?php echo $id; ?>" method="post" class="mb-5">
-
-                <h2>Cadastrar pedido</h2>
-                <div class="mb-3">
-                    <label for="valor" class="form_label">Valor</label>
-                    <input type="text" class="form-control" id="valor" name="valor" value="<?php echo $valor; ?>"><br><br>
-                </div>
-
-
-                <div class="mb-3">
-                    <label for="data" class="form_label">Data</label>
-                    <input type="date" class="form-control" id="data" name="data" value="<?php echo $data; ?>"><br><br>
-                </div>
-
-                <div class="mb-3">
-                    <label for="pagamento" class="form_label">Forma de pagamento</label>
-                    <input type="text" class="form-control" id="pagamento" name="pagamento" value="<?php echo $pagamento; ?>"><br><br>
-                </div>
-
-
-                <div class="mb-3">
-                    <label for="entrega" class="form_label">Local de entrega</label>
-                    <input type="text" class="form-control" id="entrega" name="entrega" value="<?php echo $entrega; ?>"><br><br>
-                </div>
-
-                <input type="submit" value="<?php echo $botao; ?>">
-            </form>
+                    <input type="submit" value="<?php echo $botao; ?>">
+                </form>
+            </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
