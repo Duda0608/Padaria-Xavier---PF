@@ -1,47 +1,5 @@
-/* Estilo global */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    padding: 30px;
-}
-
-/* Remove estilo padrão das listas */
-ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 20px;
-}
-
-/* Espaçamento entre os itens da lista */
-li {
-    margin-bottom: 10px;
-}
-
-/* Estilo dos links */
-a {
-    text-decoration: none;
-    color: #87968e;
-    font-weight: bold;
-    font-size: 16px;
-    padding: 6px 12px;
-    display: inline-block;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-/* Efeito hover nos links */
-a:hover {
-    background-color: #234F38;
-    color: #ffffff;
-}
-
-.w-full h-full object-cover {
-    position: absolute;
-    left: 500px;
-}
-
-/* Login / Usuário */
-.corpousu {
+/*CADASTRAR USUARIO*/
+.corpobody {
     background-color: #2E4A2B;
     font-family: 'Inter', sans-serif;
     color: #e8dcc0;
@@ -51,7 +9,7 @@ a:hover {
     justify-content: center;
 }
 
-.cartaousu {
+.cardlogin {
     background-color: #355a33;
     border: none;
     border-radius: 12px;
@@ -61,72 +19,73 @@ a:hover {
     max-width: 420px;
 }
 
-.cartaousu h2 {
+.titulo {
     font-family: 'Playfair Display', serif;
     color: #e8dcc0;
     text-align: center;
     margin-bottom: 0.5rem;
 }
 
-.cartaousu p {
+.subtitulo {
     text-align: center;
     color: #d4c5a9;
     margin-bottom: 1.5rem;
 }
 
-.formusu {
+.form-label {
     color: #e8dcc0;
     font-weight: 500;
 }
 
-/* Campos e botões */
 .form-control {
-    background-color: transparent;
-    border: 1px solid #d4c5a9;
-    color: #e8dcc0;
+    background-color: #fff;
+    border: 1px solid #c4a574;
+    color: #2E4A2B;
+    border-radius: 6px;
 }
 
 .form-control::placeholder {
-    color: #d1d1d1;
+    color: #888;
 }
 
 .form-control:focus {
     border-color: #c4a574;
-    box-shadow: none;
+    box-shadow: 0 0 0 0.2rem rgba(196, 165, 116, 0.25);
+    background-color: #fff;
+    color: #2E4A2B;
 }
 
-/* Botão padrão */
 .btn-custom {
     background-color: #c4a574;
     color: #2E4A2B;
     font-weight: 600;
     border: none;
     width: 100%;
-    padding: 10px;
+    padding: 0.75rem;
     border-radius: 8px;
     transition: background-color 0.3s ease;
-    margin-top: 10px;
 }
 
 .btn-custom:hover {
     background-color: #d4c5a9;
-    color: #2E4A2B;
 }
 
-/* Links e rodapé */
 .link {
     color: #d1d1d1;
     text-align: center;
     display: block;
     margin-top: 1rem;
     text-decoration: none;
+    background-color: #2E4A2B;
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-weight: 500;
 }
 
 .link:hover {
     color: #c4a574;
 }
 
-footer,
 .footer {
     text-align: center;
     color: #d1d1d1;
@@ -134,421 +93,338 @@ footer,
     font-size: 0.9rem;
 }
 
-/* Formulário de produtos */
-.teste {
-    background-color: #2E4A2B;
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*CADATRAR CATEGORIA*/
+.corpocate {
+    background-color: #40613b; /* fundo verde médio */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: 'Inter', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
 }
 
-.cartaoproduto {
-    background-color: #355E3B;
+/* Card */
+.cartaocate {
+    background: #4b6b3c; /* verde escuro */
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    padding: 2.5rem;
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-}
-
-.cartaoproduto h1 {
-    font-family: 'Playfair Display', serif;
-    color: #E8DCC0;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
-
-.cartaoproduto p {
-    color: #D1D1D1;
-    margin-bottom: 2rem;
-}
-
-.formproduto {
-    color: #E8DCC0;
-    font-weight: 500;
-    font-size: 0.9rem;
-    text-align: left;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.controleproduto {
-    width: 100%;
-    background-color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 10px;
-    color: #333;
-    font-size: 0.95rem;
-    margin-bottom: 10px;
-}
-
-.controleproduto::placeholder {
-    color: #999;
-}
-
-.controleproduto:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px #c4a574;
-}
-
-.footer-text {
-    color: #D1D1D1;
-    font-size: 0.85rem;
-    text-align: center;
-    margin-top: 1.5rem;
-}
-
-/* Página Sobre Nós */
-.sobre-container {
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    margin: 0 auto;
-    overflow: hidden;
-    background-color: #fff;
-}
-
-.sobre-imagem {
-    flex: 1;
-}
-
-.sobre-imagem img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 15% 10%;
-}
-
-.sobre-texto {
-    flex: 1;
-    padding: 80px 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.9);
-}
-
-.sobre-texto h1 {
-    font-size: 38px;
-    margin-bottom: 25px;
-    color: #234F38;
-}
-
-.sobre-texto p {
-    font-size: 17px;
-    line-height: 1.7;
-    margin-bottom: 15px;
-    color: #333;
-}
-
-/* Responsivo */
-@media (max-width: 1024px) {
-    .sobre-container {
-        flex-direction: column;
-        height: auto;
-    }
-
-    .sobre-imagem img {
-        height: 400px;
-        object-position: center;
-    }
-
-    .sobre-texto {
-        padding: 40px 30px;
-        text-align: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .sobre-imagem img {
-        height: 250px;
-    }
-
-    .sobre-texto h1 {
-        font-size: 28px;
-    }
-
-    .sobre-texto p {
-        font-size: 14px;
-    }
-}
-
-/* Cards (login, formulários pequenos) */
-.body {
-    background-color: #2E4A2B;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.card-custom {
-    background: #3b5a36;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(44, 44, 44, 0.15);
-    padding: 32px 28px;
+    box-shadow: 0 8px 32px rgba(44, 44, 44, 0.18);
+    padding: 40px 32px 28px 32px;
     width: 100%;
     max-width: 370px;
 }
 
-.form-label,
-.form-control,
-.form-text,
-.card-title {
-    color: #fff;
-}
-
-.form-control {
-    background: #2E4A2B;
-    border: 1px solid #c4a574;
-    color: #fff;
-}
-
-.form-control:focus {
-    border-color: #c4a574;
-    box-shadow: 0 0 0 0.2rem rgba(196, 165, 116, 0.25);
-    background: #2E4A2B;
-    color: #fff;
-}
-
-.card-title {
+/* Título */
+.titulocate {
     font-family: 'Playfair Display', serif;
     font-size: 1.7rem;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     text-align: center;
+    color: #fff;
 }
 
-.card-subtitle {
+/* Subtítulo */
+.subtitulocate {
     font-size: 1rem;
     color: #e8dcc0;
     text-align: center;
     margin-bottom: 18px;
+    font-family: 'Inter', sans-serif;
 }
 
-
-
-
-
-/* ===========================
-   ESTILO PRINCIPAL - CARDÁPIO XAVIER
-   Paleta: Verde escuro (#2E4A2B), bege (#C4A574), branco (#FFFFFF)
-   Tipografia: Playfair Display + Inter
-   =========================== */
-
-.corpopedido {
-    font-family: 'Inter', Arial, sans-serif;
-    background-color: #fff;
-    color: #2b1bb6;
-    margin: 0;
-    padding: 0;
-}
-
-/* ===========================
-     NAVBAR
-     =========================== */
-.navbar {
-    background-color: #2E4A2B;
-    padding: 1rem 0;
-}
-
-.navbar-brand {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    color: #ffffff;
-    text-transform: lowercase;
-    letter-spacing: 1px;
-}
-
-.navbar-brand span {
-    color: #C4A574;
-}
-
-.nav-link {
-    color: #ffffff !important;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-    color: #C4A574 !important;
-}
-
-/* ===========================
-     BANNER
-     =========================== */
-.banner {
-    background: url('banner.jpg') center/cover no-repeat;
-    color: #ffffff;
-    text-align: center;
-    padding: 5rem 1rem;
-    background-color: #2E4A2B;
-}
-
-.banner div {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    font-weight: 600;
-}
-
-.banner small {
-    display: block;
-    font-size: 1rem;
-    color: #C4A574;
-    margin-top: 0.5rem;
-}
-
-/* ===========================
-     SEÇÃO DE PRODUTOS
-     =========================== */
-.produtolista {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 2rem;
-    list-style: none;
-    padding: 0;
-    margin-top: 2rem;
-}
-
-.produtolista li {
-    background-color: #ffffff;
-    border: 1px solid #e0ded9;
-    border-radius: 8px;
-    overflow: hidden;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.produtolista li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(46, 74, 43, 0.15);
-}
-
-.produtolista img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-}
-
-.produtolista h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    margin: 0.8rem 0 0.3rem;
-    color: #2E4A2B;
-}
-
-.produtolista .preco {
-    color: #C4A574;
-    font-weight: bold;
-    font-size: 0.95rem;
-    display: block;
-    margin-bottom: 1rem;
-}
-
-/* ===========================
-     FORMULÁRIOS
-     =========================== */
-form {
-    background-color: #ffffff;
-    border: 1px solid #e0ded9;
-    border-radius: 8px;
-    padding: 2rem;
-    margin-top: 2rem;
-}
-
-form h2 {
-    font-family: 'Playfair Display', serif;
-    color: #2E4A2B;
-    border-bottom: 2px solid #C4A574;
-    display: inline-block;
-    padding-bottom: 0.3rem;
-    margin-bottom: 1.5rem;
-}
-
-.form_label {
-    font-weight: 600;
-    color: #2E4A2B;
-}
-
-input[type="text"],
-input[type="date"],
-input[type="number"],
-.form-control {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 0.5rem;
-    width: 100%;
+/* Labels */
+.formcate {
+    color: #fff;
+    font-family: 'Inter', sans-serif;
     font-size: 0.95rem;
 }
 
-input[type="submit"] {
-    background-color: #2E4A2B;
-    color: #ffffff;
+/* Inputs */
+.controlcate {
+    background: #fff;
+    border: 1px solid #c4a574;
+    color: #2E4A2B;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.controlcate:focus {
+    border-color: #c4a574;
+    box-shadow: 0 0 0 0.2rem rgba(196, 165, 116, 0.15);
+    background: #fff;
+    color: #2E4A2B;
+}
+
+/* Botão */
+.botaocate {
+    background-color: #c4a574;
+    color: #2E4A2B;
+    font-weight: 600;
     border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 4px;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    padding: 8px 0;
+    transition: background 0.2s;
 }
 
-input[type="submit"]:hover {
-    background-color: #C4A574;
+.botaocate:hover {
+    background-color: #d4c5a9;
     color: #2E4A2B;
 }
 
-/* ===========================
-     SIDEBAR
-     =========================== */
-aside {
-    background-color: #ffffff;
-    border: 1px solid #e0ded9;
-    border-radius: 8px;
-    padding: 1rem;
-}
-
-.list-group-item {
-    border: none;
-    background-color: transparent;
-    color: #2E4A2B;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
-}
-
-.list-group-item.active,
-.list-group-item:hover {
-    background-color: #C4A574;
-    color: #ffffff;
-}
-
-/* ===========================
-     TÍTULOS E SEÇÕES
-     =========================== */
-h2 {
-    font-family: 'Playfair Display', serif;
-    color: #2E4A2B;
-    border-bottom: 2px solid #C4A574;
-    display: inline-block;
-    padding-bottom: 0.3rem;
-    margin-bottom: 1.5rem;
-}
-
-.container {
-    max-width: 1200px;
-}
-
-/* ===========================
-     RODAPÉ
-     =========================== */
-footer {
-    background-color: #2E4A2B;
-    color: #ffffff;
-    text-align: center;
-    padding: 1rem;
+/* Rodapé */
+.subinfo {
+    margin-top: 10px;
     font-size: 0.9rem;
+    color: #e8dcc0;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+/*CADASTRAR COMENTARIO*/
+.corpocoment {
+    background-color: #40613b; /* fundo verde médio */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Card */
+.cartacoment {
+    background: #4b6b3c; /* verde escuro */
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(44, 44, 44, 0.18);
+    padding: 40px 32px 28px 32px;
+    width: 100%;
+    max-width: 370px;
+}
+
+/* Título */
+.titulocoment {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    margin-bottom: 8px;
+    text-align: center;
+    color: #fff;
+}
+
+/* Subtítulo */
+.subtitulocoment {
+    font-size: 1rem;
+    color: #e8dcc0;
+    text-align: center;
+    margin-bottom: 18px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Labels */
+.formcoment {
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+}
+
+/* Inputs */
+.controlcoment {
+    background: #fff;
+    border: 1px solid #c4a574;
+    color: #2E4A2B;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.controlcoment:focus {
+    border-color: #c4a574;
+    box-shadow: 0 0 0 0.2rem rgba(196, 165, 116, 0.15);
+    background: #fff;
+    color: #2E4A2B;
+}
+
+/* Botão */
+.botaocoment {
+    background-color: #c4a574;
+    color: #2E4A2B;
+    font-weight: 600;
+    border: none;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    padding: 8px 0;
+    transition: background 0.2s;
+}
+
+.botaocoment:hover {
+    background-color: #d4c5a9;
+    color: #2E4A2B;
+}
+
+/* Link */
+.linkcoment {
+    display: block;
+    text-align: center;
+    color: #c4a574;
+    margin-top: 10px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.linkcoment:hover {
+    color: #e8dcc0;
+}
+
+/* Rodapé */
+.subinfocoment {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #e8dcc0;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+}
+
+
+
+
+
+
+
+
+
+/*LOGIN*/
+.corpologin {
+  background-color: #40613b; /* fundo verde médio */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Card */
+.cardlogin {
+  background: #4b6b3c; /* verde escuro */
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(44, 44, 44, 0.18);
+  padding: 40px 32px 28px 32px;
+  width: 100%;
+  max-width: 370px;
+}
+
+/* Título */
+.titulologin {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  margin-bottom: 8px;
+  text-align: center;
+  color: #fff;
+}
+
+/* Subtítulo */
+.subtitulologin {
+  font-size: 1rem;
+  color: #e8dcc0;
+  text-align: center;
+  margin-bottom: 18px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Labels */
+.formlogin {
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+}
+
+/* Inputs */
+.controllogin {
+  background: #fff;
+  border: 1px solid #c4a574;
+  color: #2E4A2B;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.controllogin:focus {
+  border-color: #c4a574;
+  box-shadow: 0 0 0 0.2rem rgba(196, 165, 116, 0.15);
+  background: #fff;
+  color: #2E4A2B;
+}
+
+/* Botão */
+.botaologin {
+  background-color: #c4a574;
+  color: #2E4A2B;
+  font-weight: 600;
+  border: none;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  padding: 8px 0;
+  transition: background 0.2s;
+}
+
+.botaologin:hover {
+  background-color: #d4c5a9;
+  color: #2E4A2B;
+}
+
+/* Link */
+.linklogin {
+  display: block;
+  text-align: center;
+  color: #c4a574;
+  margin-top: 10px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.linklogin:hover {
+  color: #e8dcc0;
+}
+
+/* Rodapé */
+.subinfologin {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #e8dcc0;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
 }
