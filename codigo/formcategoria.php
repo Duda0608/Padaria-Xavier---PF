@@ -32,6 +32,33 @@ if (isset($_GET['id'])) {
 </head>
 
 <body class="corpocate">
+
+  <!-- NAVBAR FIXA NO TOPO USANDO O MESMO CSS DA PÁGINA INICIAL -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="home.php">XAVIER<span>✦</span></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+        aria-controls="navbarMenu" aria-expanded="false" aria-label="Alternar navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="home.php">Página Inicial</a></li>
+          <li class="nav-item"><a class="nav-link" href="formpedido.php">Cardápio</a></li>
+          <li class="nav-item"><a class="nav-link" href="formpromocao.php">Promoção</a></li>
+          <li class="nav-item"><a class="nav-link" href="carrinho.php">Pedidos</a></li>
+          <li class="nav-item">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Espaço para compensar a navbar fixa -->
+  <div style="height: 80px;"></div>
+
+  
     <div class="cartaocate">
         <h2 class="titulocate">Categoria</h2>
         <p class="subtitulocate">Preencha as informações abaixo</p>

@@ -1,78 +1,91 @@
 <?php
 require_once "verificarlogado.php";
+require_once "conexao.php";
+require_once "funcoes.php";
+$lista_usuario = listarusuario($conexao);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Usuários</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilo.css">
 </head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="estilo.css">
 
-<body>
-    <h1>LISTA DE USUÁRIOS</h1>
+<body class="bodylista">
 
-    <?php
-    require_once "conexao.php";
-    require_once "funcoes.php";
+  <!-- NAVBAR FIXA NO TOPO USANDO O MESMO CSS DA PÁGINA INICIAL -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="home.php">XAVIER<span>✦</span></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+        aria-controls="navbarMenu" aria-expanded="false" aria-label="Alternar navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="home.php">Página Inicial</a></li>
+          <li class="nav-item"><a class="nav-link" href="formpedido.php">Cardápio</a></li>
+          <li class="nav-item"><a class="nav-link" href="formpromocao.php">Promoção</a></li>
+          <li class="nav-item"><a class="nav-link" href="carrinho.php">Pedidos</a></li>
+          <li class="nav-item">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Espaço para compensar a navbar fixa -->
+  <div style="height: 80px;"></div>
 
 
-    $lista_usuario = listarusuario($conexao);
- 
-
-    if (count($lista_usuario) == 0) {
-        echo "Não existe usuarios";
-    } else {
-    ?>
-        <table class="table table-striped-columns" border="1">
+  <!-- CONTEÚDO PRINCIPAL -->
+  <div class="container cardlista p-4 mt-4">
+    <?php if (count($lista_usuario) == 0) { ?>
+      <div class="alert alert-warning text-center">Não existem usuários cadastrados.</div>
+    <?php } else { ?>
+      <div class="table-responsive">
+        <table class="table table-borderless align-middle text-center tabela-usuarios">
+          <thead>
             <tr>
-                <td>ID</td>
-                <td>NOME</td>
-                <td>CPF</td>
-                <td>TELEFONE</td>
-                <td>ENDERECO</td>
-                <td>EMAIL</td>
-                <td colspan="2">AÇÃO</td>
-
+              <th>ID</th>
+              <th>Nome</th>
+              <th>CPF</th>
+              <th>Telefone</th>
+              <th>Endereço</th>
+              <th>Email</th>
+              <th colspan="2">Ação</th>
             </tr>
-
-        <?php
-        foreach ($lista_usuario as $usuario) {
-            $idusuario = $usuario['idusuario'];
-            $nome = $usuario['nome'];
-            $cpf = $usuario['cpf'];
-            $telefone = $usuario['telefone'];
-            $endereco = $usuario['endereco'];
-            $email = $usuario['email'];
-
-            echo "<tr>";
-            echo "<td>$idusuario</td>";
-            echo "<td>$nome</td>";
-            echo "<td>$cpf</td>";
-            echo "<td>$telefone</td>";
-            echo "<td>$endereco</td>";
-            echo "<td>$email</td>";
-
-            echo "<td><a href='formusuario.php?id=$idusuario'>editar</a></td>";
-            echo "<td><a href='deletarusuario.php?id=$idusuario'>excluir</a></td>";
-            echo "</tr>";
-        }
-     
-    }
-        ?>
+          </thead>
+          <tbody>
+            <?php foreach ($lista_usuario as $usuario) { ?>
+              <tr>
+                <td><?= $usuario['idusuario'] ?></td>
+                <td><?= $usuario['nome'] ?></td>
+                <td><?= $usuario['cpf'] ?></td>
+                <td><?= $usuario['telefone'] ?></td>
+                <td><?= $usuario['endereco'] ?></td>
+                <td><?= $usuario['email'] ?></td>
+                <td><a href="formusuario.php?id=<?= $usuario['idusuario'] ?>" class="btn btn-sm btn-editar">Editar</a></td>
+                <td><a href="deletarusuario.php?id=<?= $usuario['idusuario'] ?>" class="btn btn-sm btn-excluir">Excluir</a></td>
+              </tr>
+            <?php } ?>
+          </tbody>
         </table>
+      </div>
+    <?php } ?>
 
-    
-    <a href="home.php">SAIR</a>
-    <br><br>
+    <div class="text-center mt-4">
+      <a href="home.php" class="btn btn-voltar">Voltar</a>
+    </div>
+  </div>
 
-        </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 
 </html>
-        
-
-
-    

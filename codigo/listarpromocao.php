@@ -1,5 +1,9 @@
 <?php
 require_once "verificarlogado.php";
+require_once "conexao.php";
+require_once "funcoes.php";
+
+$lista_promocao = listarpromocao($conexao);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -7,60 +11,80 @@ require_once "verificarlogado.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LISTA DE PROMOÇÕES</title>
+    <title>Lista de Promoções</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilo.css">
 </head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-<link rel="stylesheet" href="estilo.css">
 
-<body>
-    <h1>LISTA DE PROMOÇÕES</h1>
+<body class="bodylista">
 
-    <?php
-    require_once "conexao.php";
-    require_once "funcoes.php";
+ <!-- NAVBAR FIXA NO TOPO USANDO O MESMO CSS DA PÁGINA INICIAL -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="home.php">XAVIER<span>✦</span></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+        aria-controls="navbarMenu" aria-expanded="false" aria-label="Alternar navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    $lista_promocao = listarpromocao($conexao);
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="home.php">Página Inicial</a></li>
+          <li class="nav-item"><a class="nav-link" href="formpedido.php">Cardápio</a></li>
+          <li class="nav-item"><a class="nav-link" href="formpromocao.php">Promoção</a></li>
+          <li class="nav-item"><a class="nav-link" href="carrinho.php">Pedidos</a></li>
+          <li class="nav-item">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    if (count($lista_promocao) == 0) {
-        echo "Não existe promoção";
-    } else {
-    ?>
-        <table class="table table-striped-columns" border="1">
-            <tr>
-                <td>ID</td>
-                <td>DATA INÍCIO</td>
-                <td>DATA FINAL</td>
-                <td>VALOR</td>
-                <td>PRODUTO</td>
-                <td colspan="2">AÇÃO</td>
-            </tr>
+  <!-- Espaço para compensar a navbar fixa -->
+  <div style="height: 80px;"></div>
+  
+    <div class="cardlista p-4">
+        <h1 class="titulolista mb-2">Lista de Promoções</h1>
+        <p class="subtitulolista mb-4">Visualize, edite ou exclua as promoções cadastradas</p>
 
-            <?php
-            foreach ($lista_promocao as $promocao) {
-                $idpromocao = $promocao['idpromocao'];
-                $datainicio = $promocao['datainicio'];
-                $datafinal = $promocao['datafinal'];
-                $valor = $promocao['valor'];
-                $nome_produtos = $promocao['nome_produtos'];
+        <?php if (count($lista_promocao) == 0) { ?>
+            <p>Não existe promoção cadastrada.</p>
+        <?php } else { ?>
+            <div class="table-responsive">
+                <table class="table tabela-usuarios align-middle text-center">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Data Início</th>
+                            <th>Data Final</th>
+                            <th>Valor</th>
+                            <th>Produto</th>
+                            <th colspan="2">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($lista_promocao as $promocao) { ?>
+                            <tr>
+                                <td><?= $promocao['idpromocao'] ?></td>
+                                <td><?= $promocao['datainicio'] ?></td>
+                                <td><?= $promocao['datafinal'] ?></td>
+                                <td><?= $promocao['valor'] ?></td>
+                                <td><?= $promocao['nome_produtos'] ?></td>
+                                <td>
+                                    <a href="formpromocao.php?id=<?= $promocao['idpromocao'] ?>" class="btn btn-editar">Editar</a>
+                                </td>
+                                <td>
+                                    <a href="deletarpromocao.php?id=<?= $promocao['idpromocao'] ?>" class="btn btn-excluir">Excluir</a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        <?php } ?>
 
-                echo "<tr>";
-                echo "<td>$idpromocao</td>";
-                echo "<td>$datainicio</td>";
-                echo "<td>$datafinal</td>";
-                echo "<td>$valor</td>";
-                echo "<td>$nome_produtos</td>";
-                echo "<td><a href='formpromocao.php?id=$idpromocao'>EDITAR</a></td>";
-                echo "<td><a href='deletarpromocao.php?id=$idpromocao'>EXCLUIR</a></td>";
-                echo "</tr>";
-            }
-            ?>
-        </table>
-
-    <?php } ?>
-
-    <a href="home.php">SAIR</a>
-    <br><br>
-
+        <a href="home.php" class="btn btn-voltar mt-3">Voltar</a>
+    </div>
 </body>
 
 </html>

@@ -4,9 +4,7 @@ require_once "funcoes.php";
 require_once "verificarlogado.php";
 
 if (isset($_GET['id'])) {
-  require_once "conexao.php";
   $id = $_GET['id'];
-
   $sql = "SELECT * FROM tb_promocaos WHERE idpromocao = $id";
   $resultado = mysqli_query($conexao, $sql);
   $linha = mysqli_fetch_array($resultado);
@@ -15,7 +13,6 @@ if (isset($_GET['id'])) {
   $datafinal = $linha['datafinal'];
   $valor = $linha['valor'];
   $tb_produtos_idprodutos = $linha['tb_produtos_idprodutos'];
-
   $botao = "Atualizar";
 } else {
   $id = 0;
@@ -38,35 +35,59 @@ if (isset($_GET['id'])) {
   <link rel="stylesheet" href="estilo.css">
 </head>
 
-<body class="corpousu">
-  <div class="cartaousu">
-    <h2>PROMOÇÃO</h2>
-    <p>PREENCHA AS INFORMAÇÕES ABAIXO</p>
+<body class="corpobody">
+
+  <!-- NAVBAR FIXA NO TOPO USANDO O MESMO CSS DA PÁGINA INICIAL -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="home.php">XAVIER<span>✦</span></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+        aria-controls="navbarMenu" aria-expanded="false" aria-label="Alternar navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="home.php">Página Inicial</a></li>
+          <li class="nav-item"><a class="nav-link" href="formpedido.php">Cardápio</a></li>
+          <li class="nav-item"><a class="nav-link" href="formpromocao.php">Promoção</a></li>
+          <li class="nav-item"><a class="nav-link" href="carrinho.php">Pedidos</a></li>
+          <li class="nav-item">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Espaço para compensar a navbar fixa -->
+  <div style="height: 80px;"></div>
+
+  <div class="cardlogin">
+    <h2 class="titulo">Promoção</h2>
 
     <form id="formpromocao" action="salvarpromocao.php?id=<?php echo $id; ?>" method="post">
 
       <div class="mb-3">
-        <label for="datainicio" class="formusu">DATA INÍCIO</label>
+        <label for="datainicio" class="form-label">Data Início</label>
         <input type="date" class="form-control" id="datainicio" name="datainicio" value="<?php echo $datainicio; ?>" required>
       </div>
 
       <div class="mb-3">
-        <label for="datafinal" class="formusu">DATA FINAL</label>
+        <label for="datafinal" class="form-label">Data Final</label>
         <input type="date" class="form-control" id="datafinal" name="datafinal" value="<?php echo $datafinal; ?>" required>
       </div>
 
       <div class="mb-3">
-        <label for="valor" class="formusu">VALOR</label>
+        <label for="valor" class="form-label">Valor</label>
         <input type="number" class="form-control" id="valor" name="valor" max="99999999999" value="<?php echo $valor; ?>" required>
       </div>
 
       <?php
-      require_once "conexao.php";
       $produto = mysqli_query($conexao, "SELECT idprodutos, nome FROM tb_produtos");
       ?>
 
       <div class="mb-3">
-        <label for="tb_produtos_idprodutos" class="formusu">PRODUTO</label>
+        <label for="tb_produtos_idprodutos" class="form-label">Produto</label>
         <select class="form-control" id="tb_produtos_idprodutos" name="tb_produtos_idprodutos" required>
           <?php while ($cat = mysqli_fetch_assoc($produto)) { ?>
             <option value="<?php echo $cat['idprodutos']; ?>"
@@ -78,7 +99,10 @@ if (isset($_GET['id'])) {
       </div>
 
       <button type="submit" class="btn-custom"><?php echo $botao; ?></button>
+      <a href="home.php" class="link">Voltar</a>
     </form>
+
+   
   </div>
 </body>
 
