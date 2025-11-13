@@ -433,107 +433,6 @@ function listarestoque($conexao){
     return $lista_estoques;
 }
 
-//status
-
-function salvarstatus($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idcliente) {
-    $sql = "INSERT INTO tb_pedidos (valor, data, avaliacao, pagamento, entrega, status, tb_cliente_idcliente)
-            VALUES (?, ?, ?, ?, ?, ?, ?)";
-    $stmt = mysqli_prepare($conexao, $sql);
-    if (!$stmt) {
-        die("Erro na preparação da query: " . mysqli_error($conexao));
-    }
-
-   mysqli_stmt_bind_param($stmt, "dssssii", $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idcliente);
-
-    if (mysqli_stmt_execute($stmt)) {
-        $id = mysqli_insert_id($conexao);
-        mysqli_stmt_close($stmt);
-        return $id;
-    } else {
-        echo "Erro ao executar query: " . mysqli_stmt_error($stmt);
-        mysqli_stmt_close($stmt);
-        return false;
-    }
-}
-
-function editarstatus($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idpedido) {
-    $sql = "UPDATE tb_pedidos 
-            SET valor = ?, data = ?, avaliacao = ?, pagamento = ?, entrega = ?, status = ?
-            WHERE idpedido = ?";
-    $stmt = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($stmt, "disssii", $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idpedido);
-
-    $success = mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-
-    return $success;
-}
-
-function listarstatus($conexao) {
-    $sql = "SELECT * FROM tb_pedidos ORDER BY data DESC";
-    $resultado = mysqli_query($conexao, $sql);
-
-    $pedidos = [];
-    while ($linha = mysqli_fetch_assoc($resultado)) {
-        $pedidos[] = $linha;
-    }
-
-    return $pedidos;
-}
-
-//avaliacao
-
-function salvaravaliacao($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idcliente) {
-    $sql = "INSERT INTO tb_pedidos (valor, data, avaliacao, pagamento, entrega, status, tb_cliente_idcliente)
-            VALUES (?, ?, ?, ?, ?, ?, ?)";
-    $stmt = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($stmt, "dsissii", $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idcliente);
-    if (mysqli_stmt_execute($stmt)) {
-        $id = mysqli_insert_id($conexao);
-        mysqli_stmt_close($stmt);
-        return $id;
-    } else {
-        mysqli_stmt_close($stmt);
-        return false;
-    }
-}
-
-function editaravaliacao($conexao, $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idpedido) {
-    $sql = "UPDATE tb_pedidos SET valor = ?, data = ?, avaliacao = ?, pagamento = ?, entrega = ?, status = ? WHERE idpedido = ?";
-    $stmt = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($stmt, "dsissii", $valor, $data, $avaliacao, $pagamento, $entrega, $status, $idpedido);
-
-    $result = mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-    return $result;
-}
-
-function deletaravaliacao($conexao, $idpedido) {
-    $sql = "DELETE FROM tb_pedidos WHERE idpedido = ?";
-    $stmt = mysqli_prepare($conexao, $sql);
-    mysqli_stmt_bind_param($stmt, "i", $idpedido);
-
-    $result = mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-    return $result;
-}
-
-function listaravaliacao($conexao){
-    $sql = "SELECT * FROM tb_pedidos";
-    $comando = mysqli_prepare($conexao, $sql);
-
-    mysqli_stmt_execute($comando);
-    $resultado = mysqli_stmt_get_result($comando);
-
-    $lista_avaliacao = [];
-    while ($avaliacao = mysqli_fetch_assoc($resultado)){
-        $lista_avaliacao[] = $avaliacao;
-    }
-
-    mysqli_stmt_close($comando);
-    return $lista_avaliacao;
-
-};
 
 
 //permissoes(lucas vai ensinar)
@@ -591,9 +490,9 @@ function listarpermissoes($conexao, $idadm) {
     }
 };
 
-//*Permissoes de editar o site apenas para funcionarios 
+//Permissoes de editar o site apenas para funcionarios 
 
-//*Clientes podem acessar o site atravas do login e fazerem seus pedidos
+//Clientes podem acessar o site atravas do login e fazerem seus pedidos
 
 
 //promocao

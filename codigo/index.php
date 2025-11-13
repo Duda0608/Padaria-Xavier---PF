@@ -32,9 +32,8 @@
                 <p class="text-gray-300 font-sans-custom" style="color: #D1D1D1;">Entre com suas informações pessoais</p>
             </div>
 
-            <!-- Formulário -->
             <form action="verificarlogin.php" method="post" class="space-y-6">
-                <!-- Campo E-mail -->
+                
                 <div>
                     <label for="email" class="block text-sm font-medium text-white mb-2 font-sans-custom">
                         E-MAIL
@@ -48,7 +47,6 @@
                         placeholder="seu@email.com">
                 </div>
 
-                <!-- Campo Senha -->
                 <div>
                     <label for="senha" class="block text-sm font-medium text-white mb-2 font-sans-custom">
                         SENHA
@@ -62,7 +60,7 @@
                         placeholder="••••••••">
                 </div>
 
-                <!-- Link de Cadastro -->
+              
                 <div class="text-center">
                     <a
                         href="formusuario.php"
@@ -73,7 +71,6 @@
                 </div>
 
 
-                <!-- Botão de Submit -->
                 <button
                     type="submit"
                     class="w-full bg-white bg-opacity-20 hover:bg-opacity-30 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 focus:ring-2 focus:ring-white focus:ring-opacity-50 shadow-lg hover:shadow-xl backdrop-blur-sm border border-white border-opacity-30 font-sans-custom">
@@ -82,7 +79,7 @@
             </form>
         </div>
 
-        <!-- Rodapé -->
+        
         <div class="text-center mt-6">
             <p class="text-gray-300 text-sm font-sans-custom" style="color: #D1D1D1;">
                 Sistema de Acesso Seguro

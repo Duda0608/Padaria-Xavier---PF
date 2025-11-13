@@ -29,7 +29,7 @@ $adm = $_SESSION['adm'];
         <ul class="navbar-nav ms-auto align-items-center">
           <li class="nav-item"><a class="nav-link" href="home.php">Página Inicial</a></li>
           <li class="nav-item"><a class="nav-link" href="formpedido.php">Cardápio</a></li>
-          <li class="nav-item"><a class="nav-link" href="formpromocao.php">Promoção</a></li>
+          <li class="nav-item"><a class="nav-link" href="listarpromocao.php">Promoção</a></li>
           <li class="nav-item"><a class="nav-link" href="carrinho.php">Pedidos</a></li>
           <li class="nav-item">
           </li>
