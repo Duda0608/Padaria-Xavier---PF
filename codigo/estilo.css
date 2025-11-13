@@ -1,353 +1,17 @@
-/*CADASTRAR USUARIO*/
-.corpobody {
-    background-color: #2E4A2B;
-    font-family: 'Inter', sans-serif;
-    color: #e8dcc0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.cardlogin {
-    background-color: #355a33;
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    padding: 2rem;
-    width: 100%;
-    max-width: 420px;
-}
 
-.titulo {
-    font-family: 'Playfair Display', serif;
-    color: #e8dcc0;
-    text-align: center;
-    margin-bottom: 0.5rem;
-}
 
-.subtitulo {
-    text-align: center;
-    color: #d4c5a9;
-    margin-bottom: 1.5rem;
-}
 
-.form-label {
-    color: #e8dcc0;
-    font-weight: 500;
-}
 
-.form-control {
-    background-color: #fff;
-    border: 1px solid #c4a574;
-    color: #2E4A2B;
-    border-radius: 6px;
-}
 
-.form-control::placeholder {
-    color: #888;
-}
 
-.form-control:focus {
-    border-color: #c4a574;
-    box-shadow: 0 0 0 0.2rem rgba(196, 165, 116, 0.25);
-    background-color: #fff;
-    color: #2E4A2B;
-}
 
-.btn-custom {
-    background-color: #c4a574;
-    color: #2E4A2B;
-    font-weight: 600;
-    border: none;
-    width: 100%;
-    padding: 0.75rem;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-}
 
-.btn-custom:hover {
-    background-color: #d4c5a9;
-}
 
-.link {
-    color: #d1d1d1;
-    text-align: center;
-    display: block;
-    margin-top: 1rem;
-    text-decoration: none;
-    background-color: #2E4A2B;
-    padding: 0.5rem;
-    border-radius: 6px;
-    font-weight: 500;
-}
 
-.link:hover {
-    color: #c4a574;
-}
 
-.footer {
-    text-align: center;
-    color: #d1d1d1;
-    margin-top: 1.5rem;
-    font-size: 0.9rem;
-}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*CADATRAR CATEGORIA*/
-.corpocate {
-    background-color: #40613b;
-    /* fundo verde médio */
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Inter', sans-serif;
-}
-
-/* Card */
-.cartaocate {
-    background: #4b6b3c;
-    /* verde escuro */
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(44, 44, 44, 0.18);
-    padding: 40px 32px 28px 32px;
-    width: 100%;
-    max-width: 370px;
-}
-
-/* Título */
-.titulocate {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.7rem;
-    margin-bottom: 8px;
-    text-align: center;
-    color: #fff;
-}
-
-/* Subtítulo */
-.subtitulocate {
-    font-size: 1rem;
-    color: #e8dcc0;
-    text-align: center;
-    margin-bottom: 18px;
-    font-family: 'Inter', sans-serif;
-}
-
-/* Labels */
-.formcate {
-    color: #fff;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-}
-
-/* Inputs */
-.controlcate {
-    background: #fff;
-    border: 1px solid #c4a574;
-    color: #2E4A2B;
-    border-radius: 6px;
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    margin-bottom: 8px;
-}
-
-.controlcate:focus {
-    border-color: #c4a574;
-    box-shadow: 0 0 0 0.2rem rgba(196, 165, 116, 0.15);
-    background: #fff;
-    color: #2E4A2B;
-}
-
-/* Botão */
-.botaocate {
-    background-color: #c4a574;
-    color: #2E4A2B;
-    font-weight: 600;
-    border: none;
-    width: 100%;
-    margin-top: 10px;
-    border-radius: 6px;
-    font-family: 'Inter', sans-serif;
-    font-size: 1.1rem;
-    padding: 8px 0;
-    transition: background 0.2s;
-}
-
-.botaocate:hover {
-    background-color: #d4c5a9;
-    color: #2E4A2B;
-}
-
-/* Rodapé */
-.subinfo {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    color: #e8dcc0;
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*LOGIN*/
-.corpologin {
-    background-color: #40613b;
-    /* fundo verde médio */
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Inter', sans-serif;
-}
-
-/* Card */
-.cardlogin {
-    background: #4b6b3c;
-    /* verde escuro */
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(44, 44, 44, 0.18);
-    padding: 40px 32px 28px 32px;
-    width: 100%;
-    max-width: 370px;
-}
-
-/* Título */
-.titulologin {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.7rem;
-    margin-bottom: 8px;
-    text-align: center;
-    color: #fff;
-}
-
-/* Subtítulo */
-.subtitulologin {
-    font-size: 1rem;
-    color: #e8dcc0;
-    text-align: center;
-    margin-bottom: 18px;
-    font-family: 'Inter', sans-serif;
-}
-
-/* Labels */
-.formlogin {
-    color: #fff;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
-}
-
-/* Inputs */
-.controllogin {
-    background: #fff;
-    border: 1px solid #c4a574;
-    color: #2E4A2B;
-    border-radius: 6px;
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    margin-bottom: 8px;
-}
-
-.controllogin:focus {
-    border-color: #c4a574;
-    box-shadow: 0 0 0 0.2rem rgba(196, 165, 116, 0.15);
-    background: #fff;
-    color: #2E4A2B;
-}
-
-/* Botão */
-.botaologin {
-    background-color: #c4a574;
-    color: #2E4A2B;
-    font-weight: 600;
-    border: none;
-    width: 100%;
-    margin-top: 10px;
-    border-radius: 6px;
-    font-family: 'Inter', sans-serif;
-    font-size: 1.1rem;
-    padding: 8px 0;
-    transition: background 0.2s;
-}
-
-.botaologin:hover {
-    background-color: #d4c5a9;
-    color: #2E4A2B;
-}
-
-/* Link */
-.linklogin {
-    display: block;
-    text-align: center;
-    color: #c4a574;
-    margin-top: 10px;
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-family: 'Inter', sans-serif;
-}
-
-.linklogin:hover {
-    color: #e8dcc0;
-}
-
-/* Rodapé */
-.subinfologin {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    color: #e8dcc0;
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* LISTA USUARIO */
+/* LISTAr */
 .bodylista {
     background-color: #1f3a2e;
     /* verde escuro */
@@ -358,7 +22,6 @@
     justify-content: center;
 }
 
-/* Card principal */
 .cardlista {
     background-color: rgba(48, 82, 63, 0.95);
     /* verde médio translúcido */
@@ -369,7 +32,6 @@
     text-align: center;
 }
 
-/* Título e subtítulo */
 .titulolista {
     font-family: 'Playfair Display', serif;
     color: #ffffff;
@@ -381,7 +43,6 @@
     font-size: 1rem;
 }
 
-/* Tabela */
 .tabela-usuarios {
     background-color: transparent;
     border-radius: 10px;
@@ -403,7 +64,6 @@
     background-color: rgba(255, 255, 255, 0.12);
 }
 
-/* Botões */
 .btn-editar {
     background-color: #aeb8a6;
     color: #1f3a2e;
@@ -430,7 +90,6 @@
     background-color: #d46a6a;
 }
 
-/* Botão voltar */
 .btn-voltar {
     background-color: #aeb8a6;
     color: #1f3a2e;
@@ -445,7 +104,6 @@
     background-color: #c3cbbd;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
     .cardlista {
         padding: 1.5rem;
@@ -462,30 +120,23 @@
 
 
 
-/* Reset básico para consistência pedido */
+/*pedido */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Corpo da página */
 body.corpopedido {
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    /* Sans-serif moderna */
     background-color: #FFFFFF;
-    /* Branco puro */
     color: #1A1A1A;
-    /* Preto suave para textos */
     line-height: 1.6;
     letter-spacing: 0.5px;
-    /* Espaçamento generoso entre letras */
 }
 
-/* Navbar */
 .navbar {
     background-color: #2F4A32;
-    /* Verde escuro */
     padding: 1rem 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -494,15 +145,12 @@ body.corpopedido {
     font-size: 1.8rem;
     font-weight: bold;
     text-transform: uppercase;
-    /* Caixa alta */
     letter-spacing: 2px;
-    /* Espaçamento maior entre caracteres */
     color: #FFFFFF;
 }
 
 .navbar-brand span {
     color: #C79B62;
-    /* Tom de madeira para o símbolo */
 }
 
 .nav-link {
@@ -515,13 +163,10 @@ body.corpopedido {
 
 .nav-link:hover {
     color: #F5F2EC !important;
-    /* Creme/bege ao hover */
 }
 
-/* Banner */
 .banner {
     background-color: #2F4A32;
-    /* Verde escuro sólido para fidelidade à paleta */
     color: #FFFFFF;
     text-align: center;
     padding: 4rem 2rem;
@@ -539,16 +184,13 @@ body.corpopedido {
     opacity: 0.9;
 }
 
-/* Container principal */
 .container.my-5 {
     background-color: #F5F2EC;
-    /* Creme/bege claro */
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Sidebar Categorias */
 aside.col-md-3 {
     background-color: #FFFFFF;
     padding: 1.5rem;
@@ -576,7 +218,6 @@ aside .list-group-item.active {
     color: #FFFFFF;
 }
 
-/* Link para destruir carrinho */
 a[href="destruir_carrinho.php"] {
     display: block;
     margin: 1rem 0;
@@ -592,7 +233,7 @@ a[href="destruir_carrinho.php"]:hover {
     color: #A67C52;
 }
 
-/* Formulário de seleção de produtos */
+/* Formulário  de produtos */
 form[action="adicionar.php"] {
     background-color: #FFFFFF;
     padding: 1.5rem;
@@ -667,7 +308,7 @@ input[type="submit"]:hover {
     background-color: #A67C52;
 }
 
-/* Formulário de cadastrar pedido */
+/* Form cadastrar pedido */
 form[action*="salvarpedido.php"] {
     background-color: #FFFFFF;
     padding: 1.5rem;
@@ -692,10 +333,8 @@ form[action*="salvarpedido.php"] {
 .form-control:focus {
     border-color: #A67C52;
     box-shadow: 0 0 0 0.2rem rgba(47, 74, 50, 0.25);
-    /* Verde escuro com transparência */
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
     .banner {
         padding: 2rem 1rem;
@@ -773,7 +412,7 @@ form[action*="salvarpedido.php"] {
 
 
 .herohome {
-    background-image: url('https://images.unsplash.com/photo-1608198093002-ad4e005484b7?auto=format&fit=crop&w=1350&q=80');
+    background-image: url('fundohome.jpg');
     background-size: cover;
     background-position: center;
     height: 85vh;

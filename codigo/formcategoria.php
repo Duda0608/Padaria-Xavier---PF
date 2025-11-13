@@ -79,7 +79,6 @@ if (isset($_GET['id'])) {
             <button type="submit" class="btn botaocate"><?php echo $botao; ?></button>
         </form>
 
-        <footer class="subinfo">Sistema de Acesso Seguro</footer>
     </div>
 </body>
 

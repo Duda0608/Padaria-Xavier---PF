@@ -69,7 +69,6 @@ if ($email != "") {
     </form>
 
     <a href="home.php" class="linklogin">Voltar</a>
-    <footer class="subinfologin">Sistema de Acesso Seguro</footer>
   </div>
 </body>
 </html>
