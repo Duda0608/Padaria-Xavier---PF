@@ -15,7 +15,6 @@ require_once "conexao.php";
 
 <body class="corpobody">
 
-  <!-- NAVBAR FIXA NO TOPO USANDO O MESMO CSS DA PÁGINA INICIAL -->
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand" href="home.php">XAVIER<span>✦</span></a>
@@ -37,7 +36,7 @@ require_once "conexao.php";
     </div>
   </nav>
 
-  <!-- Espaço para compensar a navbar fixa -->
+  
   <div style="height: 80px;"></div>
   <div class="cardlogin">
     <h2 class="titulo">Comentário</h2>

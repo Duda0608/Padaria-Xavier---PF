@@ -15,7 +15,7 @@ require_once "verificarlogado.php";
 
 <body class="bodylista">
 
-  <!-- NAVBAR FIXA NO TOPO USANDO O MESMO CSS DA PÁGINA INICIAL -->
+  
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand" href="home.php">XAVIER<span>✦</span></a>
@@ -35,7 +35,7 @@ require_once "verificarlogado.php";
     </div>
   </nav>
 
-  <!-- Espaço para compensar a navbar fixa -->
+  
   <div style="height: 80px;"></div>
 
   <div class="cardlista p-4 mt-4">

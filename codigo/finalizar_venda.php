@@ -28,7 +28,6 @@ foreach ($_SESSION['carrinho'] as $id => $quantidade) {
 
 <body class="body-finalizar">
 
-    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-finalizar">
         <div class="container">
             <a class="navbar-brand text-white fw-bold" href="home.php">xavier<span>✦</span></a>
@@ -48,7 +47,6 @@ foreach ($_SESSION['carrinho'] as $id => $quantidade) {
         </div>
     </nav>
 
-    <!-- Espaço para compensar a navbar fixa -->
     <div style="height: 90px;"></div>
 
     <div class="container my-5">

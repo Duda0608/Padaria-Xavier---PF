@@ -33,7 +33,6 @@ if (isset($_GET['id'])) {
 
 <body class="corpocate">
 
-  <!-- NAVBAR FIXA NO TOPO USANDO O MESMO CSS DA PÁGINA INICIAL -->
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand" href="home.php">XAVIER<span>✦</span></a>

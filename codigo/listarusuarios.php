@@ -18,7 +18,7 @@ $lista_usuario = listarusuario($conexao);
 
 <body class="bodylista">
 
-  <!-- NAVBAR FIXA NO TOPO USANDO O MESMO CSS DA PÁGINA INICIAL -->
+  
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand" href="home.php">XAVIER<span>✦</span></a>
@@ -40,11 +40,11 @@ $lista_usuario = listarusuario($conexao);
     </div>
   </nav>
 
-  <!-- Espaço para compensar a navbar fixa -->
+  
   <div style="height: 80px;"></div>
 
 
-  <!-- CONTEÚDO PRINCIPAL -->
+  
   <div class="container cardlista p-4 mt-4">
     <?php if (count($lista_usuario) == 0) { ?>
       <div class="alert alert-warning text-center">Não existem usuários cadastrados.</div>

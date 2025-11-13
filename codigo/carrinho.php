@@ -40,7 +40,7 @@ if (!isset($_SESSION['carrinho'])) {
         </div>
     </nav>
 
-    <!-- para navbar fixa -->
+    
     <div style="height: 90px;"></div>
 
         <div class="card card-carrinho shadow-lg border-0">

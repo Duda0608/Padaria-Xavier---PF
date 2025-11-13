@@ -16,7 +16,7 @@ $adm = $_SESSION['adm'];
 </head>
 
 <body class="bobyhome">
- <!-- NAVBAR FIXA NO TOPO USANDO O MESMO CSS DA PÁGINA INICIAL -->
+ 
  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand" href="home.php">XAVIER<span>✦</span></a>
@@ -96,7 +96,7 @@ $adm = $_SESSION['adm'];
                 </p>
 
                 <div class="row justify-content-center g-4">
-                    <!-- Pães -->
+                    
                     <div class="col-6 col-md-4 col-lg-2">
                         <a href="formpedido.php" class="categoria-item d-block text-decoration-none">
                             <div class="categoria-box">
@@ -106,7 +106,7 @@ $adm = $_SESSION['adm'];
                         </a>
                     </div>
 
-                    <!-- Sanduíches e Salgados -->
+                    
                     <div class="col-6 col-md-4 col-lg-2">
                         <a href="formpedido.php" class="categoria-item d-block text-decoration-none">
                             <div class="categoria-box">
@@ -116,7 +116,7 @@ $adm = $_SESSION['adm'];
                         </a>
                     </div>
 
-                    <!-- Bolos -->
+                    
                     <div class="col-6 col-md-4 col-lg-2">
                         <a href="formpedido.php" class="categoria-item d-block text-decoration-none">
                             <div class="categoria-box">
@@ -126,7 +126,7 @@ $adm = $_SESSION['adm'];
                         </a>
                     </div>
 
-                    <!-- Café e Bebidas -->
+                    
                     <div class="col-6 col-md-4 col-lg-2">
                         <a href="formpedido.php" class="categoria-item d-block text-decoration-none">
                             <div class="categoria-box">
@@ -136,7 +136,7 @@ $adm = $_SESSION['adm'];
                         </a>
                     </div>
 
-                    <!-- Doces Finos -->
+                    
                     <div class="col-6 col-md-4 col-lg-2">
                         <a href="formpedido.php" class="categoria-item d-block text-decoration-none">
                             <div class="categoria-box">
@@ -146,7 +146,7 @@ $adm = $_SESSION['adm'];
                         </a>
                     </div>
 
-                    <!-- Encomendas -->
+                    
                     <div class="col-6 col-md-4 col-lg-2">
                         <a href="formpedido.php" class="categoria-item d-block text-decoration-none">
                             <div class="categoria-box">
@@ -167,7 +167,7 @@ $adm = $_SESSION['adm'];
 
     
 
-    <!-- Bootstrap JS + Ícones -->
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

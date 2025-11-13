@@ -37,7 +37,7 @@ if (isset($_GET['id'])) {
 
 <body class="corpobody">
 
-  <!-- NAVBAR FIXA NO TOPO USANDO O MESMO CSS DA PÁGINA INICIAL -->
+  
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand" href="home.php">XAVIER<span>✦</span></a>
@@ -59,7 +59,7 @@ if (isset($_GET['id'])) {
     </div>
   </nav>
 
-  <!-- Espaço para compensar a navbar fixa -->
+  
   <div style="height: 80px;"></div>
 
   <div class="cardlogin">

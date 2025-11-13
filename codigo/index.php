@@ -24,9 +24,9 @@
 
 <body class="min-h-screen flex items-center justify-center p-4" style="background-color: #2E4A2B;">
     <div class="w-full max-w-md">
-        <!-- Card principal -->
+        
         <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl shadow-2xl p-8 border border-white border-opacity-20">
-            <!-- Cabeçalho -->
+            
             <div class="text-center mb-8">
                 <h1 class="text-4xl font-bold text-white mb-2 font-serif-custom">Bem-vindo</h1>
                 <p class="text-gray-300 font-sans-custom" style="color: #D1D1D1;">Entre com suas informações pessoais</p>
